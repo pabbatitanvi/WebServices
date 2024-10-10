@@ -39,8 +39,9 @@ app.listen(port, () =>{
 
 // -------- User Accounts --------
 app.post('/createuser', async(req, res) => {
-    console.log(req.body);
-    return res.send("User created")
+    let data=await useradd(req.body)
+    console.log(data, "USER DATA ADDED")
+    res.send("User Created")
 })
 app.post('/createorganization', async(req, res) => {
     console.log(req.body);
@@ -270,3 +271,15 @@ app.get('/getpostbytag', (req, res) => {
     }
     return res.send(reply);
 })
+
+//--------------------------------------------------------------------------------------------------------------
+//SERVICE RELATED FUNCTIONS
+
+//Add user data to DB
+async function useradd(userob){
+    console.log(userob,'User Object')
+    let data = await db.collection('users').insertOne(userob, function(err, result) {
+        if(err) console.log(err)
+        return result
+    })
+}
