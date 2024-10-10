@@ -1,0 +1,798 @@
+{
+	"info": {
+		"_postman_id": "5b079efb-9e19-4115-ab13-486ef88ee70c",
+		"name": "Test Skelton Code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33951386"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/createuser",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"username\",\r\n    \"Password\": \"password\",\r\n    \"FirstName\": \"user\",\r\n    \"MiddleName\": \"\",\r\n    \"LastName\": \"name\",\r\n    \"ChooseTags\": \"[history, books, nature]\",\r\n    \"Location\": \"Erie\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/createorganization",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"organization\",\r\n    \"Password\": \"OrganizationPW\",\r\n    \"FirstName\": \"fname\",\r\n    \"MiddleName\": \"\",\r\n    \"LastName\": \"lname\",\r\n    \"OrganizationName\": \"Bookstore\",\r\n    \"ChooseMembership\": \"Premium\"\r\n    \"Location\": \"Erie\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createorganization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createorganization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/modifyuser",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"username\",\r\n    \"Password\": \"password\",\r\n    \"FirstName\": \"user\",\r\n    \"MiddleName\": \"\",\r\n    \"LastName\": \"name\",\r\n    \"ChooseTags\": \"[history, books, nature, museums]\",\r\n    \"Location\": \"Erie\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/modifyuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"modifyuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/modifyorganization",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"organization\",\r\n    \"Password\": \"OrganizationPW\",\r\n    \"FirstName\": \"fname\",\r\n    \"MiddleName\": \"\",\r\n    \"LastName\": \"lname\",\r\n    \"OrganizationName\": \"Bookstore\",\r\n    \"ChooseMembership\": \"None\"\r\n    \"Location\": \"Erie\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/modifyorganization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"modifyorganization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/deleteuser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserID\": \"U321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/deleteuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/login",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"Username\": \"username\"\r\n    \"Password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/friendsbytag",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/friendsbytag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"friendsbytag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/friendsbyusername",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\": \"username\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/friendsbyusername",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"friendsbyusername"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/deletefriend",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserID\": \"U321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/deletefriend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deletefriend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/createlocation",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"LocationName\": \"History Museum\",\r\n    \"LocationType\": \"Museum\",\r\n    \"Tags\": \"[History, Museum]\",\r\n    \"Price\": \"999.99\"\r\n    \"Coordinates\": \"Coordinates\",\r\n    \"Family-friendly\": \"yes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createlocation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createlocation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/taginfo",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/taginfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"taginfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/priceinfo",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/priceinfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"priceinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/areainfo",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/areainfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"areainfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/createevent",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"EventName\": \"festival\",\r\n    \"EventDescription\": \"Its a festival\",\r\n    \"Date\": \"Date\",\r\n    \"StartTime\": \"stime\"\r\n    \"EndTime\": \"etime\"\r\n    \"Address\": \"Erie\"\r\n    \"Price\": \"9999.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createevent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/modifyevent",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"EventName\": \"festival\",\r\n    \"EventDescription\": \"Its a festival\",\r\n    \"Date\": \"Date\",\r\n    \"StartTime\": \"stime\"\r\n    \"EndTime\": \"etime\"\r\n    \"Address\": \"Buffalo\"\r\n    \"Price\": \"9999.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/modifyevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"modifyevent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/deleteevent",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"EventID\": \"E1321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/deleteevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteevent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/geteventinfobytag",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/geteventinfobytag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"geteventinfobytag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/geteventinfobyprice",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/geteventinfobyprice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"geteventinfobyprice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/geteventinfobyarea",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/geteventinfobyarea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"geteventinfobyarea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/geteventinfobyhost",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/geteventinfobyhost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"geteventinfobyhost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/geteventaddress",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/geteventaddress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"geteventaddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/shareevent",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"EventID\": \"E1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/shareevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shareevent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/createpost",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Picture\": \"picture\"\r\n    \"Caption\": \"This is the caption\"\r\n    \"LocationName\": \"History Museum\"\r\n    \"LocationID\": \"L2534\"\r\n    \"Date\": \"date\"\r\n    \"Time\": \"time\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createpost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createpost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/deletepost",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PostID\": \"P2345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/deletepost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deletepost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/modifypost",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Picture\": \"picture\"\r\n    \"Caption\": \"This is the caption\"\r\n    \"LocationName\": \"History Museum\"\r\n    \"LocationID\": \"L3214\"\r\n    \"Date\": \"date\"\r\n    \"Time\": \"time\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/modifypost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"modifypost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/sharepost",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserID\": \"U1011\"\r\n    \"PostID\": \"P5432\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sharepost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sharepost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/getpostbylocation",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getpostbylocation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getpostbylocation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/getpostbyuser",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getpostbyuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getpostbyuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/getpostbytag",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getpostbytag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getpostbytag"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
