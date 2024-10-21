@@ -17,7 +17,7 @@ app.use((req,res,next)=>{
 
 let MongoClient = require('mongodb').MongoClient
 
-const connectionString = "mongodb+srv://amm10089:amm1008@getoutthere.l8cjg.mongodb.net/?retryWrites=true&w=majority&appName=GetOutThere"
+const connectionString = "mongodb+srv://amm10089:amm10089@getoutthere.l8cjg.mongodb.net/?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;
