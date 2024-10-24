@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-info-share-form',
   templateUrl: './info-share-form.component.html',
-  styleUrls: ['./info-share-form.component.scss']
+  styleUrls: ['./info-share-form.component.scss'],
+  standalone:true,
+
+  imports: [ReactiveFormsModule]
 })
+
 export class InfoShareFormComponent implements OnInit{
   information_Form = new FormGroup({
     userEmail: new FormControl<string>(''),

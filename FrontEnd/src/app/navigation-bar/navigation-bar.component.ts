@@ -1,11 +1,14 @@
 import { Component , OnInit, Output, EventEmitter} from '@angular/core';
 import { from } from 'rxjs';
+import { DisplayComponentComponent } from "../display-component/display-component.component";
 
 
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
-  styleUrls: ['./navigation-bar.component.scss']
+  styleUrls: ['./navigation-bar.component.scss'],
+  standalone:true,
+  imports: [DisplayComponentComponent]
 })
 export class NavigationBarComponent implements OnInit {
 
