@@ -17,7 +17,7 @@ app.use((req,res,next)=>{
 
 let MongoClient = require('mongodb').MongoClient
 
-const connectionString = "mongodb+srv://<<Database username>>:<<Database access password>>@getoutthere.l8cjg.mongodb.net/?retryWrites=true&w=majority&appName=GetOutThere"
+const connectionString = "mongodb+srv://tmp5876:tanvi@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;
@@ -25,7 +25,7 @@ let conn;
     async function connect(){
         try {
             conn = await client.connect();
-            db = await conn.db("sample_mflix");
+            db = await conn.db("TestDB");
             console.log("database connected !!")
           } catch(e) {
             console.error(e);
@@ -37,6 +37,9 @@ app.listen(port, () =>{
     console.log(`Listening to active port ${ port }`)
 })
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
 // -------- User Accounts --------
 app.post('/createuser', async(req, res) => {
     let data=await useradd(req.body)
@@ -44,8 +47,9 @@ app.post('/createuser', async(req, res) => {
     res.send("User Created")
 })
 app.post('/createorganization', async(req, res) => {
-    console.log(req.body);
-    return res.send("Organization created")
+    let data = await organizationadd(req.body)
+    console.log(data, "Organization data added");
+    res.send("Organization created")
 })
 app.post('/modifyuser', async(req, res) => {
     console.log(req.body);
@@ -279,6 +283,14 @@ app.get('/getpostbytag', (req, res) => {
 async function useradd(userob){
     console.log(userob,'User Object')
     let data = await db.collection('users').insertOne(userob, function(err, result) {
+        if(err) console.log(err)
+        return result
+    })
+}
+
+async function organizationadd(organizationob){
+    console.log(organizationob, 'Organization Object')
+    let data = await db.collection('Organizations').insertOne(organizationob, function(err, result){
         if(err) console.log(err)
         return result
     })

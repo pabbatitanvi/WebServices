@@ -1,6 +1,13 @@
 {
   "dependencies": {
+    "@angular/platform-browser": "^18.2.9",
+    "@angular/ssr": "^18.2.10",
+    "angular": "^1.8.3",
+    "bootstrap": "^5.3.3",
     "express": "^4.21.1",
     "mongodb": "^6.9.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
   }
 }
