@@ -17,7 +17,7 @@ app.use((req,res,next)=>{
 
 let MongoClient = require('mongodb').MongoClient
 
-const connectionString = "mongodb+srv://<<Database username>>:<<Database access password>>@getoutthere.l8cjg.mongodb.net/?retryWrites=true&w=majority&appName=GetOutThere"
+const connectionString = "mongodb+srv://<<Database username>>:<<Database access password>>@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;
@@ -25,7 +25,7 @@ let conn;
     async function connect(){
         try {
             conn = await client.connect();
-            db = await conn.db("sample_mflix");
+            db = await conn.db("TestDB");
             console.log("database connected !!")
           } catch(e) {
             console.error(e);
@@ -279,7 +279,7 @@ app.get('/getpostbytag', (req, res) => {
 //Add user data to DB
 async function useradd(userob){
     console.log(userob,'User Object')
-    let data = await db.collection('users').insertOne(userob, function(err, result) {
+    let data = await db.collection('Users').insertOne(userob, function(err, result) {
         if(err) console.log(err)
         return result
     })
