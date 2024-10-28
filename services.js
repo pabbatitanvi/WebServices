@@ -66,8 +66,9 @@ app.post('/login', async(req, res) => {
 })
 
 // -------- Locations --------
-app.post('/createlocation', (req, res) => {
-    console.log(req.body)
+app.post('/createlocation', async(req, res) => {
+    let data = await locationadd(req.body)
+    console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
 
@@ -303,3 +304,11 @@ async function eventadd(userob){
     })
 }
 
+// Add location to the database
+async function locationadd(userob){
+    console.log(userob, 'User Object')
+    let data = await db.collection('Locations').insertOne(userob, function(err, result) {
+        if(err) console.log(err)
+        return result
+    })
+}
