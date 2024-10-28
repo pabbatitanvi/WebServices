@@ -139,8 +139,9 @@ app.delete('/deletefriend', async(req, res) => {
 
 
 // -------- Events --------
-app.post('/createevent', (req, res) =>{
-    console.log(req.body);
+app.post('/createevent', async(req, res) =>{
+    let data=await eventadd(req.body)
+    console.log(data, req.body);
     return res.send("Event created");
 })
 app.post('/modifyevent', (req,res) => {
