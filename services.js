@@ -17,7 +17,7 @@ app.use((req,res,next)=>{
 
 let MongoClient = require('mongodb').MongoClient
 
-const connectionString = "mongodb+srv://<<Database username>>:<<Database access password>>@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
+const connectionString = "mongodb+srv://ssg5387:123ssg@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;
@@ -44,12 +44,12 @@ app.post('/createuser', async(req, res) => {
     res.send("User Created")
 })
 app.post('/createorganization', async(req, res) => {
-    console.log(req.body);
+    let data=await organizationadd(req.body)
+    console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
 })
 app.post('/modifyuser', async(req, res) => {
-    let data=await organizationadd(req.body)
-    console.log(data, "USER DATA ADDED")
+    console.log(req.body);
     return res.send("User modified")
 })
 app.post('/modifyorganization', async(req, res) => {
@@ -285,6 +285,7 @@ async function useradd(userob){
     })
 }
 
+// Add organization to database
 async function organizationadd(userob){
     console.log(userob,'User Object')
     let data = await db.collection('Organizations').insertOne(userob, function(err, result) {
@@ -293,6 +294,7 @@ async function organizationadd(userob){
     })
 }
 
+// Add event to database
 async function eventadd(userob){
     console.log(userob,'User Object')
     let data = await db.collection('Events').insertOne(userob, function(err, result) {
@@ -300,3 +302,4 @@ async function eventadd(userob){
         return result
     })
 }
+
