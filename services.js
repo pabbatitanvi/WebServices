@@ -1,3 +1,6 @@
+
+const location = require('./location_services.js')
+
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
 const path = require('path');
@@ -67,13 +70,23 @@ app.post('/login', async(req, res) => {
 })
 
 // -------- Locations --------
+
+// Create location (add to database)
 app.post('/createlocation', async(req, res) => {
-    let data = await locationadd(req.body)
+    let data = await location.locationadd(req.body)
     console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
 
+// Delete location (remove from database)
+app.delete('/deletelocation/:id', async(req, res) => {
+    const locationID = new ObjectId(req.params.id)
+    let data = await postdelete(locationID);
+    console.log(data, "Location deleted");
+    return res.send("Location deleted");
+})
 
+// Return all locations with the inputted tag
 app.get('/taginfo', (req, res) =>{
 
 
@@ -87,7 +100,7 @@ app.get('/taginfo', (req, res) =>{
     return res.json(reply)
 })
 
-
+// Return all locations that match the specified price range
 app.get('/priceinfo', async (req,res)=>{
     console.log(req.body.Price)
     console.log("Location info based on price")
@@ -97,26 +110,19 @@ app.get('/priceinfo', async (req,res)=>{
         "LocationID3" : "2222"
     }
     return res.json(reply)
-
-
 })
+
+// Return all locations in the specified area (NEEDS WORK)
 app.get('/areainfo', async (req,res)=>{
     
     console.log("Location info based on tags")
-    let replyarray = {//comes from database
+    let replyarray = {
         "LocationID1" : "2468",
-
-
         "LocationID2" : "1357",
-
-
         "LocationID3" : "1616"
-
 
     }
     return res.json(replyarray)
-
-
 })
 
 // -------- Friends --------
@@ -313,14 +319,7 @@ async function eventadd(userob){
     })
 }
 
-// Add location to the database
-async function locationadd(userob){
-    console.log(userob, 'User Object')
-    let data = await db.collection('Locations').insertOne(userob, function(err, result) {
-        if(err) console.log(err)
-        return result
-    })
-}
+
 //Add post data to database
 async function postadd(userob) {
     console.log(userob, 'User Object')
