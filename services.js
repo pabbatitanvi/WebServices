@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
+const {ObjectId} = require('mongodb');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use((req,res,next)=>{
@@ -140,8 +141,9 @@ app.delete('/deletefriend', async(req, res) => {
 
 
 // -------- Events --------
-app.post('/createevent', (req, res) =>{
-    console.log(req.body);
+app.post('/createevent', async(req, res) =>{
+    let data=await eventadd(req.body)
+    console.log(data, req.body);
     return res.send("Event created");
 })
 app.post('/modifyevent', (req,res) => {
@@ -221,16 +223,23 @@ app.post('/shareevent', (req, res) => {
 
 
 // -------- Posts --------
-app.post('/createpost', (req, res) => {
-    console.log(req.body);
+app.post('/createpost', async(req, res) => {
+    let data=await postadd(req.body)
+    console.log(data, "Post data added");
     return res.send("Post created");
 })
-app.delete('/deletepost', (req, res) => {
-    console.log(req.body);
+app.delete('/deletepost/:id', async(req, res) => {
+    const postId = new ObjectId(req.params.id)
+    let data=await postdelete(postId);
+    console.log(data, "Post deleted");
     return res.send("Post deleted");
 })
-app.post('/modifypost', (req, res) => {
-    console.log(req.body);
+app.put('/modifypost/:id', async(req, res) => {
+    const postId = new ObjectId(req.params.id)
+    const updateData = req.body
+    console.log(updateData, 'Updata data')
+    let data=await postmodify(postId, updateData)
+    console.log(data, "Post modified");
     return res.send("Post modified");
 })
 app.post('/sharepost', (req, res) => {
@@ -311,4 +320,38 @@ async function locationadd(userob){
         if(err) console.log(err)
         return result
     })
+}
+//Add post data to database
+async function postadd(userob) {
+    console.log(userob, 'User Object')
+    try{
+        let data = await db.collection('Posts').insertOne(userob)
+        return data.insertedId
+    } catch {
+        console.error(err)
+        throw err
+    }
+}
+
+//Modify post data to database
+async function postmodify(postId, updateData){
+    try{
+        let data = await db.collection('Posts').updateOne({_id: postId}, {$set: updateData})
+        console.log('Post modified in mongodb')
+        //return data;
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+//Delete post data
+async function postdelete(postId){
+    try{
+        let data = await db.collection('Posts').deleteOne({_id: postId})
+        console.log('Post deleted')
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
 }
