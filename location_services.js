@@ -54,7 +54,7 @@ async function locationsearch(searchFor = "", {searchValue = 0, maxNumResults = 
 
         cursor = db.collection("Locations").find(
             {
-                tags: { $in : searchValue},
+                tags: searchValue,
             }
         ).sort({name : 1})
         .limit(maxNumResults);
@@ -71,7 +71,7 @@ async function locationsearch(searchFor = "", {searchValue = 0, maxNumResults = 
 
     const results = await cursor.toArray();
     if(results.length > 0){
-        console.log(`Found listing(s) with at most ${searchValue} price`);
+        console.log(`Found listing(s) with ${searchValue} ${searchFor} price`);
         results.forEach((result, i) => {
             console.log();
             console.log(`${i + 1}. name: ${result.name}`);
@@ -80,7 +80,7 @@ async function locationsearch(searchFor = "", {searchValue = 0, maxNumResults = 
             console.log(`   price: ${result.price}`);
         });
     } else {
-        console.log(`No listings found with at most ${searchValue} ${searchFor} (or something went wrong)`);
+        console.log(`No listings found with ${searchValue} ${searchFor} (or something went wrong)`);
         console.log(`results : ${results}`);
         console.log(`cursor : ${cursor}`);
         console.log(`type of searchValue: ${typeof searchValue}`)
@@ -88,4 +88,16 @@ async function locationsearch(searchFor = "", {searchValue = 0, maxNumResults = 
 
 }
 
-module.exports = {locationadd, locationsearch};
+// Delete location from database (need to run by team, for now this is mostly so I can use postman to clean the database)
+//Delete post data
+async function locationdelete(locationID){
+    try{
+        let data = await db.collection('Locations').deleteOne({_id: locationID})
+        console.log('Location deleted')
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+module.exports = {locationadd, locationsearch, locationdelete};

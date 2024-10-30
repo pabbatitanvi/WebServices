@@ -81,7 +81,7 @@ app.post('/createlocation', async(req, res) => {
 // Delete location (remove from database)
 app.delete('/deletelocation/:id', async(req, res) => {
     const locationID = new ObjectId(req.params.id)
-    let data = await postdelete(locationID);
+    let data = await location.locationdelete(locationID);
     console.log(data, "Location deleted");
     return res.send("Location deleted");
 })
