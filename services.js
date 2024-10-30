@@ -43,7 +43,7 @@ app.listen(port, () =>{
 
 // -------- User Accounts --------
 app.post('/createuser', async(req, res) => {
-    let data=await useradd(req.body)
+    let data=await userAdd(req.body)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
 })
@@ -52,17 +52,23 @@ app.post('/createorganization', async(req, res) => {
     console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
 })
-app.post('/modifyuser', async(req, res) => {
-    console.log(req.body);
-    return res.send("User modified")
+app.put('/modifyuser/:id', async(req, res) => {
+    const userId = new ObjectId(req.params.id)
+    const updateData = req.body
+    console.log(updateData, 'Updata data')
+    let data=await userModify(userId, updateData)
+    console.log(data, "User modified");
+    return res.send("User modified");
 })
 app.post('/modifyorganization', async(req, res) => {
     console.log(req.body);
     return res.send("Organization modified")
 })
-app.delete('/deleteuser', async(req, res) => {
-    console.log(req.body);
-    return res.send("User deleted")
+app.delete('/deleteuser/:id', async(req, res) => {
+    const userId = new ObjectId(req.params.id)
+    let data=await userDelete(userId);
+    console.log(data, "User deleted");
+    return res.send("User deleted");
 })
 app.post('/login', async(req, res) => {
     console.log(req.body);
@@ -131,7 +137,7 @@ app.delete('/deletefriend', async(req, res) => {
 
 // -------- Events --------
 app.post('/createevent', async(req, res) =>{
-    let data=await eventadd(req.body)
+    let data=await eventAdd(req.body)
     console.log(data, req.body);
     return res.send("Event created");
 })
@@ -213,13 +219,13 @@ app.post('/shareevent', (req, res) => {
 
 // -------- Posts --------
 app.post('/createpost', async(req, res) => {
-    let data=await postadd(req.body)
+    let data=await postAdd(req.body)
     console.log(data, "Post data added");
     return res.send("Post created");
 })
 app.delete('/deletepost/:id', async(req, res) => {
     const postId = new ObjectId(req.params.id)
-    let data=await postdelete(postId);
+    let data=await postDelete(postId);
     console.log(data, "Post deleted");
     return res.send("Post deleted");
 })
@@ -227,7 +233,7 @@ app.put('/modifypost/:id', async(req, res) => {
     const postId = new ObjectId(req.params.id)
     const updateData = req.body
     console.log(updateData, 'Updata data')
-    let data=await postmodify(postId, updateData)
+    let data=await postModify(postId, updateData)
     console.log(data, "Post modified");
     return res.send("Post modified");
 })
@@ -235,29 +241,17 @@ app.post('/sharepost', (req, res) => {
     console.log(req.body);
     return res.send("Post shared");
 })
-app.get('/getpostbylocation', (req, res) => {
-    console.log(req.body.Location);
-    console.log("Returning posts based on inputted location");
-
-
-    let reply = {
-        "PostID1" : "3383",
-        "PostID2" : "2795",
-        "PostID3" : "0288"
-    }
-    return res.send(reply);
+app.get('/getpostbylocation/:location', async(req, res) => {
+    const location = req.params.location
+    let data = await postByLocation(location)
+    console.log("Posts based on inputted location", data);
+    return res.send("Information is displayed")
 })
-app.get('/getpostbyuser', (req, res) => {
-    console.log(req.body.User);
-    console.log("Returning posts based on inputted user");
-
-
-    let reply = {
-        "PostID1" : "4197",
-        "PostID2" : "1961",
-        "PostID3" : "0000"
-    }
-    return res.send(reply);
+app.get('/getpostbyuser/:userId', async(req, res) => {
+    const users = new ObjectId (req.params.userId)
+    let data = await postByUser(users)
+    console.log("Posts based on inputted user", data);
+    return res.send("Information is displayed");
 })
 app.get('/getpostbytag', (req, res) => {
     console.log(req.body.Tags);
@@ -276,16 +270,21 @@ app.get('/getpostbytag', (req, res) => {
 //SERVICE RELATED FUNCTIONS
 
 //Add user data to DB
-async function useradd(userob){
-    console.log(userob,'User Object')
-    let data = await db.collection('Users').insertOne(userob, function(err, result) {
-        if(err) console.log(err)
-        return result
-    })
+async function userAdd(userob){
+    console.log(userob, 'User Object')
+    try{
+        //inserts usr data into the database
+        let data = await db.collection('Users').insertOne(userob)
+        //returns the id of the data created
+        return data.insertedId
+    } catch {
+        console.error(err)
+        throw err
+    }
 }
 
 // Add organization to database
-async function organizationadd(userob){
+async function organizationAdd(userob){
     console.log(userob,'User Object')
     let data = await db.collection('Organizations').insertOne(userob, function(err, result) {
         if(err) console.log(err)
@@ -294,7 +293,7 @@ async function organizationadd(userob){
 }
 
 // Add event to database
-async function eventadd(userob){
+async function eventAdd(userob){
     console.log(userob,'User Object')
     let data = await db.collection('Events').insertOne(userob, function(err, result) {
         if(err) console.log(err)
@@ -304,10 +303,12 @@ async function eventadd(userob){
 
 
 //Add post data to database
-async function postadd(userob) {
+async function postAdd(userob) {
     console.log(userob, 'User Object')
     try{
+        //inserts data into the database
         let data = await db.collection('Posts').insertOne(userob)
+        //returns the unique id of the data created
         return data.insertedId
     } catch {
         console.error(err)
@@ -316,8 +317,9 @@ async function postadd(userob) {
 }
 
 //Modify post data to database
-async function postmodify(postId, updateData){
+async function postModify(postId, updateData){
     try{
+        //modifies data using the id
         let data = await db.collection('Posts').updateOne({_id: postId}, {$set: updateData})
         console.log('Post modified in mongodb')
         //return data;
@@ -328,10 +330,59 @@ async function postmodify(postId, updateData){
 }
 
 //Delete post data
-async function postdelete(postId){
+async function postDelete(postId){
     try{
+        //deletes the post data using the id
         let data = await db.collection('Posts').deleteOne({_id: postId})
         console.log('Post deleted')
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+//Get post by location
+async function postByLocation(location){
+    try{
+        //creates an array of all the occurences of the location
+        let data = await db.collection('Posts').find({LocationName: location}).toArray()
+        return data
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+//Get post by user
+async function postByUser(userId){
+    try{
+        //creates an array of all the occurences of the userId
+        let data = await db.collection('Posts').find({_id: userId}).toArray()
+        return data
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+///Delete user data
+async function userDelete(userId){
+    try{
+        //deletes user by id
+        let data = await db.collection('Users').deleteOne({_id: userId})
+        console.log('User deleted')
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+//Modify user data to database
+async function userModify(userId, updateData){
+    try{
+        //modifies user by id
+        let data = await db.collection('Users').updateOne({_id: userId}, {$set: updateData})
+        console.log('User modified in mongodb')
     } catch (err) {
         console.error(err)
         throw err
