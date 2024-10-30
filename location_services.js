@@ -1,29 +1,4 @@
 
-// CONNECT TO DATABASE (AGAIN???)
-const {ObjectId} = require('mongodb');
-let MongoClient = require('mongodb').MongoClient
-
-const connectionString = "mongodb+srv://ssg5387:123ssg@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
-const client = new MongoClient(connectionString);
-let conn;
-    let db;
-    connect();
-    async function connect(){
-        try {
-            conn = await client.connect();
-            db = await conn.db("TestDB");
-            console.log("database connected !!")
-          } catch(e) {
-            console.error(e);
-          }
-    }
-    async function disconnect(){
-        await client.close();
-    }
-
-
-
-
 // Add location to the database
 async function locationadd(userob){
     
@@ -35,7 +10,7 @@ async function locationadd(userob){
 }
 
 // Search locations by price, tag, or area (area to be added later after group discussion)
-async function locationsearch(searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
+async function locationsearch(database, searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
 
     var cursor = null;
     // search by max price

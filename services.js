@@ -1,5 +1,6 @@
 
 const location = require('./location_services.js')
+const post = require('./post_services.js')
 
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
@@ -19,13 +20,14 @@ app.use((req,res,next)=>{
     next();
 })
 
+
 let MongoClient = require('mongodb').MongoClient
 
 const connectionString = "mongodb+srv://ssg5387:123ssg@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;
-    //connect()
+    connect()
     async function connect(){
         try {
             conn = await client.connect();
@@ -94,7 +96,7 @@ app.delete('/deletelocation/:id', async(req, res) => {
 
 // Return all locations with the inputted tag
 app.get('/taginfo/:tag', async(req, res) =>{
-    let data = await location.locationsearch(searchFor = "tags", {searchValue : req.params.tag})
+    let data = await location.locationsearch(database = db, searchFor = "tags", {searchValue : req.params.tag})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
@@ -219,13 +221,13 @@ app.post('/shareevent', (req, res) => {
 
 // -------- Posts --------
 app.post('/createpost', async(req, res) => {
-    let data=await postAdd(req.body)
+    let data = await post.postAdd(req.body, db)
     console.log(data, "Post data added");
     return res.send("Post created");
 })
 app.delete('/deletepost/:id', async(req, res) => {
     const postId = new ObjectId(req.params.id)
-    let data=await postDelete(postId);
+    let data = await post.postDelete(postId);
     console.log(data, "Post deleted");
     return res.send("Post deleted");
 })
@@ -233,26 +235,28 @@ app.put('/modifypost/:id', async(req, res) => {
     const postId = new ObjectId(req.params.id)
     const updateData = req.body
     console.log(updateData, 'Updata data')
-    let data=await postModify(postId, updateData)
+    let data = await post.postModify(postId, updateData)
     console.log(data, "Post modified");
     return res.send("Post modified");
 })
+// NOT DONE YET, NOTHING FOR IMPLEMENTATION READY YET
 app.post('/sharepost', (req, res) => {
     console.log(req.body);
     return res.send("Post shared");
 })
 app.get('/getpostbylocation/:location', async(req, res) => {
     const location = req.params.location
-    let data = await postByLocation(location)
+    let data = await post.postByLocation(location)
     console.log("Posts based on inputted location", data);
     return res.send("Information is displayed")
 })
 app.get('/getpostbyuser/:userId', async(req, res) => {
     const users = new ObjectId (req.params.userId)
-    let data = await postByUser(users)
+    let data = await post.postByUser(users)
     console.log("Posts based on inputted user", data);
     return res.send("Information is displayed");
 })
+// NOT IMPLEMENTED YET, TOO MUCH OF A PAIN
 app.get('/getpostbytag', (req, res) => {
     console.log(req.body.Tags);
     console.log("Returning posts based on inputted tags");
@@ -299,70 +303,6 @@ async function eventAdd(userob){
         if(err) console.log(err)
         return result
     })
-}
-
-
-//Add post data to database
-async function postAdd(userob) {
-    console.log(userob, 'User Object')
-    try{
-        //inserts data into the database
-        let data = await db.collection('Posts').insertOne(userob)
-        //returns the unique id of the data created
-        return data.insertedId
-    } catch {
-        console.error(err)
-        throw err
-    }
-}
-
-//Modify post data to database
-async function postModify(postId, updateData){
-    try{
-        //modifies data using the id
-        let data = await db.collection('Posts').updateOne({_id: postId}, {$set: updateData})
-        console.log('Post modified in mongodb')
-        //return data;
-    } catch (err) {
-        console.error(err)
-        throw err
-    }
-}
-
-//Delete post data
-async function postDelete(postId){
-    try{
-        //deletes the post data using the id
-        let data = await db.collection('Posts').deleteOne({_id: postId})
-        console.log('Post deleted')
-    } catch (err) {
-        console.error(err)
-        throw err
-    }
-}
-
-//Get post by location
-async function postByLocation(location){
-    try{
-        //creates an array of all the occurences of the location
-        let data = await db.collection('Posts').find({LocationName: location}).toArray()
-        return data
-    } catch (err) {
-        console.error(err)
-        throw err
-    }
-}
-
-//Get post by user
-async function postByUser(userId){
-    try{
-        //creates an array of all the occurences of the userId
-        let data = await db.collection('Posts').find({_id: userId}).toArray()
-        return data
-    } catch (err) {
-        console.error(err)
-        throw err
-    }
 }
 
 ///Delete user data
