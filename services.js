@@ -25,7 +25,7 @@ const connectionString = "mongodb+srv://ssg5387:123ssg@getoutthere.l8cjg.mongodb
 const client = new MongoClient(connectionString);
 let conn;
     let db;
-    connect()
+    //connect()
     async function connect(){
         try {
             conn = await client.connect();
@@ -87,42 +87,25 @@ app.delete('/deletelocation/:id', async(req, res) => {
 })
 
 // Return all locations with the inputted tag
-app.get('/taginfo', (req, res) =>{
-
-
-    console.log(req.body.Tags)
-    console.log("location info based on tags")
-    let reply = {
-        "LocationID1" : "1234",
-        "LocationID2" : "3333",
-        "LocationID3" : "4444"
-    }
-    return res.json(reply)
+app.get('/taginfo/:tag', async(req, res) =>{
+    let data = await location.locationsearch(searchFor = "tags", {searchValue : req.params.tag})
+    console.log(data, "LOCATION SEARCHED FOR")
+    return res.send("Searched for a location")
 })
 
 // Return all locations that match the specified price range
-app.get('/priceinfo', async (req,res)=>{
-    console.log(req.body.Price)
-    console.log("Location info based on price")
-    let reply = {
-        "LocationID1" : "4321",
-        "LocationID2" : "1111",
-        "LocationID3" : "2222"
-    }
-    return res.json(reply)
+app.get('/priceinfo/:price', async (req,res)=>{
+    let data = await location.locationsearch(searchFor = "price", {searchValue : Number(req.params.price)})
+    console.log(data, "LOCATION SEARCHED FOR")
+    return res.send("Searched for a location")
 })
 
 // Return all locations in the specified area (NEEDS WORK)
-app.get('/areainfo', async (req,res)=>{
+app.get('/areainfo/:area', async (req,res)=>{
     
-    console.log("Location info based on tags")
-    let replyarray = {
-        "LocationID1" : "2468",
-        "LocationID2" : "1357",
-        "LocationID3" : "1616"
-
-    }
-    return res.json(replyarray)
+    let data = await location.locationsearch(searchFor = "area", {searchValue : req.params.area})
+    console.log(data, "LOCATION SEARCHED FOR")
+    return res.send("Searched for a location")
 })
 
 // -------- Friends --------
