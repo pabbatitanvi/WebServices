@@ -1,6 +1,6 @@
 
 // Add location to the database
-async function locationadd(database, userob){
+async function locationAdd(database, userob){
     
     console.log(userob, 'User Object')
     let result = await database.collection('Locations').insertOne(userob, function(err, result) {
@@ -10,7 +10,7 @@ async function locationadd(database, userob){
 }
 
 // Search locations by price, tag, or area (area to be added later after group discussion)
-async function locationsearch(database, searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
+async function locationSearch(database, searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
 
     var cursor = null;
     // search by max price
@@ -65,7 +65,7 @@ async function locationsearch(database, searchFor = "", {searchValue = 0, maxNum
 
 // Delete location from database (need to run by team, for now this is mostly so I can use postman to clean the database)
 //Delete post data
-async function locationdelete(database, locationID){
+async function locationDelete(database, locationID){
     try{
         let data = await database.collection('Locations').deleteOne({_id: locationID})
         console.log('Location deleted')
@@ -75,4 +75,4 @@ async function locationdelete(database, locationID){
     }
 }
 
-module.exports = {locationadd, locationsearch, locationdelete};
+module.exports = {locationAdd, locationSearch, locationDelete};

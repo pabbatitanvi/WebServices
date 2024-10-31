@@ -81,7 +81,7 @@ app.post('/login', async(req, res) => {
 
 // Create location (add to database)
 app.post('/createlocation', async(req, res) => {
-    let data = await location.locationadd(db, req.body)
+    let data = await location.locationAdd(db, req.body)
     console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
@@ -89,21 +89,21 @@ app.post('/createlocation', async(req, res) => {
 // Delete location (remove from database)
 app.delete('/deletelocation/:id', async(req, res) => {
     const locationID = new ObjectId(req.params.id)
-    let data = await location.locationdelete(db, locationID);
+    let data = await location.locationDelete(db, locationID);
     console.log(data, "Location deleted");
     return res.send("Location deleted");
 })
 
 // Return all locations with the inputted tag
 app.get('/taginfo/:tag', async(req, res) =>{
-    let data = await location.locationsearch(database = db, searchFor = "tags", {searchValue : req.params.tag})
+    let data = await location.locationSearch(database = db, searchFor = "tags", {searchValue : req.params.tag})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
 
 // Return all locations that match the specified price range
 app.get('/priceinfo/:price', async (req,res)=>{
-    let data = await location.locationsearch(database = db, searchFor = "price", {searchValue : Number(req.params.price)})
+    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : Number(req.params.price)})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
@@ -111,7 +111,7 @@ app.get('/priceinfo/:price', async (req,res)=>{
 // Return all locations in the specified area (NEEDS WORK)
 app.get('/areainfo/:area', async (req,res)=>{
     
-    let data = await location.locationsearch(database = db, searchFor = "area", {searchValue : req.params.area})
+    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : req.params.area})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
