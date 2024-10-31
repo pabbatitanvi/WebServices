@@ -75,4 +75,17 @@ async function locationDelete(database, locationID){
     }
 }
 
-module.exports = {locationAdd, locationSearch, locationDelete};
+//Modify post data
+async function locationModify(database, locationID, updateData){
+    try{
+        //modifies data using the id
+        let data = await database.collection('Locations').updateOne({_id: locationID}, {$set: updateData})
+        console.log('Location modified in mongodb')
+        //return data;
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+module.exports = {locationAdd, locationSearch, locationDelete, locationModify};

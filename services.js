@@ -96,6 +96,17 @@ app.delete('/deletelocation/:id', async(req, res) => {
     return res.send("Location deleted");
 })
 
+// Modify location (remove from database)
+app.put('/modifylocation/:id', async(req, res) => {
+    const locationID = new ObjectId(req.params.id)
+    const updateData = req.body
+    console.log(updateData, "Location modified");
+    let data = await location.locationModify(db, locationID, updateData);
+    console.log(data, "Location modified");
+    return res.send("Location modified");
+})
+
+
 // Return all locations with the inputted tag
 app.get('/taginfo/:tag', async(req, res) =>{
     const tag = req.params.tag
