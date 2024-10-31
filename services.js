@@ -1,6 +1,7 @@
 
 const location = require('./location_services.js')
 const post = require('./post_services.js')
+const user = require('./user_services.js')
 
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
@@ -45,20 +46,15 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    let data=await userAdd(req.body)
+    let data=await user.userAdd(db, req.body)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
-})
-app.post('/createorganization', async(req, res) => {
-    let data=await organizationadd(req.body)
-    console.log(data, "USER DATA ADDED")
-    return res.send("Organization created")
 })
 app.put('/modifyuser/:id', async(req, res) => {
     const userId = new ObjectId(req.params.id)
     const updateData = req.body
     console.log(updateData, 'Updata data')
-    let data=await userModify(userId, updateData)
+    let data = await user.userModify(db, userId, updateData)
     console.log(data, "User modified");
     return res.send("User modified");
 })
@@ -68,13 +64,19 @@ app.post('/modifyorganization', async(req, res) => {
 })
 app.delete('/deleteuser/:id', async(req, res) => {
     const userId = new ObjectId(req.params.id)
-    let data=await userDelete(userId);
+    let data=await user.userDelete(db, userId);
     console.log(data, "User deleted");
     return res.send("User deleted");
 })
 app.post('/login', async(req, res) => {
     console.log(req.body);
     return res.send("Logged in")
+})
+
+app.post('/createorganization', async(req, res) => {
+    let data=await organizationadd(req.body)
+    console.log(data, "USER DATA ADDED")
+    return res.send("Organization created")
 })
 
 // ----------------------------------------- Locations -----------------------------------------
@@ -273,20 +275,6 @@ app.get('/getpostbytag', (req, res) => {
 //--------------------------------------------------------------------------------------------------------------
 //SERVICE RELATED FUNCTIONS
 
-//Add user data to DB
-async function userAdd(userob){
-    console.log(userob, 'User Object')
-    try{
-        //inserts usr data into the database
-        let data = await db.collection('Users').insertOne(userob)
-        //returns the id of the data created
-        return data.insertedId
-    } catch {
-        console.error(err)
-        throw err
-    }
-}
-
 // Add organization to database
 async function organizationAdd(userob){
     console.log(userob,'User Object')
@@ -305,26 +293,3 @@ async function eventAdd(userob){
     })
 }
 
-///Delete user data
-async function userDelete(userId){
-    try{
-        //deletes user by id
-        let data = await db.collection('Users').deleteOne({_id: userId})
-        console.log('User deleted')
-    } catch (err) {
-        console.error(err)
-        throw err
-    }
-}
-
-//Modify user data to database
-async function userModify(userId, updateData){
-    try{
-        //modifies user by id
-        let data = await db.collection('Users').updateOne({_id: userId}, {$set: updateData})
-        console.log('User modified in mongodb')
-    } catch (err) {
-        console.error(err)
-        throw err
-    }
-}
