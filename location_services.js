@@ -1,9 +1,9 @@
 
 // Add location to the database
-async function locationadd(userob){
+async function locationadd(database, userob){
     
     console.log(userob, 'User Object')
-    let result = await db.collection('Locations').insertOne(userob, function(err, result) {
+    let result = await database.collection('Locations').insertOne(userob, function(err, result) {
         if(err) console.log(err)
     })
     return result
@@ -18,7 +18,7 @@ async function locationsearch(database, searchFor = "", {searchValue = 0, maxNum
 
         // NOTE! Does NOT validate that searchValue is a valid input (I haven't figured out how yet)
 
-        cursor = db.collection("Locations").find(
+        cursor = database.collection("Locations").find(
             {
                 price: { $lte : searchValue},
             }
@@ -27,7 +27,7 @@ async function locationsearch(database, searchFor = "", {searchValue = 0, maxNum
 
     } else if(searchFor.toLowerCase() == "tags"){
 
-        cursor = db.collection("Locations").find(
+        cursor = database.collection("Locations").find(
             {
                 tags: searchValue,
             }
@@ -35,7 +35,7 @@ async function locationsearch(database, searchFor = "", {searchValue = 0, maxNum
         .limit(maxNumResults);
     } else{
         console.log(`ERROR, INVALID SEARCH ATTEMPT WITH searchFor = ${searchFor} AND searchValue = ${searchValue} \t\tSearching by price now.`)
-        cursor = db.collection("Locations").find(
+        cursor = database.collection("Locations").find(
             {
                 price: { $lte : searchValue},
             }
@@ -46,7 +46,7 @@ async function locationsearch(database, searchFor = "", {searchValue = 0, maxNum
 
     const results = await cursor.toArray();
     if(results.length > 0){
-        console.log(`Found listing(s) with ${searchValue} ${searchFor} price`);
+        console.log(`Found listing(s) with ${searchValue} ${searchFor} `);
         results.forEach((result, i) => {
             console.log();
             console.log(`${i + 1}. name: ${result.name}`);
@@ -65,9 +65,9 @@ async function locationsearch(database, searchFor = "", {searchValue = 0, maxNum
 
 // Delete location from database (need to run by team, for now this is mostly so I can use postman to clean the database)
 //Delete post data
-async function locationdelete(locationID){
+async function locationdelete(database, locationID){
     try{
-        let data = await db.collection('Locations').deleteOne({_id: locationID})
+        let data = await database.collection('Locations').deleteOne({_id: locationID})
         console.log('Location deleted')
     } catch (err) {
         console.error(err)

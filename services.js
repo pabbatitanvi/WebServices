@@ -43,7 +43,7 @@ app.listen(port, () =>{
     console.log(`Listening to active port ${ port }`)
 })
 
-// -------- User Accounts --------
+// ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
     let data=await userAdd(req.body)
     console.log(data, "USER DATA ADDED")
@@ -77,11 +77,11 @@ app.post('/login', async(req, res) => {
     return res.send("Logged in")
 })
 
-// -------- Locations --------
+// ----------------------------------------- Locations -----------------------------------------
 
 // Create location (add to database)
 app.post('/createlocation', async(req, res) => {
-    let data = await location.locationadd(req.body)
+    let data = await location.locationadd(db, req.body)
     console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
@@ -89,7 +89,7 @@ app.post('/createlocation', async(req, res) => {
 // Delete location (remove from database)
 app.delete('/deletelocation/:id', async(req, res) => {
     const locationID = new ObjectId(req.params.id)
-    let data = await location.locationdelete(locationID);
+    let data = await location.locationdelete(db, locationID);
     console.log(data, "Location deleted");
     return res.send("Location deleted");
 })
@@ -103,7 +103,7 @@ app.get('/taginfo/:tag', async(req, res) =>{
 
 // Return all locations that match the specified price range
 app.get('/priceinfo/:price', async (req,res)=>{
-    let data = await location.locationsearch(searchFor = "price", {searchValue : Number(req.params.price)})
+    let data = await location.locationsearch(database = db, searchFor = "price", {searchValue : Number(req.params.price)})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
@@ -111,12 +111,12 @@ app.get('/priceinfo/:price', async (req,res)=>{
 // Return all locations in the specified area (NEEDS WORK)
 app.get('/areainfo/:area', async (req,res)=>{
     
-    let data = await location.locationsearch(searchFor = "area", {searchValue : req.params.area})
+    let data = await location.locationsearch(database = db, searchFor = "area", {searchValue : req.params.area})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
 
-// -------- Friends --------
+// ----------------------------------------- Friends -----------------------------------------
 app.get('/friendsbytag', async(req, res) =>{
     console.log(req.body.Friends);
     console.log("Suggesting friends based on tags");
@@ -137,7 +137,7 @@ app.delete('/deletefriend', async(req, res) => {
 })
 
 
-// -------- Events --------
+// ----------------------------------------- Events -----------------------------------------
 app.post('/createevent', async(req, res) =>{
     let data=await eventAdd(req.body)
     console.log(data, req.body);
@@ -219,20 +219,20 @@ app.post('/shareevent', (req, res) => {
 })
 
 
-// -------- Posts --------
+// ----------------------------------------- Posts -----------------------------------------
 app.post('/createpost', async(req, res) => {
-    let data = await post.postAdd(req.body, db)
+    let data = await post.postAdd(db, req.body)
     console.log(data, "Post data added");
     return res.send("Post created");
 })
 app.delete('/deletepost/:id', async(req, res) => {
-    const postId = new ObjectId(req.params.id)
+    const postId = new ObjectId(db, req.params.id)
     let data = await post.postDelete(postId);
     console.log(data, "Post deleted");
     return res.send("Post deleted");
 })
 app.put('/modifypost/:id', async(req, res) => {
-    const postId = new ObjectId(req.params.id)
+    const postId = new ObjectId(db, req.params.id)
     const updateData = req.body
     console.log(updateData, 'Updata data')
     let data = await post.postModify(postId, updateData)
@@ -246,13 +246,13 @@ app.post('/sharepost', (req, res) => {
 })
 app.get('/getpostbylocation/:location', async(req, res) => {
     const location = req.params.location
-    let data = await post.postByLocation(location)
+    let data = await post.postByLocation(db, location)
     console.log("Posts based on inputted location", data);
     return res.send("Information is displayed")
 })
 app.get('/getpostbyuser/:userId', async(req, res) => {
     const users = new ObjectId (req.params.userId)
-    let data = await post.postByUser(users)
+    let data = await post.postByUser(db, users)
     console.log("Posts based on inputted user", data);
     return res.send("Information is displayed");
 })
