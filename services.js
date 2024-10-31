@@ -46,7 +46,8 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    let data=await user.userAdd(db, req.body)
+    const addData = req.body
+    let data=await user.userAdd(db, addData)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
 })
@@ -83,7 +84,8 @@ app.post('/createorganization', async(req, res) => {
 
 // Create location (add to database)
 app.post('/createlocation', async(req, res) => {
-    let data = await location.locationAdd(db, req.body)
+    const addData = req.body
+    let data = await location.locationAdd(db, addData)
     console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
@@ -106,7 +108,6 @@ app.put('/modifylocation/:id', async(req, res) => {
     return res.send("Location modified");
 })
 
-
 // Return all locations with the inputted tag
 app.get('/taginfo/:tag', async(req, res) =>{
     const tag = req.params.tag
@@ -117,15 +118,16 @@ app.get('/taginfo/:tag', async(req, res) =>{
 
 // Return all locations that match the specified price range
 app.get('/priceinfo/:price', async (req,res)=>{
-    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : Number(req.params.price)})
+    const price = Number(req.params.price)
+    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : price})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
 
 // Return all locations in the specified area (NEEDS WORK)
 app.get('/areainfo/:area', async (req,res)=>{
-    
-    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : req.params.area})
+    const area = req.params.area
+    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : area})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
@@ -235,7 +237,8 @@ app.post('/shareevent', (req, res) => {
 
 // ----------------------------------------- Posts -----------------------------------------
 app.post('/createpost', async(req, res) => {
-    let data = await post.postAdd(db, req.body)
+    const addData = req.body
+    let data = await post.postAdd(db, addData)
     console.log(data, "Post data added");
     return res.send("Post created");
 })
