@@ -2,6 +2,7 @@
 const location = require('./location_services.js')
 const post = require('./post_services.js')
 const user = require('./user_services.js')
+const event = require('./event_services.js')
 
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
@@ -24,7 +25,7 @@ app.use((req,res,next)=>{
 
 let MongoClient = require('mongodb').MongoClient
 
-const connectionString = "mongodb+srv://ssg5387:123ssg@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
+const connectionString = "mongodb+srv://kmr6702:kmr6702@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;
@@ -152,73 +153,47 @@ app.delete('/deletefriend', async(req, res) => {
 
 // ----------------------------------------- Events -----------------------------------------
 app.post('/createevent', async(req, res) =>{
-    let data=await eventAdd(req.body)
-    console.log(data, req.body);
+    let data = await event.eventAdd(db, req.body)
+    console.log(data, "Event data added");
     return res.send("Event created");
 })
-app.post('/modifyevent', (req,res) => {
-    console.log(req.body);
-    return res.send("Event edited");
+app.put('/modifyevent/:id', async(req,res) => {
+    const postID = new ObjectId(db, req.params.id)
+    const updateData = req.body
+    console.log(updateDatee, 'Update Data')
+    let data = await event.eventModify(eventID, updateData)
+    console.log(data, "Event modified")
+    return res.send("Event modified")
 })
-app.delete('/deleteevent', (req,res) => {
-    console.log(req.body);
+app.delete('/deleteevent/:id', async(req,res) => {
+    const eventId = new ObjectId(req.params.id)
+    let data = await event.eventDelete(db, eventId);
+    console.log(data, "Event deleted");
     return res.send("Event deleted");
 })
-app.get('/geteventinfobytag', (req, res) => {
-    console.log(req.body.Tags);
-    console.log("Returning events based on tags")
-
-
-    let reply = {
-        "EventID1" : "7777",
-        "EventID2" : "9876",
-        "EventID3" : "5432"
-    }
-
-
-    return res.send(reply);
+app.get('/geteventinfobytag/:tag', async(req, res) => {
+    let data = await event.eventByTag(db, tag);
+    console.log(data, "Events by tag");
+    return res.send("Event searched for by tag");
 })
-app.get('/geteventinfobyprice', (req, res) => {
-    console.log(req.body.Price);
-    console.log("Returning events based on price")
-
-
-    let reply = {
-        "EventID1" : "3141",
-        "EventID2" : "5926",
-        "EventID3" : "5358"
-    }
-
-
-    return res.send(reply);
+app.get('/geteventinfobyprice/:price', async(req, res) => {
+    let data = await event.eventByPrice(db, price);
+    console.log(data, "Events by price");
+    return res.send("Event searched for by price");
 })
-app.get('/geteventinfobyarea', (req, res) => {
-    console.log(req.body.Area);
-    console.log("Returning events based on geographical location")
-
-
-    let reply = {
-        "EventID1" : "9793",
-        "EventID2" : "2384",
-        "EventID3" : "6264"
-    }
-
-
-    return res.send(reply);
+app.get('/geteventinfobyarea/:area', async(req, res) => {
+    let data = await event.eventByArea(db, area);
+    console.log(data, "Event by area");
+    return res.send("Event searched for by area");
 })
-app.get('/geteventinfobyhost', (req, res) => {
-    console.log(req.body.Host);
-    console.log("Returning events based on host")
 
-
-    let reply = {
-        "Events" : "[array of eventIDs]"
-    }
-
-
-    return res.send(reply);
+//These did not get done this week for various reasons
+app.get('/geteventinfobyhost/:host', async(req, res) => {
+    let data = await event.eventByHost(db, host);
+    console.log(data, "Event by host");
+    return res.send("Event searched for by host");
 })
-app.get('/geteventaddress', (req, res) => {
+app.get('/geteventaddress/id', async(req, res) => {
     console.log(req.body.Coordinates);
     console.log("Converting inputted coordinates to an address");
     let reply = {
@@ -296,11 +271,11 @@ async function organizationAdd(userob){
 }
 
 // Add event to database
-async function eventAdd(userob){
-    console.log(userob,'User Object')
-    let data = await db.collection('Events').insertOne(userob, function(err, result) {
-        if(err) console.log(err)
-        return result
-    })
-}
+// async function eventAdd(userob){
+//     console.log(userob,'User Object')
+//     let data = await db.collection('Events').insertOne(userob, function(err, result) {
+//         if(err) console.log(err)
+//         return result
+//     })
+// }
 
