@@ -46,7 +46,7 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    let data=await user.userAdd(db, req.body)
+    let data = await user.userAdd(db, req.body)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
 })
@@ -58,19 +58,11 @@ app.put('/modifyuser/:id', async(req, res) => {
     console.log(data, "User modified");
     return res.send("User modified");
 })
-app.post('/modifyorganization', async(req, res) => {
-    console.log(req.body);
-    return res.send("Organization modified")
-})
 app.delete('/deleteuser/:id', async(req, res) => {
     const userId = new ObjectId(req.params.id)
     let data=await user.userDelete(db, userId);
     console.log(data, "User deleted");
     return res.send("User deleted");
-})
-app.post('/login', async(req, res) => {
-    console.log(req.body);
-    return res.send("Logged in")
 })
 
 app.post('/createorganization', async(req, res) => {
@@ -78,6 +70,16 @@ app.post('/createorganization', async(req, res) => {
     console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
 })
+app.post('/modifyorganization', async(req, res) => {
+    console.log(req.body);
+    return res.send("Organization modified")
+})
+
+app.post('/login', async(req, res) => {
+    console.log(req.body);
+    return res.send("Logged in")
+})
+
 
 // ----------------------------------------- Locations -----------------------------------------
 

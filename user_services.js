@@ -3,7 +3,7 @@
 async function userAdd(database, userob){
     console.log(userob, 'User Object')
     try{
-        //inserts usr data into the database
+        //inserts user data into the database
         let data = await database.collection('Users').insertOne(userob)
         //returns the id of the data created
         return data.insertedId
