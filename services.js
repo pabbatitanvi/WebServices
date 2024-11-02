@@ -2,6 +2,7 @@
 const location = require('./location_services.js')
 const post = require('./post_services.js')
 const user = require('./user_services.js')
+const org=require('./organization_services.js')
 
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
@@ -58,10 +59,7 @@ app.put('/modifyuser/:id', async(req, res) => {
     console.log(data, "User modified");
     return res.send("User modified");
 })
-app.post('/modifyorganization', async(req, res) => {
-    console.log(req.body);
-    return res.send("Organization modified")
-})
+
 app.delete('/deleteuser/:id', async(req, res) => {
     const userId = new ObjectId(req.params.id)
     let data=await user.userDelete(db, userId);
@@ -73,11 +71,32 @@ app.post('/login', async(req, res) => {
     return res.send("Logged in")
 })
 
+// ----------------------------------------- Organizations -----------------------------------------
+
+//Create orgnizations[Add to DB]
 app.post('/createorganization', async(req, res) => {
-    let data=await organizationadd(req.body)
+    let data=await org.organizationadd(db, req.body)
     console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
 })
+
+//Modify organizations[Update in DB]
+app.post('/modifyorganization/:id', async(req, res) => {
+    const orgId = new ObjectId(req.params.id)
+    const updateData = req.body
+    console.log(updateData, 'Updata data')
+    let data = await org.orgModify(db, orgId, updateData)
+    console.log(data, "Org modified");
+    return res.send("Org modified");
+})
+
+app.delete('/deleteorg/:id', async(req, res) => {
+    const orgId = new ObjectId(req.params.id)
+    let data=await org.orgDelete(db, orgId);
+    console.log(data, "Org deleted");
+    return res.send("Org deleted");
+})
+
 
 // ----------------------------------------- Locations -----------------------------------------
 
@@ -276,13 +295,7 @@ app.get('/getpostbytag', (req, res) => {
 //SERVICE RELATED FUNCTIONS
 
 // Add organization to database
-async function organizationAdd(userob){
-    console.log(userob,'User Object')
-    let data = await db.collection('Organizations').insertOne(userob, function(err, result) {
-        if(err) console.log(err)
-        return result
-    })
-}
+
 
 // Add event to database
 async function eventAdd(userob){
