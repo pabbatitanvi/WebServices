@@ -158,10 +158,10 @@ app.post('/createevent', async(req, res) =>{
     return res.send("Event created");
 })
 app.put('/modifyevent/:id', async(req,res) => {
-    const postID = new ObjectId(db, req.params.id)
+    const eventId = new ObjectId(req.params.id)
     const updateData = req.body
-    console.log(updateDatee, 'Update Data')
-    let data = await event.eventModify(eventID, updateData)
+    console.log(updateData, 'Update Data')
+    let data = await event.eventModify(db, eventId, updateData)
     console.log(data, "Event modified")
     return res.send("Event modified")
 })
@@ -171,28 +171,33 @@ app.delete('/deleteevent/:id', async(req,res) => {
     console.log(data, "Event deleted");
     return res.send("Event deleted");
 })
-app.get('/geteventinfobytag/:tag', async(req, res) => {
-    let data = await event.eventByTag(db, tag);
-    console.log(data, "Events by tag");
-    return res.send("Event searched for by tag");
+app.get('/geteventinfobytag/:tags', async(req, res) => {
+    const tags = req.params.tags;
+    let data = await event.eventByTag(db, tags);
+    console.log(data, "Events by tags");
+    return res.send("Event searched for by tags");
 })
 app.get('/geteventinfobyprice/:price', async(req, res) => {
+    const price = req.params.price;
     let data = await event.eventByPrice(db, price);
     console.log(data, "Events by price");
     return res.send("Event searched for by price");
 })
 app.get('/geteventinfobyarea/:area', async(req, res) => {
+    const area = req.params.area; 
     let data = await event.eventByArea(db, area);
     console.log(data, "Event by area");
     return res.send("Event searched for by area");
 })
 
 //These did not get done this week for various reasons
+//The team needs to further discuss how we are attaching hosts to the events
 app.get('/geteventinfobyhost/:host', async(req, res) => {
     let data = await event.eventByHost(db, host);
     console.log(data, "Event by host");
     return res.send("Event searched for by host");
 })
+//This will require the maps API which we are looking further in next week 
 app.get('/geteventaddress/id', async(req, res) => {
     console.log(req.body.Coordinates);
     console.log("Converting inputted coordinates to an address");
@@ -201,6 +206,7 @@ app.get('/geteventaddress/id', async(req, res) => {
     }
     return res.send(reply);
 })
+//This needs further research for implmentation
 app.post('/shareevent', (req, res) => {
     console.log(req.body);
     return res.send("Event shared");

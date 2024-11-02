@@ -6,17 +6,20 @@ async function eventAdd(database, userob){
         let data = await database.collection('Events').insertOne(userob)
         //returns the id of the event created
         return data.insertedId
-    } catch {
+    } catch (err){ 
         console.error(err)
         throw err
     }
 }
 
 //Modify Event data to database
-async function eventModify(databbase, eventID, updateData){
+async function eventModify(database, eventID, updateData){
     try{
         //Delete event by id
-        let data = await databbase.collection('Events').updateOne({_id: eventID}, {$set: updateData})
+        let data = await database.collection('Events').updateOne(
+                {_id: eventID}, 
+                {$set: updateData}
+            )
         console.log('User modified in mongoDB')
     }catch (err){
         console.error(err)
@@ -41,15 +44,14 @@ async function eventByPrice(database, price){
     if(price >= 0){
         try{
             //create an array of all occurences of the price
-            let data = await database.collection('Events').find({price: price}).toArray()
+            let data = await database.collection('Events').find({Price: price}).toArray()
             return data
-        }catch{
+        }catch (err){
             console.error(err)
             throw err
         }
     }else{
         console.log('Invalid price');
-        eventByPrice(database, price); 
     }
     
 }
@@ -58,7 +60,7 @@ async function eventByPrice(database, price){
 async function eventByTag(database, tags){
     try{
         //creates an array of all occurences of tag
-        let data = await database.collection('Events').find({tags: tags}).toArray()
+        let data = await database.collection('Events').find({Tags: tags}).toArray()
         return data
     }catch{
         console.error(err)
@@ -70,7 +72,7 @@ async function eventByTag(database, tags){
 async function eventByArea(database, area){
     try{
         //create a list of events at a location
-        let data = await database.collection('Events').find({Address: area}).toArray()
+        let data = await database.collection('Events').find({Location: area}).toArray()
         return data
     }catch{
         console.error(err)
