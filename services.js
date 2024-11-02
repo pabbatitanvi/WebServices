@@ -47,7 +47,7 @@ app.listen(port, () =>{
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
     const addData = req.body
-    let data = await user.userAdd(db, addData)
+    let data=await user.userAdd(db, addData)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
 })
@@ -59,11 +59,19 @@ app.put('/modifyuser/:id', async(req, res) => {
     console.log(data, "User modified");
     return res.send("User modified");
 })
+app.post('/modifyorganization', async(req, res) => {
+    console.log(req.body);
+    return res.send("Organization modified")
+})
 app.delete('/deleteuser/:id', async(req, res) => {
     const userId = new ObjectId(req.params.id)
     let data=await user.userDelete(db, userId);
     console.log(data, "User deleted");
     return res.send("User deleted");
+})
+app.post('/login', async(req, res) => {
+    console.log(req.body);
+    return res.send("Logged in")
 })
 
 app.post('/createorganization', async(req, res) => {
@@ -71,16 +79,6 @@ app.post('/createorganization', async(req, res) => {
     console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
 })
-app.post('/modifyorganization', async(req, res) => {
-    console.log(req.body);
-    return res.send("Organization modified")
-})
-
-app.post('/login', async(req, res) => {
-    console.log(req.body);
-    return res.send("Logged in")
-})
-
 
 // ----------------------------------------- Locations -----------------------------------------
 
@@ -258,27 +256,25 @@ app.put('/modifypost/:id', async(req, res) => {
     console.log(data, "Post modified");
     return res.send("Post modified");
 })
-// NOT DONE YET, NOTHING FOR IMPLEMENTATION READY YET
-app.post('/sharepost', (req, res) => {
-    console.log(req.body);
-    return res.send("Post shared");
-})
+
 app.get('/getpostbylocation/:location', async(req, res) => {
     const location = req.params.location
     let data = await post.postByLocation(db, location)
     console.log("Posts based on inputted location", data);
     return res.send("Information is displayed")
 })
-app.get('/getpostbyuser/:userId', async(req, res) => {
-    const users = new ObjectId (req.params.userId)
-    let data = await post.postByUser(db, users)
-    console.log("Posts based on inputted user", data);
-    return res.send("Information is displayed");
-})
+
 app.get('/getpostbytag/:tag', async(req, res) => {
     const tag = req.params.tag
     let data = await post.postByTag(db, tag)
     console.log("Posts based on inputted tag", data);
+    return res.send("Information is displayed");
+})
+
+app.get('/getpostbyuser/:userId', async(req, res) => {
+    const users = req.params.userId
+    let data = await post.postByUser(db, users)
+    console.log("Posts based on inputted user", data);
     return res.send("Information is displayed");
 })
 

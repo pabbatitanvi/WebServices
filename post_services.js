@@ -54,7 +54,7 @@ async function postByLocation(database, location){
 async function postByUser(database, userId){
     try{
         //creates an array of all the occurences of the userId
-        let data = await database.collection('Posts').find({_id: userId}).toArray()
+        let data = await database.collection('Posts').find({UserId: userId}).toArray()
         return data
     } catch (err) {
         console.error(err)
@@ -66,7 +66,7 @@ async function postByTag(database, tag, maxNumResults = Number.MAX_SAFE_INTEGER)
     
     cursor = database.collection("Posts").find(
         {
-            tags: tag,
+            Tags: tag,
         }
     ).sort({name : 1})// sort alphabetically
     .limit(maxNumResults);
@@ -78,8 +78,9 @@ async function postByTag(database, tag, maxNumResults = Number.MAX_SAFE_INTEGER)
             console.log();
             console.log(`${i + 1}. name: ${result.locationName}`);
             console.log(`   _id: ${result._id}`);
-            console.log(`   description: ${result.picture}`);
-            console.log(`   price: ${result.price}`);
+            console.log(`   Caption: ${result.Caption}`);
+            console.log(`   Location name: ${result.LocationName}`);
+            console.log(`   Date: ${result.Date}`);
         });
     } else {
         console.log(`No listings found with tag ${tag} (or something went wrong)`);
