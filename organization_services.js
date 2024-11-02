@@ -1,3 +1,5 @@
+
+//Add organization to DB
 async function organizationAdd(database, orgob){
     console.log(orgob,'org Object')
     let data = await database.collection('Organizations').insertOne(orgob, function(err, result) {
@@ -6,6 +8,7 @@ async function organizationAdd(database, orgob){
     })
 }
 
+//Update organization in DB
 async function orgModify(database, orgId, updateData){
     try{
         //modifies user by id
@@ -17,6 +20,7 @@ async function orgModify(database, orgId, updateData){
     }
 }
 
+//Delete organization fromDB
 async function orgDelete(database, orgId){
     try{
         //deletes user by id
@@ -28,6 +32,7 @@ async function orgDelete(database, orgId){
     }
 }
 
+//Find organizations by tag in DB
 async function orgByTag(database, orgTag){
     try{
         //creates an array of all the occurences of the userId
