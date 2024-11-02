@@ -75,7 +75,7 @@ app.post('/login', async(req, res) => {
 
 //Create orgnizations[Add to DB]
 app.post('/createorganization', async(req, res) => {
-    let data=await org.organizationadd(db, req.body)
+    let data=await org.organizationAdd(db, req.body)
     console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
 })
@@ -90,6 +90,7 @@ app.post('/modifyorganization/:id', async(req, res) => {
     return res.send("Org modified");
 })
 
+//Delete organization from DB
 app.delete('/deleteorg/:id', async(req, res) => {
     const orgId = new ObjectId(req.params.id)
     let data=await org.orgDelete(db, orgId);
@@ -97,8 +98,9 @@ app.delete('/deleteorg/:id', async(req, res) => {
     return res.send("Org deleted");
 })
 
+//Find all organizations with a certain tag
 app.get('/getorgbytag/:tag', async(req, res) => {
-    const orgtag = new ObjectId (req.params.tag)
+    const orgtag = req.params.tag
     let data = await org.orgByTag(db, orgtag)
     console.log("Orgs based on selected tag", data);
     return res.send("Information is displayed");
