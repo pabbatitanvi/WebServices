@@ -62,4 +62,30 @@ async function postByUser(database, userId){
     }
 }
 
-module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser};
+async function postByTag(database, tag, maxNumResults = Number.MAX_SAFE_INTEGER){
+    
+    cursor = database.collection("Posts").find(
+        {
+            tags: tag,
+        }
+    ).sort({name : 1})// sort alphabetically
+    .limit(maxNumResults);
+    
+    const results = await cursor.toArray();
+    if(results.length > 0){
+        console.log(`Found listing(s) with tag ${tag}`);
+        results.forEach((result, i) => {
+            console.log();
+            console.log(`${i + 1}. name: ${result.locationName}`);
+            console.log(`   _id: ${result._id}`);
+            console.log(`   description: ${result.picture}`);
+            console.log(`   price: ${result.price}`);
+        });
+    } else {
+        console.log(`No listings found with tag ${tag} (or something went wrong)`);
+        console.log(`results : ${results}`);
+        console.log(`search values : ${tag}`)
+    }
+}
+
+module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag};

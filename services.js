@@ -46,7 +46,8 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    let data = await user.userAdd(db, req.body)
+    const addData = req.body
+    let data = await user.userAdd(db, addData)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
 })
@@ -85,7 +86,8 @@ app.post('/login', async(req, res) => {
 
 // Create location (add to database)
 app.post('/createlocation', async(req, res) => {
-    let data = await location.locationAdd(db, req.body)
+    const addData = req.body
+    let data = await location.locationAdd(db, addData)
     console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
@@ -94,7 +96,7 @@ app.post('/createlocation', async(req, res) => {
 app.delete('/deletelocation/:id', async(req, res) => {
     const locationID = new ObjectId(req.params.id)
     let data = await location.locationDelete(db, locationID);
-    console.log(data, "Location deleted");
+    console.log("Location deleted");
     return res.send("Location deleted");
 })
 
@@ -108,25 +110,26 @@ app.put('/modifylocation/:id', async(req, res) => {
     return res.send("Location modified");
 })
 
-
 // Return all locations with the inputted tag
 app.get('/taginfo/:tag', async(req, res) =>{
-    let data = await location.locationSearch(database = db, searchFor = "tags", {searchValue : req.params.tag})
-    console.log(data, "LOCATION SEARCHED FOR")
+    const tag = req.params.tag
+    let data = await location.locationSearch(database = db, searchFor = "tags", {searchValue : tag});
+    console.log(`LOCATION SEARCHED FOR ${tag} tag`)
     return res.send("Searched for a location")
 })
 
 // Return all locations that match the specified price range
 app.get('/priceinfo/:price', async (req,res)=>{
-    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : Number(req.params.price)})
+    const price = Number(req.params.price)
+    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : price})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
 
 // Return all locations in the specified area (NEEDS WORK)
 app.get('/areainfo/:area', async (req,res)=>{
-    
-    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : req.params.area})
+    const area = req.params.area
+    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : area})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
@@ -236,21 +239,22 @@ app.post('/shareevent', (req, res) => {
 
 // ----------------------------------------- Posts -----------------------------------------
 app.post('/createpost', async(req, res) => {
-    let data = await post.postAdd(db, req.body)
+    const addData = req.body
+    let data = await post.postAdd(db, addData)
     console.log(data, "Post data added");
     return res.send("Post created");
 })
 app.delete('/deletepost/:id', async(req, res) => {
-    const postId = new ObjectId(db, req.params.id)
-    let data = await post.postDelete(postId);
+    const postId = new ObjectId(req.params.id)
+    let data = await post.postDelete(db, postId);
     console.log(data, "Post deleted");
     return res.send("Post deleted");
 })
 app.put('/modifypost/:id', async(req, res) => {
-    const postId = new ObjectId(db, req.params.id)
+    const postId = new ObjectId(req.params.id)
     const updateData = req.body
     console.log(updateData, 'Updata data')
-    let data = await post.postModify(postId, updateData)
+    let data = await post.postModify(db, postId, updateData)
     console.log(data, "Post modified");
     return res.send("Post modified");
 })
@@ -271,18 +275,11 @@ app.get('/getpostbyuser/:userId', async(req, res) => {
     console.log("Posts based on inputted user", data);
     return res.send("Information is displayed");
 })
-// NOT IMPLEMENTED YET, TOO MUCH OF A PAIN
-app.get('/getpostbytag', (req, res) => {
-    console.log(req.body.Tags);
-    console.log("Returning posts based on inputted tags");
-
-
-    let reply = {
-        "PostID1" : "1000",
-        "PostID2" : "0100",
-        "PostID3" : "0010"
-    }
-    return res.send(reply);
+app.get('/getpostbytag/:tag', async(req, res) => {
+    const tag = req.params.tag
+    let data = await post.postByTag(db, tag)
+    console.log("Posts based on inputted tag", data);
+    return res.send("Information is displayed");
 })
 
 //--------------------------------------------------------------------------------------------------------------
