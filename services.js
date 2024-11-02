@@ -97,6 +97,12 @@ app.delete('/deleteorg/:id', async(req, res) => {
     return res.send("Org deleted");
 })
 
+app.get('/getorgbytag/:tag', async(req, res) => {
+    const orgtag = new ObjectId (req.params.tag)
+    let data = await org.orgByTag(db, orgtag)
+    console.log("Orgs based on selected tag", data);
+    return res.send("Information is displayed");
+})
 
 // ----------------------------------------- Locations -----------------------------------------
 

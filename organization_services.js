@@ -1,6 +1,6 @@
-async function organizationAdd(database, userob){
-    console.log(userob,'User Object')
-    let data = await database.collection('Organizations').insertOne(userob, function(err, result) {
+async function organizationAdd(database, orgob){
+    console.log(orgob,'org Object')
+    let data = await database.collection('Organizations').insertOne(orgob, function(err, result) {
         if(err) console.log(err)
         return result
     })
@@ -39,4 +39,4 @@ async function orgByTag(database, orgTag){
     }
 }
 
-module.exports={organizationAdd, orgModify, orgDelete}
+module.exports={organizationAdd, orgModify, orgDelete,  orgByTag}
