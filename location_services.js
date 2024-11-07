@@ -49,7 +49,7 @@ async function locationSearch(database, searchFor = "", {searchValue = 0, maxNum
         console.log(`Found listing(s) with ${searchValue} ${searchFor} `);
         results.forEach((result, i) => {
             console.log();
-            console.log(`${i + 1}. name: ${result.name}`);
+            console.log(`${i + 1}. name: ${result.locationName}`);
             console.log(`   _id: ${result._id}`);
             console.log(`   description: ${result.description}`);
             console.log(`   price: ${result.price}`);
