@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './navigation-bar.component.html',
-  styleUrl: './navigation-bar.component.css'
+  styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent {
 
