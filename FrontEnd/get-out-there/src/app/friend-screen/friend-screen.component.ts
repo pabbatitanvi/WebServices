@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
 
 @Component({
   selector: 'app-friend-screen',
   standalone: true,
-  imports: [],
+  imports: [NavigationBarComponent],
   templateUrl: './friend-screen.component.html',
   styleUrl: './friend-screen.component.css'
 })
