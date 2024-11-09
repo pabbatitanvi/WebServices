@@ -14,8 +14,9 @@
 .navbar-name{
     font-size: 50px;
     font-weight: bold;
-    color: #bad80a;
-    margin-right: 40px;
+    color: white;
+    padding-left: 20px;
+    margin-right: 30px;
 }
 
 .navbar-links{
@@ -24,23 +25,34 @@
 }
 
 .navbar-links li{
-    margin-right: 50px;
+    margin-right: 70px;
 }
 
 .navbar-links a{
     color:azure;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    font-family: Georgia, serif;
 }
 
 .navbar-links a:hover{
-    background-color: darkgray;
+   text-decoration: underline;
 }
 
 .navbar-button{
-    justify-content: flex-end;
-    padding: 0 20px;
+    border-radius: 10px;
+    border-color: white;
+    background-color: transparent;
+    border-width: 3px;
+    font-size: 1.5em;
+    font-family: Georgia, serif;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 2px;
+    margin-left: 550px;
 }
 
 .navbar-button:hover{
-    background-color: #bad80a;
+    background-color: white;
+    color:black;
 }
