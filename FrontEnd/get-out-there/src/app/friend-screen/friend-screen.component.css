@@ -1,0 +1,19 @@
+main-body{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: flex;
+}
+h1{
+    font-size: xx-large;
+    font-family:'Arial';
+    font-weight: bold;
+    text-align: left;
+}
+ul {
+    list-style: none;
+}
+
+ul li{
+    margin-bottom: 10px;
+}
