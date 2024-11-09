@@ -15,6 +15,6 @@ export class LoginScreenComponent implements OnInit{
     
   }
   onLogin(): void{
-    this.router.navigate(['/home-screen'])
+    this.router.navigate(['/home'])
   }
 }
