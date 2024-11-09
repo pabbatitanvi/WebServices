@@ -6,7 +6,7 @@ async function locationAdd(database, userob){
     let result = await database.collection('Locations').insertOne(userob, function(err, result) {
         if(err) console.log(err)
     })
-    return result
+    return result.insertedId
 }
 
 // Search locations by price, tag, or area (area to be added later after group discussion)
@@ -49,7 +49,7 @@ async function locationSearch(database, searchFor = "", {searchValue = 0, maxNum
         console.log(`Found listing(s) with ${searchValue} ${searchFor} `);
         results.forEach((result, i) => {
             console.log();
-            console.log(`${i + 1}. name: ${result.name}`);
+            console.log(`${i + 1}. name: ${result.locationName}`);
             console.log(`   _id: ${result._id}`);
             console.log(`   description: ${result.description}`);
             console.log(`   price: ${result.price}`);

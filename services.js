@@ -3,6 +3,7 @@ const location = require('./location_services.js')
 const post = require('./post_services.js')
 const user = require('./user_services.js')
 const event = require('./event_services.js')
+const org=require('./organization_services.js')
 
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
@@ -47,7 +48,8 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    let data=await user.userAdd(db, req.body)
+    const addData = req.body
+    let data=await user.userAdd(db, addData)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
 })
@@ -59,10 +61,7 @@ app.put('/modifyuser/:id', async(req, res) => {
     console.log(data, "User modified");
     return res.send("User modified");
 })
-app.post('/modifyorganization', async(req, res) => {
-    console.log(req.body);
-    return res.send("Organization modified")
-})
+
 app.delete('/deleteuser/:id', async(req, res) => {
     const userId = new ObjectId(req.params.id)
     let data=await user.userDelete(db, userId);
@@ -74,17 +73,47 @@ app.post('/login', async(req, res) => {
     return res.send("Logged in")
 })
 
+// ----------------------------------------- Organizations -----------------------------------------
+
+//Create orgnizations[Add to DB]
 app.post('/createorganization', async(req, res) => {
-    let data=await organizationadd(req.body)
+    let data=await org.organizationAdd(db, req.body)
     console.log(data, "USER DATA ADDED")
     return res.send("Organization created")
+})
+
+//Modify organizations[Update in DB]
+app.post('/modifyorganization/:id', async(req, res) => {
+    const orgId = new ObjectId(req.params.id)
+    const updateData = req.body
+    console.log(updateData, 'Updata data')
+    let data = await org.orgModify(db, orgId, updateData)
+    console.log(data, "Org modified");
+    return res.send("Org modified");
+})
+
+//Delete organization from DB
+app.delete('/deleteorg/:id', async(req, res) => {
+    const orgId = new ObjectId(req.params.id)
+    let data=await org.orgDelete(db, orgId);
+    console.log(data, "Org deleted");
+    return res.send("Org deleted");
+})
+
+//Find all organizations with a certain tag
+app.get('/getorgbytag/:tag', async(req, res) => {
+    const orgtag = req.params.tag
+    let data = await org.orgByTag(db, orgtag)
+    console.log("Orgs based on selected tag", data);
+    return res.send("Information is displayed");
 })
 
 // ----------------------------------------- Locations -----------------------------------------
 
 // Create location (add to database)
 app.post('/createlocation', async(req, res) => {
-    let data = await location.locationAdd(db, req.body)
+    const addData = req.body
+    let data = await location.locationAdd(db, addData)
     console.log(data, "LOCATION ADDED")
     return res.send("Location Created")
 })
@@ -93,7 +122,7 @@ app.post('/createlocation', async(req, res) => {
 app.delete('/deletelocation/:id', async(req, res) => {
     const locationID = new ObjectId(req.params.id)
     let data = await location.locationDelete(db, locationID);
-    console.log(data, "Location deleted");
+    console.log("Location deleted");
     return res.send("Location deleted");
 })
 
@@ -107,25 +136,26 @@ app.put('/modifylocation/:id', async(req, res) => {
     return res.send("Location modified");
 })
 
-
 // Return all locations with the inputted tag
 app.get('/taginfo/:tag', async(req, res) =>{
-    let data = await location.locationSearch(database = db, searchFor = "tags", {searchValue : req.params.tag})
-    console.log(data, "LOCATION SEARCHED FOR")
+    const tag = req.params.tag
+    let data = await location.locationSearch(database = db, searchFor = "tags", {searchValue : tag});
+    console.log(`LOCATION SEARCHED FOR ${tag} tag`)
     return res.send("Searched for a location")
 })
 
 // Return all locations that match the specified price range
 app.get('/priceinfo/:price', async (req,res)=>{
-    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : Number(req.params.price)})
+    const price = Number(req.params.price)
+    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : price})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
 
 // Return all locations in the specified area (NEEDS WORK)
 app.get('/areainfo/:area', async (req,res)=>{
-    
-    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : req.params.area})
+    const area = req.params.area
+    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : area})
     console.log(data, "LOCATION SEARCHED FOR")
     return res.send("Searched for a location")
 })
@@ -215,66 +245,52 @@ app.post('/shareevent', (req, res) => {
 
 // ----------------------------------------- Posts -----------------------------------------
 app.post('/createpost', async(req, res) => {
-    let data = await post.postAdd(db, req.body)
+    const addData = req.body
+    let data = await post.postAdd(db, addData)
     console.log(data, "Post data added");
     return res.send("Post created");
 })
 app.delete('/deletepost/:id', async(req, res) => {
-    const postId = new ObjectId(db, req.params.id)
-    let data = await post.postDelete(postId);
+    const postId = new ObjectId(req.params.id)
+    let data = await post.postDelete(db, postId);
     console.log(data, "Post deleted");
     return res.send("Post deleted");
 })
 app.put('/modifypost/:id', async(req, res) => {
-    const postId = new ObjectId(db, req.params.id)
+    const postId = new ObjectId(req.params.id)
     const updateData = req.body
     console.log(updateData, 'Updata data')
-    let data = await post.postModify(postId, updateData)
+    let data = await post.postModify(db, postId, updateData)
     console.log(data, "Post modified");
     return res.send("Post modified");
 })
-// NOT DONE YET, NOTHING FOR IMPLEMENTATION READY YET
-app.post('/sharepost', (req, res) => {
-    console.log(req.body);
-    return res.send("Post shared");
-})
+
 app.get('/getpostbylocation/:location', async(req, res) => {
     const location = req.params.location
     let data = await post.postByLocation(db, location)
     console.log("Posts based on inputted location", data);
     return res.send("Information is displayed")
 })
+
+app.get('/getpostbytag/:tag', async(req, res) => {
+    const tag = req.params.tag
+    let data = await post.postByTag(db, tag)
+    console.log("Posts based on inputted tag", data);
+    return res.send("Information is displayed");
+})
+
 app.get('/getpostbyuser/:userId', async(req, res) => {
-    const users = new ObjectId (req.params.userId)
+    const users = req.params.userId
     let data = await post.postByUser(db, users)
     console.log("Posts based on inputted user", data);
     return res.send("Information is displayed");
-})
-// NOT IMPLEMENTED YET, TOO MUCH OF A PAIN
-app.get('/getpostbytag', (req, res) => {
-    console.log(req.body.Tags);
-    console.log("Returning posts based on inputted tags");
-
-
-    let reply = {
-        "PostID1" : "1000",
-        "PostID2" : "0100",
-        "PostID3" : "0010"
-    }
-    return res.send(reply);
 })
 
 //--------------------------------------------------------------------------------------------------------------
 //SERVICE RELATED FUNCTIONS
 
 // Add organization to database
-async function organizationAdd(userob){
-    console.log(userob,'User Object')
-    let data = await db.collection('Organizations').insertOne(userob, function(err, result) {
-        if(err) console.log(err)
-        return result
-    })
-}
+
 
 // Add event to database
 // async function eventAdd(userob){
