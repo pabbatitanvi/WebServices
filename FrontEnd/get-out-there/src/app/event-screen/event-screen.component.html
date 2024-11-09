@@ -1,5 +1,44 @@
+
+<!-- Navigation bar -->
 <app-navigation-bar>    </app-navigation-bar>
 <h1>
 
-    EVENT SCREEN
+    <div class="row">
+        <div class="column">
+            <!-- Search bar to look for events -->
+            <input type="text" id="mySearch" placeholder="Search events" title="Type in a category">
+
+            <!-- Two columns side-by-side for the list of events -->
+            <div class="row">
+                <div class="column">
+
+                    <!-- Events on the left side -->
+                    <div class="event-box">
+                        Event 1
+                    </div>
+                    <div class="event-box">
+                        Event 3
+                    </div>
+                </div>
+                <!-- Second area for events -->
+                <div class="column">
+                    <div class="event-box">
+                        Event 2
+                    </div>
+                    <div class="event-box">
+                        Event 4
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The right half of the screen -->
+        <div class="column">
+            <img
+                class="fit-picture"
+                src="https://i.pinimg.com/564x/d1/35/ca/d135ca708f1c3efcf9c890943dabff68.jpg"
+                alt="Image of a map"
+            />
+        </div>
+    </div>
 </h1>
