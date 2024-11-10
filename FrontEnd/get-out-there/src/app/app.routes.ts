@@ -12,8 +12,7 @@ export const routes: Routes = [
     {path:'home', component: HomeScreenComponent},
     {path: 'userprofile', component: UserScreenComponent},
     {path: 'friends', component:FriendScreenComponent},
-    {path: 'events', component:EventScreenComponent},
-    {path: 'locations', component: HomeScreenComponent}
+    {path: 'events', component:EventScreenComponent}
 
 ];
 
