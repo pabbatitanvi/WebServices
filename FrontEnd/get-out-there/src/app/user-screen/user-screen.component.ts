@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";//this imports the nav bar component into this file allowing its use here
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor], //mentioning the objects to import from the imported components
+  imports: [NavigationBarComponent, NgFor, NgIf], //mentioning the objects to import from the imported components
   templateUrl: './user-screen.component.html',
   styleUrl: './user-screen.component.css'
 })
@@ -20,5 +20,13 @@ export class UserScreenComponent {
     {"name" : "POST 7", "Description" : "Berlin", "id" : 7},
     {"name" : "POST 8", "Description" : "Berlin", "id" : 8},
     {"name" : "POST 9", "Description" : "Berlin", "id" : 9},
+  ]
+  public current_user:any=[
+    {"usertype":"user", 
+     "username":"Dragonfable",
+     "userinfo":"Software Engineer, PSU '25"
+    }
+
+
   ]
 }

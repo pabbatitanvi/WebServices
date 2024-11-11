@@ -4,7 +4,7 @@
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
   <div class="container-fluid">
     <!--ROW 1 START-->
-    <div class="row">
+    <div class="row" *ngFor="let user of current_user">
       <!--ROW 1 START-->
       <div class="col-md-2">
 
@@ -12,15 +12,16 @@
       <div class="col-md-8">
         <div style="text-align:left">
           <h1 style="font-size:xx-large;font-family:'Arial';font-weight: bold;">
-            User Profile
+            {{user.username}}
           </h1>
           <p>
             <ul>
-                <li>
-                    User Profile Information to be inserted here
+                <li *ngIf="user.usertype === 'Organization' ">
+                    <button class="btn btn-danger" href="#">Create Event</button>
+
                 </li>
                 <li>
-                    Profile details to be inserted here
+                  {{user.userinfo}}
                 </li>
             </ul>
 
