@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule],
+  imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
@@ -13,7 +15,12 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 
 export class UserFormComponent {
 
-  tagsArray: string[] = ['Museum', 'Books', 'Coffee', 'History', 'Art'];
+  tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
+                      { id: 2, itemName: 'Books' },
+                      { id: 3, itemName: 'Coffee' },
+                      { id: 4, itemName: 'History' },
+                      { id: 5, itemName: 'Art' }
+                    ]
 
   userForm = new FormGroup({
     userType: new FormControl('User'),
@@ -24,7 +31,7 @@ export class UserFormComponent {
     firstName: new FormControl(''),
     middleName: new FormControl(''),
     lastName: new FormControl(''),
-    friends: new FormArray([]),
+    //friends: new FormArray([]),
     //organization fields
     organizationName: new FormControl(''),
     chooseMembership: new FormControl(''),
@@ -34,6 +41,7 @@ export class UserFormComponent {
 
   
   userTypes = ['User', 'Organization'];
+
   
   onUser(user: string){
     const uType = this.userForm.get('userType')?.value
@@ -48,16 +56,29 @@ export class UserFormComponent {
       this.userForm.get('location')?.disable();
     }
   }
-  // this.funcChooseTags(this.tagsArray);
 
-  // funcChooseTags(tags: string[]){
-  //   const controls = tags.map(() => new FormControl(false));
-  //   const tagFormArray = new FormArray(controls);
-  //   this.userForm.setControl('chooseTags', tagFormArray);
-  // }
+  selected: any[] = [{ id: 1, itemName: 'Museum' }]
 
-  // get chooseTags() {
-  //   return this.userForm.get('chooseTags') as FormArray;
-  // }
+  dropdownSettings = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'itemName',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    allowSearchFilter: true
+  };
+  
+  get chooseTags():FormArray{
+    return this.userForm.get('chooseTags') as FormArray;
+  }
+  onSelectedTags($event: any){
+    console.log(':', $event)
+
+    this.chooseTags.clear();
+
+    $event.forEach((tag: any) => {
+      this.chooseTags.push(new FormControl(tag.itemName));
+    })
+  }
   
 }

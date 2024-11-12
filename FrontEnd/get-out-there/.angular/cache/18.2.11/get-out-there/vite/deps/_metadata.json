@@ -1,41 +1,50 @@
 {
-  "hash": "500697d2",
-  "configHash": "f4b17bcb",
-  "lockfileHash": "32f967ac",
-  "browserHash": "3bd6c6ef",
+  "hash": "0542f048",
+  "configHash": "2f1a228f",
+  "lockfileHash": "2109d3b3",
+  "browserHash": "5f3299c7",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "cae6f5c0",
+      "fileHash": "ba689172",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "7df8864e",
+      "fileHash": "e8509d8d",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "56d9d4e7",
+      "fileHash": "66922278",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "f734dd29",
+      "fileHash": "09e130de",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "c06234c9",
+      "fileHash": "81f2aef4",
+      "needsInterop": false
+    },
+    "ng-multiselect-dropdown": {
+      "src": "../../../../../../node_modules/ng-multiselect-dropdown/fesm2022/ng-multiselect-dropdown.mjs",
+      "file": "ng-multiselect-dropdown.js",
+      "fileHash": "d97e785c",
       "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-GYXLTI26": {
+      "file": "chunk-GYXLTI26.js"
+    },
     "chunk-KNDWKCRI": {
       "file": "chunk-KNDWKCRI.js"
     },
