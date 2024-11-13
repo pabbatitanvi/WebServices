@@ -10,6 +10,7 @@
 }
   
 .form{
+    /*background-image: url(../assets/background_gradient.png);*/
     position: absolute;
     top: 50%;
     left: 50%;
