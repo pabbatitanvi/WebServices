@@ -1,5 +1,5 @@
-<form [formGroup] = "userForm">
-    <div>
+<form class = "form" [formGroup] = "userForm" (ngSubmit) = "onSubmit()">
+    <div class = "fQuestion">
         <label for = "userType">What type of account would you like to create?</label>
     </div>
     <div class = "chooseButtons">
@@ -12,43 +12,44 @@
     </div>
 
     <section class = "questions">
-        <div formControlName = "username">
+        <div>
             <label for = "username">Username</label>
-            <input type = "username" formControlName = "username">
+            <input type = "text" formControlName = "username">
         </div>
-        <div formControlName = "password">
+        <div>
             <label for = "password">Password</label>
             <input type = "password" formControlName = "password">
         </div>
-        <div formArrayName = "chooseTags">
+        <section class = "choose-tags-container">
             <label for = "chooseTags">Choose Tags</label>
-            <ng-multiselect-dropdown [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
-        </div>
+            <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
+        </section>
         <section class = "name">
-            <div formControlName = "firstName">
+            <div *ngIf = "userForm.get('userType')?.value == 'User'">
                 <label for = "firstName">First name</label>
-                <input type = "firstName" formControlName = "firstName">
+                <input type = "text" formControlName = "firstName">
             </div>
-            <div formControlName = "middleName">
+            <div *ngIf = "userForm.get('userType')?.value == 'User'">
                 <label for = "middleName">Middle name</label>
-                <input type = "middleName" formControlName = "middleName">
+                <input type = "text" formControlName = "middleName">
             </div>
-            <div formControlName = "lastName">
+            <div *ngIf = "userForm.get('userType')?.value == 'User'">
                 <label for = "lastName">Last name</label>
-                <input type = "lastName" formControlName = "lastName">
+                <input type = "text" formControlName = "lastName">
             </div>
         </section>
         <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
             <label for = "organizationname">Organization Name</label>
-            <input type = "organizationname" formControlName = "organizationName" required>
+            <input type = "text" formControlName = "organizationName" required>
         </div>
         <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
             <label for = "choosemembership">Choose Membership</label>
-            <input type = "choosemembership" formControlName = "chooseMembership" required>
+            <input type = "text" formControlName = "chooseMembership" required>
         </div>
         <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
             <label for = "location">Location</label>
-            <input type = "location" formControlName = "location" required>
+            <input type = "text" formControlName = "location" required>
         </div>
     </section>
+    <button class = "submit-button" type = "submit">Submit</button>
 </form>

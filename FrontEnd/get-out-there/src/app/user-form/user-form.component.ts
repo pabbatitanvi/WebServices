@@ -15,6 +15,10 @@ import { FormsModule } from '@angular/forms';
 
 export class UserFormComponent {
 
+  // ngOnInit() {
+  //   console.log('UserForm:', this.userForm);
+  // }  
+
   tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
                       { id: 2, itemName: 'Books' },
                       { id: 3, itemName: 'Coffee' },
@@ -23,7 +27,7 @@ export class UserFormComponent {
                     ]
 
   userForm = new FormGroup({
-    userType: new FormControl('User'),
+    userType: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
     chooseTags: new FormArray([]),
@@ -43,14 +47,22 @@ export class UserFormComponent {
   userTypes = ['User', 'Organization'];
 
   
-  onUser(user: string){
+  onUser(){
     const uType = this.userForm.get('userType')?.value
     if (uType == 'Organization') {
       this.userForm.get('organizationName')?.enable();
       this.userForm.get('chooseMembership')?.enable();
       this.userForm.get('location')?.enable();
     }
+    else if (uType == 'User'){
+      this.userForm.get('firstName')?.enable();
+      this.userForm.get('middleName')?.enable();
+      this.userForm.get('lastName')?.enable();
+    }
     else{
+      this.userForm.get('firstName')?.disable();
+      this.userForm.get('middleName')?.disable();
+      this.userForm.get('lastName')?.disable();
       this.userForm.get('organizationName')?.disable();
       this.userForm.get('chooseMembership')?.disable();
       this.userForm.get('location')?.disable();
@@ -80,5 +92,16 @@ export class UserFormComponent {
       this.chooseTags.push(new FormControl(tag.itemName));
     })
   }
+
+  onSubmit(){
+    console.log(this.userForm.value)
+    if(this.userForm.valid){
+      console.log(this.userForm.value)
+    }
+    else{
+      console.log("oops")
+    }
+  }
+  
   
 }
