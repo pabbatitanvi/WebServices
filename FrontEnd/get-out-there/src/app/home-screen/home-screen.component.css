@@ -1,47 +1,43 @@
-/* Split the screen in half */
-.split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-  
-  /* Control the left side */
-  .left-left {
-    left: 0;
-    background-color: #111;
-  }
 
-  .left-right {
-    left: 0;
-    background-color: #ffffff;
-  }
-  
-  /* Control the right side */
-  .right {
-    right: 0;
-    background-color: rgb(0, 255, 170);
-  }
-  
-  /* If you want the content centered horizontally and vertically */
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  /* Style the image inside the centered container, if needed */
-  .centered img {
-    width: 150px;
-    border-radius: 50%;
-  }
+/* The outermost box. The border makes the background look black, gives it a suprisingly nice look */
+.parent {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  border: 20px solid var(--lightest-green);
+  display: flex;
+  flex-direction: row;
+}
 
-  .regular-font {
-    font-size: 30px;
-    color: rgb(255, 255, 255)
-  }
+.header {
+  height: 30%;
+  background: cornflowerblue;
+}
+
+.side {
+  width: 30%;
+  height: 100%;
+  background: rgb(219, 133, 133);
+}
+
+.content {
+  height: 70%;
+  background: rgb(115, 202, 180);
+}
+
+.text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 190px;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%; /* Takes up max space available to it */
+}
