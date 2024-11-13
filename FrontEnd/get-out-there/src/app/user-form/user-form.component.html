@@ -3,21 +3,21 @@
         <label for = "userType">What type of account would you like to create?</label>
     </div>
     <div class = "chooseButtons">
-        <label>
+        <label id = "userButton">
             <input type = "radio" formControlName = "userType" value = "User"/>User
         </label>
-        <label>
+        <label id = "orgButton">
             <input type = "radio" formControlName = "userType" value = "Organization"/>Organization
         </label>
     </div>
 
     <section class = "questions">
         <div>
-            <label for = "username">Username</label>
+            <label id = "uName" for = "username">Username</label>
             <input type = "text" formControlName = "username">
         </div>
         <div>
-            <label for = "password">Password</label>
+            <label id = "password" for = "password">Password</label>
             <input type = "password" formControlName = "password">
         </div>
         <section class = "choose-tags-container">
@@ -26,28 +26,28 @@
         </section>
         <section class = "name">
             <div *ngIf = "userForm.get('userType')?.value == 'User'">
-                <label for = "firstName">First name</label>
+                <label id = "fName" for = "firstName">First name</label>
                 <input type = "text" formControlName = "firstName">
             </div>
             <div *ngIf = "userForm.get('userType')?.value == 'User'">
-                <label for = "middleName">Middle name</label>
+                <label id = "mName" for = "middleName">Middle name</label>
                 <input type = "text" formControlName = "middleName">
             </div>
             <div *ngIf = "userForm.get('userType')?.value == 'User'">
-                <label for = "lastName">Last name</label>
+                <label id = "lName" for = "lastName">Last name</label>
                 <input type = "text" formControlName = "lastName">
             </div>
         </section>
         <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
-            <label for = "organizationname">Organization Name</label>
+            <label id = "oName" for = "organizationname">Organization Name</label>
             <input type = "text" formControlName = "organizationName" required>
         </div>
         <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
-            <label for = "choosemembership">Choose Membership</label>
+            <label id = "cMem" for = "choosemembership">Choose Membership</label>
             <input type = "text" formControlName = "chooseMembership" required>
         </div>
         <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
-            <label for = "location">Location</label>
+            <label id = "location" for = "location">Location</label>
             <input type = "text" formControlName = "location" required>
         </div>
     </section>
