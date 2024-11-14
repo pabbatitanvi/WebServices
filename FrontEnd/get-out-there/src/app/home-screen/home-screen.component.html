@@ -1,27 +1,56 @@
 
+
 <!-- Navigation bar -->
 <app-navigation-bar>    </app-navigation-bar>
 
 <!--
     This page consists of a navigation bar along the top
     The majority of the screen is broken into three parts: locations, navigation to pages, and a map. The map takes up the right half of the screen,
-  and the locations and navigation boxes split the left half.
+and the locations and navigation boxes split the left half.
     
 -->
 
-<div class="parent"> <!-- Container 1 (the rows/side splitting) -->
-
-    <div class="side">
-      <h2 class="text">Side</h2>
+<div class="row">
+    <div class="column" id="quarter-l">
+        <div class="locations-box">
+            <h2 class="box-text">location 1</h2>
+        </div>
     </div>
-  
-    <div class="container"> <!-- Container 2 (the columns/vertical splitting)-->
-      <div class="header">
-        <h2 class="text">Header</h2>
-      </div>
-      <div class="content">
-        <h2 class="text">Content</h2>
-      </div>
+    <div class="column" id="quarter-e">
+        <div class="events-box">
+            <h2 class="box-text">Event 1</h2>
+        </div>
     </div>
-  
+    <div class="column" id="half">
+        <img
+            class="centered"
+            src="https://i.pinimg.com/564x/d1/35/ca/d135ca708f1c3efcf9c890943dabff68.jpg"
+            alt="Image of a map"
+        />
+    </div>
 </div>
+
+<!-- 
+<div class="parent">
+    <div class="locations-bar">
+        <h2 class="text">Locations</h2>
+    </div>
+
+    <div class="events-bar">
+        <div class="events-box">
+            <h2 class="box-text">Event 1</h2>
+        </div>
+        <div class="events-box">
+            <h2 class="box-text">Event 2</h2>
+        </div>
+    </div>
+
+    <div class="map-side">
+        <img
+            class="centered"
+            src="https://i.pinimg.com/564x/d1/35/ca/d135ca708f1c3efcf9c890943dabff68.jpg"
+            alt="Image of a map"
+        />
+    </div>
+            
+</div> -->

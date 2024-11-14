@@ -5,5 +5,8 @@
     --middle-green: #3DA35D;
     --dark-green: #3E8914;
     --darkest-green: #134611;
-    --fullwidth: 100%;
-  }
+}
+/* Sets the page color */
+html {
+    background-color: var(--lightest-green);
+}
