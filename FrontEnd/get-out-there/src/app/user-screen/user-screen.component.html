@@ -4,7 +4,7 @@
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
   <div class="container-fluid">
     <!--ROW 1 START-->
-    <div class="row">
+    <div class="row" *ngFor="let user of current_user">
       <!--ROW 1 START-->
       <div class="col-md-2">
 
@@ -12,15 +12,16 @@
       <div class="col-md-8">
         <div style="text-align:left">
           <h1 style="font-size:xx-large;font-family:'Arial';font-weight: bold;">
-            User Profile
+            {{user.username}}
           </h1>
           <p>
             <ul>
-                <li>
-                    User Profile Information to be inserted here
+                <li *ngIf="user.usertype === 'Organization' ">
+                    <button class="btn btn-danger" href="#">Create Event</button>
+
                 </li>
                 <li>
-                    Profile details to be inserted here
+                  {{user.userinfo}}
                 </li>
             </ul>
 
@@ -37,26 +38,26 @@
     </div>
     <!--ROW 1 END-->
     <!--ROW 2 START-->
-    <div class="row">
+    <div class="row" *ngFor="let post of posts">
       <div class="col-md-2">
 
       </div>
       <div class="col-md-8">
-        <ul>
-            <li>
-                Think of this as one single post. Will work on divving this up into a dynamic thing in time.
-            </li>
-            <li>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQciZUXDEUgpAVtexBM1iA6rMAaqnebXAQL5NUK9bgWK8Wig1CGGaAFvXCV3fIImzbON1Y&usqp=CAU"
-                    alt="I studied software Engineering at Penn State Behrend's School of Engineering"
-                    title="I studied software Engineering at Penn State Behrend's School of Engineering" width="100%"/>
-            </li>
-        </ul>
-        
-      </div>
-      <div class="col-md-2">
+        <div   >
 
+            <div >
+                <h2  id="headingOne">
+                        {{post.name}}
+                </h2>
+                <div>
+                        {{post.Description}}
+                </div>
+            </div>
       </div>
+
+    </div>
+    <div class="col-md-2">
+
     </div>
     <!--ROW 2 END-->
 </div>
