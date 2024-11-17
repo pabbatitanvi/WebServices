@@ -13,12 +13,15 @@
                 <div class="column">
 
                     <!-- Events on the left side -->
-                    <div class="event-box">
-                        Event 1
+                    <div class="event-box" *ngFor="let event of events">
+                        {{event.name}}
                     </div>
-                    <div class="event-box">
-                        Event 3
-                    </div>
+                    <!--
+                        
+                        <div class="event-box">
+                            Event 3
+                        </div>
+                    -->
                 </div>
                 <!-- Second area for events -->
                 <div class="column">
