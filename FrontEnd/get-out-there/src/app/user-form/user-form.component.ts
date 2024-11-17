@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
-
+import { GetDataService } from '../../../services/get-data.service';
 @Component({
   selector: 'app-user-form',
   standalone: true,
@@ -93,10 +93,14 @@ export class UserFormComponent {
     })
   }
 
+  constructor(public dataService: GetDataService) { }
   onSubmit(){
     console.log(this.userForm.value)
     if(this.userForm.valid){
-      console.log(this.userForm.value)
+      let response = this.dataService.createNewUser(this.userForm).subscribe((result)=>{
+        console.log(result, "Entered new account")
+
+      })
     }
     else{
       console.log("oops")

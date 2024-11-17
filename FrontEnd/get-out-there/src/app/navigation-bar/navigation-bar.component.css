@@ -34,7 +34,7 @@
     margin-right: 70px;
 }
 
-.navbar-links a{
+.navbar-link-active{
     color: black;
     font-size: 1.5em;
     font-family: Georgia, serif;

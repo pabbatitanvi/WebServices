@@ -1,67 +1,76 @@
 {
-  "hash": "12a9cfe2",
-  "configHash": "6fd32ece",
+  "hash": "421cea56",
+  "configHash": "c0619f3d",
   "lockfileHash": "ef3d4407",
-  "browserHash": "1e802650",
+  "browserHash": "6690f36f",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "5e5eec0c",
+      "fileHash": "d782e320",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "cef6b3f9",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "be580b39",
+      "fileHash": "fd31973e",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "73df9704",
+      "fileHash": "a2095c1b",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "57c88322",
+      "fileHash": "8ba41aa4",
       "needsInterop": false
     },
     "@angular/platform-server": {
       "src": "../../../../../../node_modules/@angular/platform-server/fesm2022/platform-server.mjs",
       "file": "@angular_platform-server.js",
-      "fileHash": "86c7f5e5",
+      "fileHash": "04e2eaeb",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "08db1dae",
+      "fileHash": "058270e7",
       "needsInterop": false
     },
     "ng-multiselect-dropdown": {
       "src": "../../../../../../node_modules/ng-multiselect-dropdown/fesm2022/ng-multiselect-dropdown.mjs",
       "file": "ng-multiselect-dropdown.js",
-      "fileHash": "37ebce34",
+      "fileHash": "af8307fc",
       "needsInterop": false
     }
   },
   "chunks": {
+    "xhr2-ISERFGGE": {
+      "file": "xhr2-ISERFGGE.js"
+    },
     "chunk-6BIVSUUJ": {
       "file": "chunk-6BIVSUUJ.js"
     },
-    "chunk-HTBIA6HV": {
-      "file": "chunk-HTBIA6HV.js"
+    "chunk-JDSITVEW": {
+      "file": "chunk-JDSITVEW.js"
+    },
+    "chunk-OVRRIAOM": {
+      "file": "chunk-OVRRIAOM.js"
     },
     "chunk-SSRY6LPA": {
       "file": "chunk-SSRY6LPA.js"
     },
     "chunk-CEPGADB3": {
       "file": "chunk-CEPGADB3.js"
-    },
-    "xhr2-ISERFGGE": {
-      "file": "xhr2-ISERFGGE.js"
     },
     "chunk-NQ4HTGF6": {
       "file": "chunk-NQ4HTGF6.js"
