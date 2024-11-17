@@ -9,5 +9,15 @@ import { NavigationBarComponent } from "../navigation-bar/navigation-bar.compone
   styleUrl: './event-screen.component.css'
 })
 export class EventScreenComponent {
-
+  
 }
+
+
+export class event {
+  name: String;
+
+  constructor(eventName: String){
+    this.name = eventName;
+  }
+}
+
