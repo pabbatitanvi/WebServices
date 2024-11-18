@@ -8,30 +8,31 @@
         <div class="column">
             <!-- Search bar to look for events -->
             <input type="text" id="mySearch" placeholder="Search events" title="Type in a category">
+
+            <!-- Make event box for every event in the list -->
+            <div class="box">
+                <div *ngFor="let event of events">{{event.name}}</div>
+              </div>
+
             <!-- Two columns side-by-side for the list of events -->
             <div class="row">
-                <div class="column">
+                <!-- <div class="column">
 
-                    <!-- Events on the left side -->
-                    <div class="event-box" *ngFor="let event of events">
+                    Make event box for every event in the list
+                    <div class="event-box" *ngFor="let event of events; let e = even">
                         {{event.name}}
                     </div>
-                    <!--
-                        
-                        <div class="event-box">
-                            Event 3
-                        </div>
-                    -->
-                </div>
+                    
+                </div> -->
                 <!-- Second area for events -->
-                <div class="column">
+                <!-- <div class="column">
                     <div class="event-box">
                         Event 2
                     </div>
                     <div class="event-box">
                         Event 4
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 

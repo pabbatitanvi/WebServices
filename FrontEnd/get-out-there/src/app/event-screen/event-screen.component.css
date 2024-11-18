@@ -33,6 +33,7 @@
     font-weight: bold;
 }
 
+
 .fit-picture{
     /*algigns the map to center of the column*/
     margin: 0;
@@ -52,4 +53,20 @@
     margin:10px;
     border-radius: 50px;
     font-family: monospace, monaco;
+  }
+  
+  .box > * {
+    padding: 20px;
+    border: 2px solid rgb(96 139 168);
+    border-radius: 5px;
+    background-color: rgb(96 139 168 / 0.2);
+  }
+  .box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 2em;
+  }
+  
+  .box :first-child {
+    align-self: center;
   }
