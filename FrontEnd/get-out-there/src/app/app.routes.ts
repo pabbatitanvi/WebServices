@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path: 'userprofile', component: UserScreenComponent},
     {path: 'friends', component:FriendScreenComponent},
     {path: 'events', component:EventScreenComponent},
-    {path: 'userform', component: UserFormComponent},
+    {path: 'createaccount', component: UserFormComponent},
     {path: 'eventform', component: EventFormComponent}
 
 ];
