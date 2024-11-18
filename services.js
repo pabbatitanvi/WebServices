@@ -15,7 +15,7 @@ const {ObjectId} = require('mongodb');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin", "https://localhost:4200");
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -48,7 +48,8 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    const addData = req.body
+    const addData = req.body    
+    console.log(addData, "backend received object from frontend")
     let data=await user.userAdd(db, addData)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")

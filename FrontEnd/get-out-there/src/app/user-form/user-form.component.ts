@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
-
+import { GetDataService } from '../../../services/get-data.service';
 @Component({
   selector: 'app-user-form',
   standalone: true,
@@ -86,17 +86,21 @@ export class UserFormComponent {
   onSelectedTags($event: any){
     console.log(':', $event)
 
-    this.chooseTags.clear();
 
     $event.forEach((tag: any) => {
       this.chooseTags.push(new FormControl(tag.itemName));
     })
   }
 
+  constructor(public dataService: GetDataService) { }
   onSubmit(){
     console.log(this.userForm.value)
     if(this.userForm.valid){
-      console.log(this.userForm.value)
+      console.log("sent to backend")
+      let response = this.dataService.createNewUser(this.userForm.value).subscribe((result)=>{
+        console.log("backend result received at front end")
+
+      })
     }
     else{
       console.log("oops")

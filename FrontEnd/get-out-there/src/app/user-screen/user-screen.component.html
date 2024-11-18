@@ -2,7 +2,7 @@
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
   <div class="container-fluid">
     <!--ROW 1 START-->
-    <div class="row">
+    <div class="row" *ngFor="let user of current_user">
       <!--ROW 1 START-->
       <div class="col-md-2">
 
@@ -38,7 +38,7 @@
     </div>
     <!--ROW 1 END-->
     <!--ROW 2 START-->
-    <div class="row">
+    <div class="row" *ngFor="let post of posts">
       <div class="col-md-2">
 
       </div>
@@ -54,7 +54,6 @@
       </div>
       <div class="col-md-2">
 
-      </div>
     </div>
     <!--ROW 2 END-->
 </div>
