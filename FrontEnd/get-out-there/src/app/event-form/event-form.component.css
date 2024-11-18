@@ -1,4 +1,3 @@
-
 :host ::ng-deep .multiselect-dropdown{
     width: 95%!important;
     margin-left: 50px;
@@ -7,8 +6,9 @@
     display: flex;
     align-items: center; 
     margin-bottom: 10px;
+    font-size: 24px;
+    font-family: monospace, monaco;
 }
-  
 .form{
     /*background-image: url(../assets/background_gradient.png);*/
     position: absolute;
@@ -17,58 +17,23 @@
     transform: translate(-50%, -50%);
     margin-left: 2%;
 }
-
-.fQuestion{
-    font-size: 24px;
-    font-family: monospace, monaco;
-    margin-bottom: 10px;
-}
-
 .questions{
     font-size: 24px;
     font-family: monospace, monaco;
     margin-bottom: 10px;
 }
-
-.chooseButtons{
-    font-size: 24px;
-    font-family: monospace, monaco;
-    margin-bottom: 10px;
-
-}
-
-#userButton{
-    margin-right: 20px;
-}
-
-#uName{
+#eName{
     margin-bottom: 10px;
 }
-
-#password{
+#description{
     margin-bottom: 10px;
 }
-
-#fName{
+#date{
     margin-bottom: 10px;
 }
-
-#mName{
+#startTime{
     margin-bottom: 10px;
 }
-
-#lName{
-    margin-bottom: 10px;
-}
-
-#oName{
-    margin-bottom: 10px;
-}
-
-#cMem{
-    margin-bottom: 10px;
-}
-
-#location{
+#endTime{
     margin-bottom: 10px;
 }
