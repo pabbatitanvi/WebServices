@@ -30,32 +30,18 @@ export class GetDataService {
     let url="http://localhost:3000/createuser"
     let result = this.http.post(url,Dataob,this.httpoptions)
     console.log("return from http post")
-      return  of(result);
+      return  result;
     }
     else if(Dataob.userType=="Organization")
     {
       let url="http://localhost:3000/creatorganization"
       let result = this.http.post(url,Dataob,this.httpoptions)
-      return of(result);
+      return result;
     }
     else
     return of(Dataob)
 
   }
-
-  enterUserData(dataob:any):Observable<any>{
-    let url="http://localhost:3000/adduserdata"
-    let result= this.http.post(url, dataob, this.httpoptions)
-    return result;
-  }
-
-  checkUserEntry(dataob:any):Observable<any>{
-    console.log("checkUserEntry")
-    let url="http://localhost:3000/finduserdata"
-    let result= this.http.get(url, dataob)
-    return result;
-  }
-
 
 
 }
