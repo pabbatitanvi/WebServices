@@ -1,0 +1,56 @@
+/*Adds background gradient image*/
+.events{
+    background-image: url(../assets/background_gradient.png);
+    background-size: cover;
+    width: 100vw;
+    /*height: 100vh;*/
+    background-repeat: repeat;
+    background-position: center;
+    /*background-color: #E8FCCF;*/
+}
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    /*display: table;*/
+    clear: both;    
+}
+
+/* Style for the event boxes */
+.event-box {
+    width: 300px;
+    height: 250px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 150px;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 25px;
+    font-family: monospace, monaco;
+    font-weight: bold;
+}
+
+.fit-picture{
+    /*algigns the map to center of the column*/
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);    
+    width: 45%;
+}
+
+/* The search bar */
+#mySearch {
+    width: 100%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #000000;
+    margin:10px;
+    border-radius: 50px;
+    font-family: monospace, monaco;
+  }

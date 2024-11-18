@@ -1,15 +1,23 @@
-.navbar{
-    background-color: azure;
+#navbar{
+    background-color: #134611;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: "cover";
+    background-attachment: fixed;
     width: 100%;
-    height:auto;
-    align-items: center;
+    border-bottom: 1px solid white;
+    display: flex;
+    list-style-type: none;
 }
-.navbar-fullbar{
+
+    /*height:auto;
+    align-items: center; */
+/* .navbar-fullbar{
     display: flex;
     width: 100%;
     height: 50px;
     background-color: white;
-    border-bottom: 2px solid lightgray;
+    border-bottom: 2px solid lightgrey;
 }
 
 .navbar-name{
@@ -57,4 +65,36 @@
 .navbar-button:hover{
     background-color: black;
     color:white;
+} */
+
+.navbar-brand{
+    color: #E8FCCF;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: monospace, monaco;
 }
+
+.nav-link-active{
+    color: #E8FCCF;
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: x-large;
+    font-family: monospace, monaco;
+}
+
+#home:hover{
+    font-weight: bold; 
+}
+#events:hover{
+    font-weight: bold; 
+}
+#friends:hover{
+    font-weight: bold; 
+}
+
+#btn{
+    font-size: x-large;
+    font-family: monospace, monaco;
+    color: #E8FCCF;
+}
+/*navbar-expand-lg navbar-light bg-light" id="NavBarChange" [style.background-repeat]="'no-repeat'" [style.background-position]="'center'" [style.background-size]="'cover'" [style.background-attachment]="'fixed'" [style.width]="'100%'"*/

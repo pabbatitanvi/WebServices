@@ -1,0 +1,25 @@
+.main-body{
+    background-image: url(../assets/background_gradient.png);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+}
+
+.userTitle{
+    font-size: xx-large;
+    font-family: monospace, monaco;
+    font-weight: bold;
+    color: #E8FCCF;
+}
+
+.col-md-8{
+    text-align: left;
+    font-size: x-large;
+    font-family: monospace, monaco;
+    color: #E8FCCF;
+}
+.col ul{
+    list-style: none;
+}

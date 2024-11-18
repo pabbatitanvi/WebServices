@@ -1,14 +1,28 @@
-main-body{
-    background-repeat: no-repeat;
+.main-body{
+    /* background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-attachment: flex;
+    background-attachment: flex; 
+     */
+    background-image: url(../assets/background_gradient.png);
+    background-size: cover;
+    width: 100vw;
+    /*height: 100vh;*/
+    background-repeat: repeat;
+    background-position: center;
+    /*background-color: #E8FCCF;*/
 }
 h1{
     font-size: xx-large;
-    font-family:'Arial';
+    font-family: monospace, monaco;
+    color: #E8FCCF;
     font-weight: bold;
     text-align: left;
+    margin-left: 10px;
+}
+#mfriends{
+    margin-left: 20px;
+    margin-top: 20px;
 }
 ul {
     list-style: none;
@@ -16,4 +30,14 @@ ul {
 
 ul li{
     margin-bottom: 10px;
+}
+
+#mySearch{
+    width: 100%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #000000;
+    margin:10px;
+    border-radius: 50px;
+    font-family: monospace, monaco;
 }

@@ -1,0 +1,74 @@
+
+:host ::ng-deep .multiselect-dropdown{
+    width: 95%!important;
+    margin-left: 50px;
+}
+.choose-tags-container {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px;
+}
+  
+.form{
+    /*background-image: url(../assets/background_gradient.png);*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 2%;
+}
+
+.fQuestion{
+    font-size: 24px;
+    font-family: monospace, monaco;
+    margin-bottom: 10px;
+}
+
+.questions{
+    font-size: 24px;
+    font-family: monospace, monaco;
+    margin-bottom: 10px;
+}
+
+.chooseButtons{
+    font-size: 24px;
+    font-family: monospace, monaco;
+    margin-bottom: 10px;
+
+}
+
+#userButton{
+    margin-right: 20px;
+}
+
+#uName{
+    margin-bottom: 10px;
+}
+
+#password{
+    margin-bottom: 10px;
+}
+
+#fName{
+    margin-bottom: 10px;
+}
+
+#mName{
+    margin-bottom: 10px;
+}
+
+#lName{
+    margin-bottom: 10px;
+}
+
+#oName{
+    margin-bottom: 10px;
+}
+
+#cMem{
+    margin-bottom: 10px;
+}
+
+#location{
+    margin-bottom: 10px;
+}
