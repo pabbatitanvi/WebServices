@@ -10,30 +10,13 @@
             <input type="text" id="mySearch" placeholder="Search events" title="Type in a category">
 
             <!-- Make event box for every event in the list -->
-            <div class="box">
-                <div *ngFor="let event of events">{{event.name}}</div>
-              </div>
-
-            <!-- Two columns side-by-side for the list of events -->
-            <div class="row">
-                <!-- <div class="column">
-
-                    Make event box for every event in the list
-                    <div class="event-box" *ngFor="let event of events; let e = even">
-                        {{event.name}}
-                    </div>
-                    
-                </div> -->
-                <!-- Second area for events -->
-                <!-- <div class="column">
-                    <div class="event-box">
-                        Event 2
-                    </div>
-                    <div class="event-box">
-                        Event 4
-                    </div>
-                </div> -->
+            <div class="event-box">
+                <div style="white-space:pre-wrap" *ngFor="let event of events">
+                    {{event.name}}
+                    {{event.location}}
+                </div>
             </div>
+
         </div>
 
         <!-- The right half of the screen -->

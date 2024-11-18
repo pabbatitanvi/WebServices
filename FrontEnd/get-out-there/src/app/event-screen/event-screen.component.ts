@@ -11,10 +11,10 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class EventScreenComponent {
   public events: any = [
-    {"name" : "EVENT 1", "location" : "museum", "id" : 1},
-    {"name" : "EVENT 2", "id" : 2} ,
-    {"name" : "EVENT 3", "id" : 3}, 
-    {"name" : "EVENT 4", "id" : 4},
+    {"name" : "EVENT 1", "location" : "Museum", "id" : 1},
+    {"name" : "EVENT 2", "location" : "Park", "id" : 2} ,
+    {"name" : "EVENT 3", "location" : "Park", "id" : 3}, 
+    {"name" : "EVENT 4", "location" : "Hiking Trail", "id" : 4},
   ]
 }
 
