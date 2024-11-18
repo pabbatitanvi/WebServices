@@ -26,7 +26,7 @@
             </div>
             <section class = "choose-tags-container">
                 <label for = "chooseTags">Choose Tags</label>
-                <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
+                <!--<ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>-->
             </section>
             <section class = "name">
                 <div *ngIf = "userForm.get('userType')?.value == 'User'">

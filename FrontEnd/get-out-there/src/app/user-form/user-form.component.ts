@@ -30,7 +30,7 @@ export class UserFormComponent {
     userType: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
-    chooseTags: new FormArray([]),
+    //chooseTags: new FormArray([]),
     //user fields
     firstName: new FormControl(''),
     middleName: new FormControl(''),
@@ -80,25 +80,25 @@ export class UserFormComponent {
     allowSearchFilter: true
   };
   
-  get chooseTags():FormArray{
-    return this.userForm.get('chooseTags') as FormArray;
-  }
-  onSelectedTags($event: any){
-    console.log(':', $event)
+  // get chooseTags():FormArray{
+  //   return this.userForm.get('chooseTags') as FormArray;
+  // }
+  // onSelectedTags($event: any){
+  //   console.log(':', $event)
 
-    this.chooseTags.clear();
 
-    $event.forEach((tag: any) => {
-      this.chooseTags.push(new FormControl(tag.itemName));
-    })
-  }
+  //   $event.forEach((tag: any) => {
+  //     this.chooseTags.push(new FormControl(tag.itemName));
+  //   })
+  // }
 
   constructor(public dataService: GetDataService) { }
   onSubmit(){
     console.log(this.userForm.value)
     if(this.userForm.valid){
-      let response = this.dataService.createNewUser(this.userForm).subscribe((result)=>{
-        console.log(result, "Entered new account")
+      console.log("sent to backend")
+      let response = this.dataService.createNewUser(this.userForm.value).subscribe((result)=>{
+        console.log("backend result received at front end")
 
       })
     }

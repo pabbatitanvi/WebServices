@@ -1,7 +1,7 @@
 
 //Add user data to DB
 async function userAdd(database, userob){
-    console.log(userob, 'User Object')
+    console.log(userob, "Data receivved from services.js")
     try{
         //inserts user data into the database
         let data = await database.collection('Users').insertOne(userob)

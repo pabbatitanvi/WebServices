@@ -48,7 +48,8 @@ app.listen(port, () =>{
 
 // ----------------------------------------- User Accounts -----------------------------------------
 app.post('/createuser', async(req, res) => {
-    const addData = req.body
+    const addData = req.body    
+    console.log(addData, "backend received object from frontend")
     let data=await user.userAdd(db, addData)
     console.log(data, "USER DATA ADDED")
     res.send("User Created")
