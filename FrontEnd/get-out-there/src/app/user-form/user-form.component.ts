@@ -30,7 +30,7 @@ export class UserFormComponent {
     userType: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
-    //chooseTags: new FormArray([]),
+    chooseTags: new FormArray([]),
     //user fields
     firstName: new FormControl(''),
     middleName: new FormControl(''),
@@ -80,17 +80,17 @@ export class UserFormComponent {
     allowSearchFilter: true
   };
   
-  // get chooseTags():FormArray{
-  //   return this.userForm.get('chooseTags') as FormArray;
-  // }
-  // onSelectedTags($event: any){
-  //   console.log(':', $event)
+  get chooseTags():FormArray{
+    return this.userForm.get('chooseTags') as FormArray;
+  }
+  onSelectedTags($event: any){
+    console.log(':', $event)
 
 
-  //   $event.forEach((tag: any) => {
-  //     this.chooseTags.push(new FormControl(tag.itemName));
-  //   })
-  // }
+    $event.forEach((tag: any) => {
+      this.chooseTags.push(new FormControl(tag.itemName));
+    })
+  }
 
   constructor(public dataService: GetDataService) { }
   onSubmit(){

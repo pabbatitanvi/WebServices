@@ -10,7 +10,7 @@
 }
 
 .col-md-2{
-    background-color: turquoise;
+    background-color: green;
     color: turquoise;
 
 }
@@ -25,19 +25,19 @@
 
 .fQuestion{
     font-size: 24px;
-    font-family: monospace, monaco;
+    font-family: Georgia, serif;
     margin-bottom: 10px;
 }
 
 .questions{
     font-size: 24px;
-    font-family: monospace, monaco;
+    font-family: Georgia, serif;
     margin-bottom: 10px;
 }
 
 .chooseButtons{
     font-size: 24px;
-    font-family: monospace, monaco;
+    font-family: Georgia, serif;
     margin-bottom: 10px;
 
 }
