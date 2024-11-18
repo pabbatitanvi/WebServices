@@ -1,6 +1,4 @@
-<div id="main-body" class="main-body"
-  [style.background-repeat]="'no-repeat'" [style.background-position]="'center'" [style.background-size]="'cover'"
-  [style.background-attachment]="'fixed'" [style.width]="'100%'">
+<div id="main-body" class="main-body">
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
   <div class="container-fluid">
     <!--ROW 1 START-->
@@ -10,8 +8,8 @@
 
       </div>
       <div class="col-md-8">
-        <div style="text-align:left">
-          <h1 style="font-size:xx-large;font-family:'Arial';font-weight: bold;">
+        <div>
+          <h1 id = "userTitle">
             User Profile
           </h1>
           <p>
@@ -21,6 +19,9 @@
                 </li>
                 <li>
                     Profile details to be inserted here
+                </li>
+                <li>
+                  Think of this as one single post. Will work on divving this up into a dynamic thing in time.
                 </li>
             </ul>
 
@@ -41,11 +42,8 @@
       <div class="col-md-2">
 
       </div>
-      <div class="col-md-8">
+      <div class="col">
         <ul>
-            <li>
-                Think of this as one single post. Will work on divving this up into a dynamic thing in time.
-            </li>
             <li>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQciZUXDEUgpAVtexBM1iA6rMAaqnebXAQL5NUK9bgWK8Wig1CGGaAFvXCV3fIImzbON1Y&usqp=CAU"
                     alt="I studied software Engineering at Penn State Behrend's School of Engineering"

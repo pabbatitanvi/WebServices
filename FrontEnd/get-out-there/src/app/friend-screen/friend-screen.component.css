@@ -7,9 +7,10 @@
     background-image: url(../assets/background_gradient.png);
     background-size: cover;
     width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
+    /*height: 100vh;*/
+    background-repeat: repeat;
     background-position: center;
+    /*background-color: #E8FCCF;*/
 }
 h1{
     font-size: xx-large;
@@ -17,6 +18,11 @@ h1{
     color: #E8FCCF;
     font-weight: bold;
     text-align: left;
+    margin-left: 10px;
+}
+#mfriends{
+    margin-left: 20px;
+    margin-top: 20px;
 }
 ul {
     list-style: none;
