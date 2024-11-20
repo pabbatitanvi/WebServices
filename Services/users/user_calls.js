@@ -1,13 +1,14 @@
 
 const user = require('./user_services.js')
 
-module.exports = function(app, db){
+module.exports = function(app){
 
     // ----------------------------------------- User Accounts -----------------------------------------
     app.post('/createuser', async(req, res) => {
+        //console.log("database: ", db)
         const addData = req.body    
         console.log(addData, "backend received object from frontend")
-        let data=await user.userAdd(db, addData)
+        let data=await user.userAdd(addData)
         console.log(data, "USER DATA ADDED")
         res.send("User Created")
     })

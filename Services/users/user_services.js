@@ -1,11 +1,16 @@
 
+const mongodb = require('../database.js');
+
 //Add user data to DB
-async function userAdd(database, userob){
+async function userAdd(userob){
+
+    _database = mongodb.getDb().collection('Users')
+
     console.log(userob, "Data receivved from services.js")
     try{
         //inserts user data into the database
-        console.log("database:", database);
-        let data = await database.collection('Users').insertOne(userob)
+        console.log("database:", _database);
+        let data = await _database.insertOne(userob)
         //returns the id of the data created
         return data.insertedId
     } catch(err) {

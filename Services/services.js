@@ -6,13 +6,14 @@ const org=require('./organization_services.js')
 
 const routes = require('./users/user_calls.js')
 
+const mongodb = require('./database.js')
+
 // All the typical, copy-pasted material that appears at the start of pretty much every program like this.
 const express = require('express');
 const path = require('path');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-const {ObjectId} = require('mongodb');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use((req,res,next)=>{
@@ -24,30 +25,14 @@ app.use((req,res,next)=>{
     next();
 })
 
-
-let MongoClient = require('mongodb').MongoClient
-
-const connectionString = "mongodb+srv://kmr6702:kmr6702@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
-const client = new MongoClient(connectionString);
-let conn;
-    let db;
-    connect()
-    async function connect(){
-        try {
-            conn = await client.connect();
-            db = await conn.db("TestDB");
-            console.log("database connected !!")
-          } catch(e) {
-            console.error(e);
-          }
-    }
+mongodb.connect();
 
 // Listen at port
 app.listen(port, () =>{
     console.log(`Listening to active port ${ port }`)
 })
 
-routes(app, db);
+routes(app);
 
 // ----------------------------------------- Organizations -----------------------------------------
 
