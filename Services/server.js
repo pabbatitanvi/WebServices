@@ -1,11 +1,10 @@
 
-
-const location = require('./locations/location_services.js')
 const event = require('./events/event_services.js')
 
 const user_calls = require('./users/user_calls.js')
 const post_calls = require('./posts/post_calls.js')
 const org_calls = require('./organizations/organization_calls.js')
+const location_calls = require('./locations/location_calls.js')
 
 const mongodb = require('./database.js')
 
@@ -36,58 +35,8 @@ app.listen(port, () =>{
 user_calls(app);
 post_calls(app);
 org_calls(app);
+location_calls(app);
 
-// ----------------------------------------- Locations -----------------------------------------
-
-// Create location (add to database)
-app.post('/createlocation', async(req, res) => {
-    const addData = req.body
-    let data = await location.locationAdd(db, addData)
-    console.log(data, "LOCATION ADDED")
-    return res.send("Location Created")
-})
-
-// Delete location (remove from database)
-app.delete('/deletelocation/:id', async(req, res) => {
-    const locationID = new ObjectId(req.params.id)
-    let data = await location.locationDelete(db, locationID);
-    console.log("Location deleted");
-    return res.send("Location deleted");
-})
-
-// Modify location (remove from database)
-app.put('/modifylocation/:id', async(req, res) => {
-    const locationID = new ObjectId(req.params.id)
-    const updateData = req.body
-    console.log(updateData, "Location modified");
-    let data = await location.locationModify(db, locationID, updateData);
-    console.log(data, "Location modified");
-    return res.send("Location modified");
-})
-
-// Return all locations with the inputted tag
-app.get('/taginfo/:tag', async(req, res) =>{
-    const tag = req.params.tag
-    let data = await location.locationSearch(database = db, searchFor = "tags", {searchValue : tag});
-    console.log(`LOCATION SEARCHED FOR ${tag} tag`)
-    return res.send("Searched for a location")
-})
-
-// Return all locations that match the specified price range
-app.get('/priceinfo/:price', async (req,res)=>{
-    const price = Number(req.params.price)
-    let data = await location.locationSearch(database = db, searchFor = "price", {searchValue : price})
-    console.log(data, "LOCATION SEARCHED FOR")
-    return res.send("Searched for a location")
-})
-
-// Return all locations in the specified area (NEEDS WORK)
-app.get('/areainfo/:area', async (req,res)=>{
-    const area = req.params.area
-    let data = await location.locationSearch(database = db, searchFor = "area", {searchValue : area})
-    console.log(data, "LOCATION SEARCHED FOR")
-    return res.send("Searched for a location")
-})
 
 // ----------------------------------------- Friends -----------------------------------------
 app.get('/friendsbytag', async(req, res) =>{

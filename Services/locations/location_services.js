@@ -1,26 +1,28 @@
 
+const mongodb = require('../database.js');
+
 // Add location to the database
-async function locationAdd(database, userob){
+async function locationAdd(userob){
     
     console.log(userob, 'User Object')
-    let result = await database.collection('Locations').insertOne(userob, function(err, result) {
+    _database = mongodb.getDb().collection('Locations')
+    let result = await _database.insertOne(userob, function(err, result) {
         if(err) console.log(err)
     })
     return result.insertedId
 }
 
 // Search locations by price, tag, or area (area to be added later after group discussion)
-async function locationSearch(database, searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
+async function locationSearch(searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
 
-    console.log("database:", database);
-
+    _database = mongodb.getDb().collection('Locations')
     var cursor = null;
     // search by max price
     if(searchFor.toLowerCase() == "price"){
 
         // NOTE! Does NOT validate that searchValue is a valid input (I haven't figured out how yet)
 
-        cursor = database.collection("Locations").find(
+        cursor = _database.find(
             {
                 price: { $lte : searchValue},
             }
@@ -29,7 +31,7 @@ async function locationSearch(database, searchFor = "", {searchValue = 0, maxNum
 
     } else if(searchFor.toLowerCase() == "tags"){
 
-        cursor = database.collection("Locations").find(
+        cursor = _database.find(
             {
                 tags: searchValue,
             }
@@ -37,7 +39,7 @@ async function locationSearch(database, searchFor = "", {searchValue = 0, maxNum
         .limit(maxNumResults);
     } else{
         console.log(`ERROR, INVALID SEARCH ATTEMPT WITH searchFor = ${searchFor} AND searchValue = ${searchValue} \t\tSearching by price now.`)
-        cursor = database.collection("Locations").find(
+        cursor = _database.find(
             {
                 price: { $lte : searchValue},
             }
@@ -67,9 +69,10 @@ async function locationSearch(database, searchFor = "", {searchValue = 0, maxNum
 
 // Delete location from database (need to run by team, for now this is mostly so I can use postman to clean the database)
 //Delete post data
-async function locationDelete(database, locationID){
+async function locationDelete(locationID){
+    _database = mongodb.getDb().collection('Locations')
     try{
-        let data = await database.collection('Locations').deleteOne({_id: locationID})
+        let data = await _database.deleteOne({_id: locationID})
         console.log('Location deleted')
     } catch (err) {
         console.error(err)
@@ -78,10 +81,11 @@ async function locationDelete(database, locationID){
 }
 
 //Modify post data
-async function locationModify(database, locationID, updateData){
+async function locationModify(locationID, updateData){
+    _database = mongodb.getDb().collection('Locations')
     try{
         //modifies data using the id
-        let data = await database.collection('Locations').updateOne({_id: locationID}, {$set: updateData})
+        let data = await _database.updateOne({_id: locationID}, {$set: updateData})
         console.log('Location modified in mongodb')
         //return data;
     } catch (err) {
