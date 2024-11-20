@@ -1,9 +1,8 @@
 
 
-const location = require('./location_services.js')
-const post = require('./post_services.js')
-const event = require('./event_services.js')
-const org=require('./organization_services.js')
+const location = require('./locations/location_services.js')
+const event = require('./events/event_services.js')
+const org=require('./organizations/organization_services.js')
 
 const user_calls = require('./users/user_calls.js')
 const post_calls = require('./posts/post_calls.js')

@@ -1,4 +1,6 @@
 
+const mongodb = require('../database.js');
+
 //Add post data to database
 async function postAdd(userob) {
     console.log(userob, 'User Object')
