@@ -4,10 +4,11 @@ async function userAdd(database, userob){
     console.log(userob, "Data receivved from services.js")
     try{
         //inserts user data into the database
+        console.log("database:", database);
         let data = await database.collection('Users').insertOne(userob)
         //returns the id of the data created
         return data.insertedId
-    } catch {
+    } catch(err) {
         console.error(err)
         throw err
     }

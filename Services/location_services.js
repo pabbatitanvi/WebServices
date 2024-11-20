@@ -12,6 +12,8 @@ async function locationAdd(database, userob){
 // Search locations by price, tag, or area (area to be added later after group discussion)
 async function locationSearch(database, searchFor = "", {searchValue = 0, maxNumResults = Number.MAX_SAFE_INTEGER}){
 
+    console.log("database:", database);
+
     var cursor = null;
     // search by max price
     if(searchFor.toLowerCase() == "price"){
