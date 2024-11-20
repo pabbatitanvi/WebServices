@@ -5,7 +5,8 @@ const post = require('./post_services.js')
 const event = require('./event_services.js')
 const org=require('./organization_services.js')
 
-const routes = require('./users/user_calls.js')
+const user_calls = require('./users/user_calls.js')
+const post_calls = require('./posts/post_calls.js')
 
 const mongodb = require('./database.js')
 
@@ -33,7 +34,8 @@ app.listen(port, () =>{
     console.log(`Listening to active port ${ port }`)
 })
 
-routes(app);
+user_calls(app);
+post_calls(app);
 
 // ----------------------------------------- Organizations -----------------------------------------
 
@@ -205,48 +207,6 @@ app.post('/shareevent', (req, res) => {
 })
 
 
-// ----------------------------------------- Posts -----------------------------------------
-app.post('/createpost', async(req, res) => {
-    const addData = req.body
-    let data = await post.postAdd(db, addData)
-    console.log(data, "Post data added");
-    return res.send("Post created");
-})
-app.delete('/deletepost/:id', async(req, res) => {
-    const postId = new ObjectId(req.params.id)
-    let data = await post.postDelete(db, postId);
-    console.log(data, "Post deleted");
-    return res.send("Post deleted");
-})
-app.put('/modifypost/:id', async(req, res) => {
-    const postId = new ObjectId(req.params.id)
-    const updateData = req.body
-    console.log(updateData, 'Updata data')
-    let data = await post.postModify(db, postId, updateData)
-    console.log(data, "Post modified");
-    return res.send("Post modified");
-})
-
-app.get('/getpostbylocation/:location', async(req, res) => {
-    const location = req.params.location
-    let data = await post.postByLocation(db, location)
-    console.log("Posts based on inputted location", data);
-    return res.send("Information is displayed")
-})
-
-app.get('/getpostbytag/:tag', async(req, res) => {
-    const tag = req.params.tag
-    let data = await post.postByTag(db, tag)
-    console.log("Posts based on inputted tag", data);
-    return res.send("Information is displayed");
-})
-
-app.get('/getpostbyuser/:userId', async(req, res) => {
-    const users = req.params.userId
-    let data = await post.postByUser(db, users)
-    console.log("Posts based on inputted user", data);
-    return res.send("Information is displayed");
-})
 
 //--------------------------------------------------------------------------------------------------------------
 //SERVICE RELATED FUNCTIONS
