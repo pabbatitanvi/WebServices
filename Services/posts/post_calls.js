@@ -2,9 +2,9 @@
 const {ObjectId} = require('mongodb');
 const post = require('./post_services.js')
 
+// ----------------------------------------- Posts -----------------------------------------
 module.exports = function(app){
     
-    // ----------------------------------------- Posts -----------------------------------------
     app.post('/createpost', async(req, res) => {
         const addData = req.body
         let data = await post.postAdd(addData)

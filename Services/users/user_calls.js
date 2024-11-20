@@ -1,11 +1,10 @@
 
-
 const {ObjectId} = require('mongodb');
 const user = require('./user_services.js')
 
+// ----------------------------------------- User Accounts -----------------------------------------
 module.exports = function(app){
 
-    // ----------------------------------------- User Accounts -----------------------------------------
     app.post('/createuser', async(req, res) => {
         //console.log("database: ", db)
         const addData = req.body    

@@ -2,10 +2,10 @@
 
 const location = require('./locations/location_services.js')
 const event = require('./events/event_services.js')
-const org=require('./organizations/organization_services.js')
 
 const user_calls = require('./users/user_calls.js')
 const post_calls = require('./posts/post_calls.js')
+const org_calls = require('./organizations/organization_calls.js')
 
 const mongodb = require('./database.js')
 
@@ -35,41 +35,7 @@ app.listen(port, () =>{
 
 user_calls(app);
 post_calls(app);
-
-// ----------------------------------------- Organizations -----------------------------------------
-
-//Create orgnizations[Add to DB]
-app.post('/createorganization', async(req, res) => {
-    let data=await org.organizationAdd(db, req.body)
-    console.log(data, "USER DATA ADDED")
-    return res.send("Organization created")
-})
-
-//Modify organizations[Update in DB]
-app.post('/modifyorganization/:id', async(req, res) => {
-    const orgId = new ObjectId(req.params.id)
-    const updateData = req.body
-    console.log(updateData, 'Updata data')
-    let data = await org.orgModify(db, orgId, updateData)
-    console.log(data, "Org modified");
-    return res.send("Org modified");
-})
-
-//Delete organization from DB
-app.delete('/deleteorg/:id', async(req, res) => {
-    const orgId = new ObjectId(req.params.id)
-    let data=await org.orgDelete(db, orgId);
-    console.log(data, "Org deleted");
-    return res.send("Org deleted");
-})
-
-//Find all organizations with a certain tag
-app.get('/getorgbytag/:tag', async(req, res) => {
-    const orgtag = req.params.tag
-    let data = await org.orgByTag(db, orgtag)
-    console.log("Orgs based on selected tag", data);
-    return res.send("Information is displayed");
-})
+org_calls(app);
 
 // ----------------------------------------- Locations -----------------------------------------
 
