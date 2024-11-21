@@ -1,22 +1,22 @@
 
-/*
-      Friend services are not fully developed or "fleshed out" at all at this time, since it is of a significantly lower priority than connecting all other services to
-    the front end.
-*/
 
-const post = require('./post_services.js')
+const friends = require('./friends_services.js')
 
 // ----------------------------------------- Friends -----------------------------------------
 module.exports = function(app){
-    app.get('/friendsbytag', async(req, res) =>{
-        console.log(req.body.Friends);
-        console.log("Suggesting friends based on tags");
-        let replyArray = {
-            "UserID1": "1010",
-            "UserID2": "1111",
-            "UserID3": "0001"
-        }
-        return res.json(replyArray);
+    app.get('/friendsByTag/:tags', async(req, res) =>{
+        // console.log(req.body.Friends);
+        // console.log("Suggesting friends based on tags");
+        // let replyArray = {
+        //     "UserID1": "1010",
+        //     "UserID2": "1111",
+        //     "UserID3": "0001"
+        // }
+        // return res.json(replyArray);
+        const tags = req.params.tags;
+        let data = await friends.friendsByTag(tags);
+        console.log(data, "Freinds by tags");
+        return res.send("Freinds searched for by tag");
     })
     app.post('/friendsbyusername', async(req, res) => {
         console.log(req.body);

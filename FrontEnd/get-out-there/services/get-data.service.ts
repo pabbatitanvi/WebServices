@@ -48,5 +48,15 @@ export class GetDataService {
     return result;
   }
 
+  createNewPost(Dataob:any):Observable<any>{
+    console.log("received at middle man: ", Dataob)
+    
+    console.log("Sending post to true backend (services)")
+    let url="http://localhost:3000/createpost"
+    let result = this.http.post(url,Dataob,this.httpoptions)
+    console.log("just sent the request to the service!")
+    return  result;
+
+  }
 
 }

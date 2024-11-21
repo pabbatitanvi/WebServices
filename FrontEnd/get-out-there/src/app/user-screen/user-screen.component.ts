@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";//this imports the nav bar component into this file allowing its use here
 import { NgFor, NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-screen',
@@ -9,7 +10,11 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './user-screen.component.html',
   styleUrl: './user-screen.component.css'
 })
-export class UserScreenComponent {
+export class UserScreenComponent implements OnInit{
+  constructor(private router:Router){}
+  ngOnInit(): void {
+    
+  }
   public posts: any = [
     {"name" : "POST 1", "Description" : "Paris", "id" : 1},
     {"name" : "POST 2", "Description" : "London", "id" : 2} ,
@@ -26,7 +31,10 @@ export class UserScreenComponent {
      "username":"Dragonfable",
      "userinfo":"Software Engineer, PSU '25"
     }
-
-
   ]
+
+  onEventCreate(): void{
+      this.router.navigate(['/postform'])
+    }
+  
 }
