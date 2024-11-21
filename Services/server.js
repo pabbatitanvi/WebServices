@@ -4,6 +4,7 @@ const post_calls = require('./posts/post_calls.js')
 const org_calls = require('./organizations/organization_calls.js')
 const location_calls = require('./locations/location_calls.js')
 const event_calls = require('./events/event_calls.js')
+const friend_calls = require('./friends/friend_calls.js')
 
 const mongodb = require('./database.js')
 
@@ -36,3 +37,4 @@ post_calls(app);
 org_calls(app);
 location_calls(app);
 event_calls(app);
+friend_calls(app);
