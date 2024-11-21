@@ -53,10 +53,15 @@ export class PostFormComponent implements OnInit{
   onSelectedTags($event: any){
     console.log(':', $event)
 
-    
-    $event.forEach((tag: any) => {
-      this.chooseTags.push(new FormControl(tag.itemName));
-    })
+
+    if(Array.isArray($event)){
+      $event.forEach((tag: any) => {
+        this.chooseTags.push(new FormControl(tag.itemName));
+      })
+    }
+    else{
+      this.chooseTags.push(new FormControl($event.itemName));
+    }
   }
   
   // Called by the "submit" button, sends this to the middle-man (this.dataService) who sends it to the services
