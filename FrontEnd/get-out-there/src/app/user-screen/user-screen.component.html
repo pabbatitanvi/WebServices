@@ -1,5 +1,6 @@
 <div id="main-body" class="main-body">
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
+
   <div class="container-fluid">
     <!--ROW 1 START-->
     <div class="row" *ngFor="let user of current_user">
@@ -12,7 +13,7 @@
           <h1 id = "userTitle">
             User Profile
           </h1>
-            <div><button type="button" class="btn btn-success">Success</button></div>
+            <div><button (click)="eventCreatePress()" type="submit" class="btn btn-success">Create post</button></div>
             <div></div><button type="button" class="btn btn-outline-success">Create event</button></div>
           <p>
             <ul>

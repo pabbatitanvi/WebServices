@@ -26,7 +26,10 @@ export class UserScreenComponent {
      "username":"Dragonfable",
      "userinfo":"Software Engineer, PSU '25"
     }
-
-
   ]
+
+  eventCreatePress(){
+    console.log("The event button was hit! Congrats!")
+  }
+  
 }
