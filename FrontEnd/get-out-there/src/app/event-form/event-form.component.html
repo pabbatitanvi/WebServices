@@ -1,31 +1,41 @@
-<form class = "form" [formGroup] = "eventForm" (ngSubmit) = "onSubmit()">
+<div class = "row">
+    <div class = "col-md-2">
 
-    <section class = "questions">
-        <div>
-            <label id = "eName" for = "eventName">Event Name</label>
-            <input type = "text" formControlName = "eventName">
-        </div>
-        <div>
-            <label id = "description" for = "description">Description</label>
-            <input type = "text" formControlName = "description">
-        </div>
-        <div>
-            <label id = "date" for = "date">Date</label>
-            <input type = "date" formControlName = "date">
-        </div>
-        <div>
-            <label id = "startTime" for = "startTime">Start Time</label>
-            <input type = "time" formControlName = "startTime">
-        </div>
-        <div>
-            <label id = "endTime" for = "endTime">End Time</label>
-            <input type = "time" formControlName = "endTime">
-        </div>
-    </section>
+    </div>
+    <div class="col-md-8">
+        <form class = "form" [formGroup] = "eventForm">
+
+        <section class = "questions">
+            <div>
+                <label id = "eName" for = "eventName">Event Name</label>
+                <input type = "text" formControlName = "eventName">
+            </div>
+            <div>
+                <label id = "description" for = "description">Description</label>
+                <input type = "text" formControlName = "description">
+            </div>
+            <div>
+                <label id = "date" for = "date">Date</label>
+                <input type = "date" formControlName = "date">
+            </div>
+            <div>
+                <label id = "startTime" for = "startTime">Start Time</label>
+                <input type = "time" formControlName = "startTime">
+            </div>
+            <div>
+                <label id = "endTime" for = "endTime">End Time</label>
+                <input type = "time" formControlName = "endTime">
+            </div>
+        </section>
         <section class = "choose-tags-container">
             <label for = "chooseTags">Choose Tags</label>
             <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
         </section>
         
-    <button class = "submit-button" type = "submit">Submit</button>
-</form>
+        <button class = "submit-button" (click) = "onSubmit()">Submit</button>
+        </form>
+    </div>
+    <div class="col-md-2">
+        
+    </div>
+</div>
