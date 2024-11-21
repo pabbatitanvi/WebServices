@@ -75,6 +75,7 @@ export class EventFormComponent {
     else{
       console.log("oops")
     }
+    this.router.navigate(['/userprofile'])
  }
  onQuit(){
   this.router.navigate(['/userprofile'])
