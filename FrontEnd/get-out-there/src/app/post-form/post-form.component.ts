@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
 import { GetDataService } from '../../../services/get-data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-form',
   standalone: true,
@@ -12,7 +13,12 @@ import { GetDataService } from '../../../services/get-data.service';
   styleUrl: './post-form.component.css'
 })
 
-export class PostFormComponent {
+export class PostFormComponent implements OnInit{
+  
+  constructor(public dataService: GetDataService, private router: Router) { }
+  ngOnInit(): void {
+    
+  }
 
   tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
                       { id: 2, itemName: 'Books' },
@@ -25,19 +31,10 @@ export class PostFormComponent {
     postName: new FormControl(''),
     description: new FormControl(''),
     chooseTags: new FormArray([]),
-    location: new FormControl('')
+    location: new FormControl(''),
+    userID: new FormControl('')
 
   });
-
-  /*
-  onUser(){
-      this.userForm.get('firstName')?.disable();
-      this.userForm.get('middleName')?.disable();
-      this.userForm.get('lastName')?.disable();
-      this.userForm.get('organizationName')?.disable();
-      this.userForm.get('chooseMembership')?.disable();
-      this.userForm.get('location')?.disable();
-  }*/
 
   selected: any[] = [{ id: 1, itemName: 'Museum' }]
 
@@ -61,12 +58,22 @@ export class PostFormComponent {
       this.chooseTags.push(new FormControl(tag.itemName));
     })
   }
-
-
   
-  constructor(public dataService: GetDataService) { }
+  // Called by the "submit" button, sends this to the middle-man (this.dataService) who sends it to the services
   onSubmit(){
     console.log(this.postForm.value)
-    
+    if(this.postForm.valid){
+      let response = this.dataService.createNewPost(this.postForm.value).subscribe((result)=>{
+        console.log("post was sent to the middle man")
+      })
+    }
+    else{
+      console.log("Something went wrong! Post was not sent.")
+    }
+    this.router.navigate(['/userprofile'])
+  }
+  // Called by the "close" button, navigates back to the user profile
+  onQuit(){
+    this.router.navigate(['/userprofile'])
   }
 }
