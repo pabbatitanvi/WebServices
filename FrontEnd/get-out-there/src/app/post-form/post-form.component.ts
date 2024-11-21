@@ -53,7 +53,7 @@ export class PostFormComponent implements OnInit{
   onSelectedTags($event: any){
     console.log(':', $event)
 
-
+    
     $event.forEach((tag: any) => {
       this.chooseTags.push(new FormControl(tag.itemName));
     })
