@@ -4,15 +4,16 @@
     </div>
     <div class="col-md-8">
         <form class = "form" [formGroup] = "eventForm">
-
+        <!-- close button (exit the form)-->
+        <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
         <section class = "questions">
             <div>
                 <label id = "eName" for = "eventName">Event Name</label>
-                <input type = "text" formControlName = "eventName">
+                <input class = "form-control" type = "text" formControlName = "eventName">
             </div>
             <div>
                 <label id = "description" for = "description">Description</label>
-                <input type = "text" formControlName = "description">
+                <textarea class="form-control" rows = "5" formControlName = "description"></textarea>
             </div>
             <div>
                 <label id = "date" for = "date">Date</label>

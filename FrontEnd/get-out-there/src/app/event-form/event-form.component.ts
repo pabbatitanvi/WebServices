@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-form',
@@ -13,6 +14,10 @@ import { GetDataService } from '../../../services/get-data.service';
   styleUrl: './event-form.component.css'
 })
 export class EventFormComponent {
+  constructor(public dataService: GetDataService, private router: Router) { }
+  ngOnInit(): void {
+    
+  }
   tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
     { id: 2, itemName: 'Books' },
     { id: 3, itemName: 'Coffee' },
@@ -36,8 +41,8 @@ export class EventFormComponent {
     singleSelection: false,
     idField: 'id',
     textField: 'itemName',
-    // selectAllText: 'Select All',
-    // unSelectAllText: 'UnSelect All',
+    selectAllText: '',
+    unSelectAllText: '',
     allowSearchFilter: true
   };
 
@@ -58,7 +63,6 @@ export class EventFormComponent {
     }
   }
 
-  constructor(public dataService: GetDataService) { }
   onSubmit(){
     console.log("submit clicked")
     console.log(this.eventForm.value);
@@ -72,5 +76,8 @@ export class EventFormComponent {
       console.log("oops")
     }
  }
+ onQuit(){
+  this.router.navigate(['/userprofile'])
+}
 }
 
