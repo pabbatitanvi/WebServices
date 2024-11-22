@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-event-form',
   standalone: true,
@@ -77,6 +78,7 @@ export class EventFormComponent {
     }
     this.router.navigate(['/userprofile'])
  }
+ 
  onQuit(){
   this.router.navigate(['/userprofile'])
 }
