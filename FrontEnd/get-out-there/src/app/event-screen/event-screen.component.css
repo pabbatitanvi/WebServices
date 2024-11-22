@@ -1,3 +1,10 @@
+/*
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_alignment#types_of_alignment
+  THIS SITE IS A LIFE-SAVER, I used it to make the boxes align in groups like they do, just adjusted the look of each box afterwards.
+5/5 would copy this code again.
+*/
+
+
 /*Adds background gradient image*/
 .events{
     background-image: url(../assets/background_gradient.png);
@@ -13,25 +20,30 @@
     width: 50%;
 }
 
-.row:after {
-    content: "";
-    /*display: table;*/
-    clear: both;    
-}
-
 /* Style for the event boxes */
-.event-box {
+.event-box > * {
     width: 300px;
     height: 250px;
     border: 1px solid black;
     padding: 10px;
     margin: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
     margin-left: 20px;
     background-color: white;
     border-radius: 25px;
     font-family: monospace, monaco;
     font-weight: bold;
+    text-align: center;
+}
+
+.event-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 2em;
+}
+  
+.event-box :first-child {
+    align-self: center;
 }
 
 .fit-picture{
