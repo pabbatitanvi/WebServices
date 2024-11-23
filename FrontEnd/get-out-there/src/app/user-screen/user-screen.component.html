@@ -64,7 +64,8 @@
 
             <div class="post-details">
                 <p class="post-name">{{post.Caption | uppercase}}</p>
-                <p class="post-desc">{{post.LocationName}}</p>
+                <p class="post-desc">Location: {{post.LocationName}}</p>
+                <p class="post-desc">{{post.Description}}</p>
             </div>
             <div class="post-tags-box" *ngFor="let tag of post.Tags">
               {{tag}}
