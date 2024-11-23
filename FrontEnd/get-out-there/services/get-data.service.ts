@@ -47,7 +47,11 @@ export class GetDataService {
     let result = this.http.post(url, Dataob, this.httpoptions)
     return result;
   }
-
+  getEvents():Observable<any>{
+    let url="http://localhost:3000/getevents"
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   createNewPost(Dataob:any):Observable<any>{
     console.log("received at middle man: ", Dataob)
     

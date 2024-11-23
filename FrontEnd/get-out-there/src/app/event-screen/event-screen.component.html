@@ -2,7 +2,6 @@
 <!-- Navigation bar -->
 <app-navigation-bar>    </app-navigation-bar>
 <section class="events">
-<h1>
 
     <div class="row">
         <div class="column">
@@ -10,13 +9,23 @@
             <input type="text" id="mySearch" placeholder="Search events" title="Type in a category">
 
             <!-- Make event box for every event in the list -->
-            <div class="event-box">
-                <div style="white-space:pre-wrap" *ngFor="let event of events">
-                    {{event.name}}
-                    {{event.location}}
+            <div class="event-box" *ngFor="let event of events">
+                    <div class="event">
+                        <div class="event-date-box">
+                            <p class="event-day">{{event.date | date: 'd'}}</p>
+                            <p class="event-month">{{event.date | date: 'MMMM'}}</p>
+                            <p class="event-year">{{event.date | date: 'yyyy'}}</p>
+                        </div>
+
+                    <div class="event-details">
+                        <p class="event-name">{{event.eventName | uppercase}}</p>
+                        <p class="event-desc">{{event.description}}</p>
+                        <p class="event-price">Price: ${{event.price}}</p>
+                        <p class="event-time">Time of the event: {{event.startTime}} - {{event.endTime}}</p>
+                    </div>
+                    
                 </div>
             </div>
-
         </div>
 
         <!-- The right half of the screen -->
@@ -28,5 +37,5 @@
             />
         </div>
     </div>
-</h1>
+
 </section>
