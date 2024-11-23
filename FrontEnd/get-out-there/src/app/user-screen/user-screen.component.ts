@@ -3,6 +3,7 @@ import { NavigationBarComponent } from "../navigation-bar/navigation-bar.compone
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GetDataService } from '../../../services/get-data.service';
+import {ObjectId} from 'mongodb';
 
 @Component({
   selector: 'app-user-screen',
@@ -41,7 +42,10 @@ export class UserScreenComponent implements OnInit{
   ]
 
   onEventCreate(): void{
-      this.router.navigate(['/postform'])
-    }
-  
+    this.router.navigate(['/postform'])
+  }
+  onDeletePost(postID: ObjectId){
+    this.dataService.deletePosts(postID).subscribe((result)=>{})
+    window.location.reload();
+  }
 }

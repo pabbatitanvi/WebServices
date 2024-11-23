@@ -54,14 +54,16 @@
           <!-- Make event box for every event in the list -->
         <div class="post-box" *ngFor="let post of posts">
           <div class="post">
-            
+            <!-- Delete Button-->
+            <button type="button" class="btn-close" aria-label="Close" (click)="onDeletePost(post._id)"></button>
+            <!-- Date in the date box -->
             <div class="post-date-box">
                 <p class="post-day">{{post.Date | date: 'd'}}</p>
                 <p class="post-month">{{post.Date | date: 'MMMM'}}</p>
                 <p class="post-year">{{post.Date | date: 'yyyy'}}</p>
             </div>
 
-
+            <!-- Post details in the post details section-->
             <div class="post-details">
                 <p class="post-name">{{post.Caption | uppercase}}</p>
                 <p class="post-desc">Location: {{post.LocationName}}</p>
