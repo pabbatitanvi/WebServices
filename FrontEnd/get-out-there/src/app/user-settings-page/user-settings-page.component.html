@@ -1,0 +1,77 @@
+<div id="main-body" class="main-body">
+    <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
+  
+    <div class="container-fluid">
+      <!--ROW 1 START-->
+      <div class="row" >
+        <!--ROW 1 START-->
+        <div class="col-md-2">
+  
+        </div>
+        <div class="col-md-8">
+            
+            <h1 id = "userTitle">
+                 PROFILE SETTINGS
+            </h1>
+            
+        </div>
+        <div class="col-md-2">
+  
+  
+        </div>
+    </div>
+        
+        <!--ROW 1 END-->
+      </div>
+      <!--ROW 1 END-->
+    
+      <!--ROW 2 START-->
+      <div class="row">
+        <div class="col-md-2">
+  
+        </div>
+        <div class="col-md-8">
+            <form class = "form" formGroup = "userForm" s>
+               
+                <section class = "questions">
+                    
+                    <section class = "choose-tags-container">
+                        <label for = "chooseTags">Choose Tags</label>
+                        <!-- <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown> -->
+                    </section>
+                    <section class = "name">
+                        <div class="mb-3" >
+                            <label id = "fName" for = "firstName">First name</label>
+                            <input type = "text" formControlName = "firstName">
+                        </div>
+                        <div *ngIf = "userForm.get('userType')?.value == 'User'">
+                            <label id = "mName" for = "middleName">Middle name</label>
+                            <input type = "text" formControlName = "middleName">
+                        </div>
+                        <div *ngIf = "userForm.get('userType')?.value == 'User'">
+                            <label id = "lName" for = "lastName">Last name</label>
+                            <input type = "text" formControlName = "lastName">
+                        </div>
+                    </section>
+                    <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
+                        <label id = "oName" for = "organizationname">Organization Name</label>
+                        <input type = "text" formControlName = "organizationName" required>
+                    </div>
+                    <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
+                        <label id = "cMem" for = "choosemembership">Choose Membership</label>
+                        <input type = "text" formControlName = "chooseMembership" required>
+                    </div>
+                    <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
+                        <label id = "location" for = "location">Location</label>
+                        <input type = "text" formControlName = "location" required>
+                    </div>
+                </section>
+                <button class = "submit-button" type = "submit">Submit</button>
+            </form>
+          
+        </div>
+        <div class="col-md-2">
+  
+      </div>
+      <!--ROW 2 END-->
+  </div>
