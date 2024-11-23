@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
@@ -9,16 +9,20 @@ import { Router } from '@angular/router';
   selector: 'app-user-form',
   standalone: true,
   imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
+
   templateUrl: './post-form.component.html',
   styleUrl: './post-form.component.css'
 })
 
 export class PostFormComponent implements OnInit{
   
-  constructor(public dataService: GetDataService, private router: Router) { }
+  constructor(public dataService: GetDataService, private router: Router) {  }
   ngOnInit(): void {
     
   }
+
+  // This allows it to grab the CURRENT date for a post!
+  currentDate : Date = new Date();
 
   tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
                       { id: 2, itemName: 'Books' },
@@ -32,8 +36,8 @@ export class PostFormComponent implements OnInit{
     Description: new FormControl(''),
     Tags: new FormArray([]),
     LocationName: new FormControl(''),
-    UserID: new FormControl('')
-
+    UserID: new FormControl(''),
+    Date: new FormControl(this.currentDate)
   });
 
   selected: any[] = [{ id: 1, itemName: 'Museum' }]

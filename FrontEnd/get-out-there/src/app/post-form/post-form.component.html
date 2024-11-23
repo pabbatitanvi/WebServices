@@ -6,6 +6,7 @@
         <form class = "form" [formGroup] = "postForm" (ngSubmit) = "onSubmit()">
             <!-- close button (exit the form)-->
             <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
+            <p>{{currentDate | date:'shortDate'}}</p>
             <section class = "questions">
                 <div>
                     <label id = "postName" for = "Caption">Caption</label>
