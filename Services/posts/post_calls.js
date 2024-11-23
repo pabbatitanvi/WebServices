@@ -26,6 +26,12 @@ module.exports = function(app){
         return res.send("Post modified");
     })
 
+    app.get('/getposts', async(req, res) => {
+        let data = await post.getPosts();
+        console.log(data);
+        return res.json(data);
+    })
+
     app.get('/getpostbylocation/:location', async(req, res) => {
         const location = req.params.location
         let data = await post.postByLocation(location)

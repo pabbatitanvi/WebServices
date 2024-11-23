@@ -46,18 +46,31 @@
     </div>
     <!--ROW 1 END-->
     <!--ROW 2 START-->
-    <div class="row" *ngFor="let post of posts">
+    <div class="row">
       <div class="col-md-2">
 
       </div>
       <div class="col">
-        <ul>
-            <li>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQciZUXDEUgpAVtexBM1iA6rMAaqnebXAQL5NUK9bgWK8Wig1CGGaAFvXCV3fIImzbON1Y&usqp=CAU"
-                    alt="I studied software Engineering at Penn State Behrend's School of Engineering"
-                    title="I studied software Engineering at Penn State Behrend's School of Engineering" width="100%"/>
-            </li>
-        </ul>
+          <!-- Make event box for every event in the list -->
+        <div class="post-box" *ngFor="let post of posts">
+          <div class="post">
+            
+            <div class="post-date-box">
+                <p class="post-day">{{post.Date | date: 'd'}}</p>
+                <p class="post-month">{{post.Date | date: 'MMMM'}}</p>
+                <p class="post-year">{{post.Date | date: 'yyyy'}}</p>
+            </div>
+
+
+            <div class="post-details">
+                <p class="post-name">{{post.Caption | uppercase}}</p>
+                <p class="post-desc">{{post.LocationName}}</p>
+            </div>
+            <div class="post-tags-box" *ngFor="let tag of post.Tags">
+              {{tag}}
+            </div>
+          </div>
+        </div>
         
       </div>
       <div class="col-md-2">

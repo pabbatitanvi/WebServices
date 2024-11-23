@@ -42,6 +42,12 @@ async function postDelete(postId){
         throw err
     }
 }
+// Get ALL posts
+async function getPosts(){
+    _database = mongodb.getDb().collection('Posts')
+    let data = await _database.find().toArray()
+    return data
+}
 
 //Get post by location
 async function postByLocation(location){
@@ -98,4 +104,4 @@ async function postByTag(tag, maxNumResults = Number.MAX_SAFE_INTEGER){
     }
 }
 
-module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag};
+module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag, getPosts};

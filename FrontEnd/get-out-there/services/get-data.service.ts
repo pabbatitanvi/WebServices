@@ -62,5 +62,10 @@ export class GetDataService {
     return  result;
 
   }
+  getPosts():Observable<any>{
+    let url = "http://localhost:3000/getposts"
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
 
 }
