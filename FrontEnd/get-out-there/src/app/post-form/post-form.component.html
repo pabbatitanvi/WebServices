@@ -8,15 +8,15 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
             <section class = "questions">
                 <div>
-                    <label id = "postName" for = "postName">Post Name</label>
-                    <input class="form-control" type = "text" formControlName = "postName">
+                    <label id = "postName" for = "Caption">Caption</label>
+                    <input class="form-control" type = "text" formControlName = "Caption">
                 </div>
                 <div class="form-group">
-                    <label for="comment">Description</label>
-                    <textarea class="form-control" rows="5" id="comment" formControlName = "description"></textarea>
+                    <label for="Description">Description</label>
+                    <textarea class="form-control" rows="5" id="comment" formControlName = "Description"></textarea>
                 </div>
                 <section class = "choose-tags-container">
-                    <label for = "chooseTags">Choose Tags</label>
+                    <label for = "Tags">Choose Tags</label>
                     <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
                 </section>
             <button class = "submit-button" type = "submit">Create</button>

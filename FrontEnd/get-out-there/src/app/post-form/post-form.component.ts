@@ -28,11 +28,11 @@ export class PostFormComponent implements OnInit{
                     ]
 
   postForm = new FormGroup({
-    postName: new FormControl(''),
-    description: new FormControl(''),
-    chooseTags: new FormArray([]),
-    location: new FormControl(''),
-    userID: new FormControl('')
+    Caption: new FormControl(''),
+    Description: new FormControl(''),
+    Tags: new FormArray([]),
+    LocationName: new FormControl(''),
+    UserID: new FormControl('')
 
   });
 
@@ -48,7 +48,7 @@ export class PostFormComponent implements OnInit{
   };
   
   get chooseTags():FormArray{
-    return this.postForm.get('chooseTags') as FormArray;
+    return this.postForm.get('Tags') as FormArray;
   }
   onSelectedTags($event: any){
     console.log(':', $event)
