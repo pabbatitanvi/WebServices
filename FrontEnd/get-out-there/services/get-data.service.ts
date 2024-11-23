@@ -63,6 +63,8 @@ export class GetDataService {
     return  result;
 
   }
+  // Get all posts, used for the user's profile screen (will be replaced by searching for all posts by the current user once
+  //login is implemented)
   getPosts():Observable<any>{
     let url = "http://localhost:3000/getposts"
     let result = this.http.get(url, this.httpoptions)

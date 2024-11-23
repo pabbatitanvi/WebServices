@@ -97,11 +97,12 @@ async function postByTag(tag, maxNumResults = Number.MAX_SAFE_INTEGER){
             console.log(`   Location name: ${result.LocationName}`);
             console.log(`   Date: ${result.Date}`);
         });
+        return results;
     } else {
         console.log(`No listings found with tag ${tag} (or something went wrong)`);
         console.log(`results : ${results}`);
         console.log(`search values : ${tag}`)
+        return 0;
     }
 }
-
 module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag, getPosts};

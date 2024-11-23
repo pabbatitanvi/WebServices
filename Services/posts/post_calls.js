@@ -42,8 +42,8 @@ module.exports = function(app){
     app.get('/getpostbytag/:tag', async(req, res) => {
         const tag = req.params.tag
         let data = await post.postByTag(tag)
-        console.log("Posts based on inputted tag", data);
-        return res.send("Information is displayed");
+        console.log(data);
+        return res.json(data);
     })
 
     app.get('/getpostbyuser/:userId', async(req, res) => {
