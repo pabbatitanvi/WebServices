@@ -10,15 +10,18 @@ module.exports = function(app){
         console.log(data, "Freinds by tags");
         return res.send("Freinds searched for by tag");
     })
-    app.post('/friendsbyusername', async(req, res) => {
-        const id = req.params.userId;
+    app.post('/friendsbyusername/:userId/:username', async(req, res) => {
+        const userId = req.params.userId;
         const username = req.params.username;
-        let data = await friends.friendsByUsername(id, username);
+        let data = await friends.friendsByUsername(userId, username);
         console.log(data, "Friend added");
         return res.send("Friend added by username");
     })
-    app.delete('/deletefriend', async(req, res) => {
-        console.log(req.body);
+    app.delete('/deletefriend/:userId/:username', async(req, res) => {
+        const userId = req.params.userId;
+        const username = req.params.username;
+        let data = await friends.deleteFriend(userId, username);
+        console.log(data, "Friend deleted");
         return res.send("Deleted Friend")
     })
 }
