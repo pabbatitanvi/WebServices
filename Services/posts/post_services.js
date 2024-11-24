@@ -105,4 +105,11 @@ async function postByTag(tag, maxNumResults = Number.MAX_SAFE_INTEGER){
         return 0;
     }
 }
-module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag, getPosts};
+
+async function getPostInfo(postID){
+    _database = mongodb.getDb().collection('Posts')
+    let data = await _database.findOne({_id: postID})
+    return JSON.stringify(data)
+}
+
+module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag, getPosts, getPostInfo};

@@ -52,4 +52,11 @@ module.exports = function(app){
         console.log("Posts based on inputted user", data);
         return res.send("Information is displayed");
     })
+
+    app.get('/getpostinfo/:postid', async(req, res) => {
+        const postID = new ObjectId(req.params.postid)
+        let data = await post.getPostInfo(postID)
+        console.log(data);
+        return res.json(data);
+    })
 }

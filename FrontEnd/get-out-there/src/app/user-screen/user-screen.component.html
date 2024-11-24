@@ -72,6 +72,7 @@
             <div class="post-tags-box" *ngFor="let tag of post.Tags">
               {{tag}}
             </div>
+            <button type="button" class="btn-close" aria-label="Open" (click)="onEditPost(post._id)"></button>
           </div>
         </div>
         

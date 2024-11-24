@@ -48,4 +48,7 @@ export class UserScreenComponent implements OnInit{
     this.dataService.deletePosts(postID).subscribe((result)=>{})
     window.location.reload();
   }
+  onEditPost(postID: ObjectId){
+    this.router.navigate(['/posteditform/' + postID])
+  }
 }

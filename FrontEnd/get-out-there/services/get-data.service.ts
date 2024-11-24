@@ -75,5 +75,11 @@ export class GetDataService {
     let result = this.http.delete(url, this.httpoptions)
     return result;
   }
+  getPostInfo(postID: string):Observable<any>{
+    let url = "http://localhost:3000/getpostinfo/" + postID
+    let result = this.http.get(url, this.httpoptions)
+    console.log("RESULT: " + result)
+    return result;
+  }
 
 }
