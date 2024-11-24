@@ -4,7 +4,7 @@ const mongodb = require('../database.js');
 async function friendsByTag(tags){
     _database = mongodb.getDb().collection('Users')
     try{
-        let data = await _database.find({Tags: tags}).toArray()
+        let data = await _database.find({ChooseTags: tags}).toArray()
         return data
     }catch{
         console.error(err)
@@ -12,5 +12,17 @@ async function friendsByTag(tags){
     }
 }
 //Search for freinds by username 
+async function friendsByUsername(userId, username){
+    _database = mongodb.getDb().collection('Users')
+    try{
+        let data = await _database.find({_id: userId, Username: username})
+        return data
+    }catch{
+        console.error(err)
+        throw err
+    }
+}
 
-//Delete Freind
+//delete friend
+
+module.exports = {friendsByTag, friendsByUsername}
