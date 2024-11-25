@@ -19,20 +19,27 @@ export class EventFormComponent {
   ngOnInit(): void {
     
   }
-  tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
+  tagsArray: any[] = [
+    { id: 1, itemName: 'Museum' }, 
     { id: 2, itemName: 'Books' },
     { id: 3, itemName: 'Coffee' },
     { id: 4, itemName: 'History' },
-    { id: 5, itemName: 'Art' }
+    { id: 5, itemName: 'Art' },
+    { id: 6, itemName: 'Nature' },
+    { id: 7, itemName: 'Hiking' },
+    { id: 8, itemName: 'Arcade' },
   ]
 
   eventForm = new FormGroup({
     eventName: new FormControl(''),
     description: new FormControl(''),
-    date: new FormControl(''),
-    startTime: new FormControl(''),
+    date: new FormControl(new Date()),
+    startTime: new FormControl(new Date()),
     endTime: new FormControl(''),
-    chooseTags: new FormArray([]),  
+    chooseTags: new FormArray([]),
+    price: new FormControl(''),
+    organization: new FormControl(''),
+    location: new FormControl(''),
 });
 
 

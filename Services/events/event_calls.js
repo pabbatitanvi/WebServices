@@ -29,6 +29,11 @@ module.exports = function(app){
         console.log(data, "Events by tags");
         return res.send("Event searched for by tags");
     })
+    app.get('/getevents', async(req, res) => {
+        let data = await event.getEvent();
+        console.log(data);
+        return res.json(data);
+    })
     app.get('/geteventinfobyprice/:price', async(req, res) => {
         const price = req.params.price;
         let data = await event.eventByPrice(price);

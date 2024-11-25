@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ObjectId} from 'mongodb';
 
 // interface Data {  
 //   colour: string,
@@ -52,7 +53,11 @@ export class GetDataService {
     let result = this.http.post(url, Dataob, this.httpoptions)
     return result;
   }
-
+  getEvents():Observable<any>{
+    let url="http://localhost:3000/getevents"
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   createNewPost(Dataob:any):Observable<any>{
     console.log("received at middle man: ", Dataob)
     
@@ -62,6 +67,24 @@ export class GetDataService {
     console.log("just sent the request to the service!")
     return  result;
 
+  }
+  // Get all posts, used for the user's profile screen (will be replaced by searching for all posts by the current user once
+  //login is implemented)
+  getPosts():Observable<any>{
+    let url = "http://localhost:3000/getposts"
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  deletePosts(postID: ObjectId):Observable<any>{
+    let url = "http://localhost:3000/deletepost/" + postID
+    let result = this.http.delete(url, this.httpoptions)
+    return result;
+  }
+  getPostInfo(postID: string):Observable<any>{
+    let url = "http://localhost:3000/getpostinfo/" + postID
+    let result = this.http.get(url, this.httpoptions)
+    console.log("RESULT: " + result)
+    return result;
   }
 
 }

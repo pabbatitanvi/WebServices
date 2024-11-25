@@ -5,25 +5,23 @@ const friends = require('./friends_services.js')
 // ----------------------------------------- Friends -----------------------------------------
 module.exports = function(app){
     app.get('/friendsByTag/:tags', async(req, res) =>{
-        // console.log(req.body.Friends);
-        // console.log("Suggesting friends based on tags");
-        // let replyArray = {
-        //     "UserID1": "1010",
-        //     "UserID2": "1111",
-        //     "UserID3": "0001"
-        // }
-        // return res.json(replyArray);
         const tags = req.params.tags;
         let data = await friends.friendsByTag(tags);
         console.log(data, "Freinds by tags");
         return res.send("Freinds searched for by tag");
     })
-    app.post('/friendsbyusername', async(req, res) => {
-        console.log(req.body);
-        return res.send("Added Friend")
+    app.post('/friendsbyusername/:userId/:username', async(req, res) => {
+        const userId = req.params.userId;
+        const username = req.params.username;
+        let data = await friends.friendsByUsername(userId, username);
+        console.log(data, "Friend added");
+        return res.send("Friend added by username");
     })
-    app.delete('/deletefriend', async(req, res) => {
-        console.log(req.body);
+    app.delete('/deletefriend/:userId/:username', async(req, res) => {
+        const userId = req.params.userId;
+        const username = req.params.username;
+        let data = await friends.deleteFriend(userId, username);
+        console.log(data, "Friend deleted");
         return res.send("Deleted Friend")
     })
 }

@@ -42,6 +42,12 @@ async function postDelete(postId){
         throw err
     }
 }
+// Get ALL posts
+async function getPosts(){
+    _database = mongodb.getDb().collection('Posts')
+    let data = await _database.find().toArray()
+    return data
+}
 
 //Get post by location
 async function postByLocation(location){
@@ -91,11 +97,19 @@ async function postByTag(tag, maxNumResults = Number.MAX_SAFE_INTEGER){
             console.log(`   Location name: ${result.LocationName}`);
             console.log(`   Date: ${result.Date}`);
         });
+        return results;
     } else {
         console.log(`No listings found with tag ${tag} (or something went wrong)`);
         console.log(`results : ${results}`);
         console.log(`search values : ${tag}`)
+        return 0;
     }
 }
 
-module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag};
+async function getPostInfo(postID){
+    _database = mongodb.getDb().collection('Posts')
+    let data = await _database.findOne({_id: postID})
+    return JSON.stringify(data)
+}
+
+module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag, getPosts, getPostInfo};

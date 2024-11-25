@@ -26,6 +26,12 @@ module.exports = function(app){
         return res.send("Post modified");
     })
 
+    app.get('/getposts', async(req, res) => {
+        let data = await post.getPosts();
+        console.log(data);
+        return res.json(data);
+    })
+
     app.get('/getpostbylocation/:location', async(req, res) => {
         const location = req.params.location
         let data = await post.postByLocation(location)
@@ -36,8 +42,8 @@ module.exports = function(app){
     app.get('/getpostbytag/:tag', async(req, res) => {
         const tag = req.params.tag
         let data = await post.postByTag(tag)
-        console.log("Posts based on inputted tag", data);
-        return res.send("Information is displayed");
+        console.log(data);
+        return res.json(data);
     })
 
     app.get('/getpostbyuser/:userId', async(req, res) => {
@@ -45,5 +51,12 @@ module.exports = function(app){
         let data = await post.postByUser(users)
         console.log("Posts based on inputted user", data);
         return res.send("Information is displayed");
+    })
+
+    app.get('/getpostinfo/:postid', async(req, res) => {
+        const postID = new ObjectId(req.params.postid)
+        let data = await post.getPostInfo(postID)
+        console.log(data);
+        return res.json(data);
     })
 }

@@ -4,21 +4,41 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
 import { GetDataService } from '../../../services/get-data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Post } from '../../models/post';
+
 @Component({
   selector: 'app-user-form',
   standalone: true,
   imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
 
-  templateUrl: './post-form.component.html',
-  styleUrl: './post-form.component.css'
+  templateUrl: './post-edit-form.component.html',
+  styleUrl: './post-edit-form.component.css'
 })
 
-export class PostFormComponent implements OnInit{
+export class PostEditFormComponent implements OnInit{
   
-  constructor(public dataService: GetDataService, private router: Router) {  }
+  postID!: string;
+  public postToEdit!: string;
+  public myObj!: Post;
+  constructor(public dataService: GetDataService, private router: Router, private route: ActivatedRoute) {}
+
+  public caption !: string;
+  // public location: string;
+
   ngOnInit(): void {
-    
+    this.route.params.subscribe(params => {
+      this.postID = params['postid'];
+    });
+
+    let response = this.dataService.getPostInfo(this.postID).subscribe((postResult)=>{
+      console.log("getting post data...")
+      this.postToEdit = postResult;
+      this.myObj = JSON.parse(this.postToEdit);
+      console.log("POST SEARCH RESULT (postToEdit):" + this.postToEdit)
+      console.log("Post caption:", this.myObj.Caption)
+      this.caption = this.myObj.Caption;
+    })
   }
 
   // This allows it to grab the CURRENT date for a post!
@@ -32,7 +52,7 @@ export class PostFormComponent implements OnInit{
                     ]
 
   postForm = new FormGroup({
-    Caption: new FormControl(''),
+    Caption: new FormControl(this.caption),
     Description: new FormControl(''),
     Tags: new FormArray([]),
     LocationName: new FormControl(''),
@@ -72,6 +92,8 @@ export class PostFormComponent implements OnInit{
   onSubmit(){
     console.log(this.postForm.value)
     if(this.postForm.valid){
+
+      // CHANGE TO MODIFY SERVICE!
       let response = this.dataService.createNewPost(this.postForm.value).subscribe((result)=>{
         console.log("post was sent to the middle man")
       })

@@ -8,6 +8,7 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { PostEditFormComponent } from './post-edit-form/post-edit-form.component';
 import { UserSettingsPageComponent } from './user-settings-page/user-settings-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 
@@ -22,6 +23,7 @@ export const routes: Routes = [
     {path: 'createaccount', component: UserFormComponent},
     {path: 'eventform', component: EventFormComponent},
     {path: 'postform', component: PostFormComponent},
+    {path: 'posteditform/:postid', component: PostEditFormComponent},
     {path: 'modifyprofile', component: UserSettingsPageComponent}
 ];
 

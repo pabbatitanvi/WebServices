@@ -44,7 +44,12 @@ async function eventDelete(eventID){
         throw err
     }
 }
-
+//get all events
+async function getEvent(){
+    _database = mongodb.getDb().collection('Events')
+    let data = await _database.find().toArray()
+    return data
+}
 //Get event by price
 async function eventByPrice(price){
     _database = mongodb.getDb().collection('Events')
@@ -127,4 +132,4 @@ async function eventLocation(eventID){
     }
 }
 
-module.exports = {eventAdd, eventModify, eventDelete, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation};
+module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation};
