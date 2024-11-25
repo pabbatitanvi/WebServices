@@ -7,6 +7,8 @@ import { EventScreenComponent } from './event-screen/event-screen.component';
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { EventFormComponent } from './event-form/event-form.component';
+import { PostFormComponent } from './post-form/post-form.component';
+import { PostEditFormComponent } from './post-edit-form/post-edit-form.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'login', pathMatch:'full'},//This means that when the path is empty after the 4200 in the url, it redirects to the /home url, loading the home screen
@@ -15,9 +17,10 @@ export const routes: Routes = [
     {path: 'userprofile', component: UserScreenComponent},
     {path: 'friends', component:FriendScreenComponent},
     {path: 'events', component:EventScreenComponent},
-    {path: 'userform', component: UserFormComponent},
-    {path: 'eventform', component: EventFormComponent}
-
+    {path: 'createaccount', component: UserFormComponent},
+    {path: 'eventform', component: EventFormComponent},
+    {path: 'postform', component: PostFormComponent},
+    {path: 'posteditform/:postid', component: PostEditFormComponent}
 ];
 
 @NgModule({

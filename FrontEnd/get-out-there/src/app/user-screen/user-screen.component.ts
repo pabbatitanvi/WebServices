@@ -1,15 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";//this imports the nav bar component into this file allowing its use here
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { GetDataService } from '../../../services/get-data.service';
+import {ObjectId} from 'mongodb';
 
 @Component({
   selector: 'app-user-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf], //mentioning the objects to import from the imported components
+  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule], //mentioning the objects to import from the imported components
   templateUrl: './user-screen.component.html',
   styleUrl: './user-screen.component.css'
 })
-export class UserScreenComponent {
+export class UserScreenComponent implements OnInit{
+
+  constructor(public dataService: GetDataService, private router:Router) { }
+  public posts: any = []
+  ngOnInit(): void {
+    this.dataService.getPosts().subscribe((posts) => {
+      this.posts = posts
+    })
+  }
+  /*
   public posts: any = [
     {"name" : "POST 1", "Description" : "Paris", "id" : 1},
     {"name" : "POST 2", "Description" : "London", "id" : 2} ,
@@ -21,12 +33,22 @@ export class UserScreenComponent {
     {"name" : "POST 8", "Description" : "Berlin", "id" : 8},
     {"name" : "POST 9", "Description" : "Berlin", "id" : 9},
   ]
+  */
   public current_user:any=[
     {"usertype":"user", 
      "username":"Dragonfable",
      "userinfo":"Software Engineer, PSU '25"
     }
-
-
   ]
+
+  onEventCreate(): void{
+    this.router.navigate(['/postform'])
+  }
+  onDeletePost(postID: ObjectId){
+    this.dataService.deletePosts(postID).subscribe((result)=>{})
+    window.location.reload();
+  }
+  onEditPost(postID: ObjectId){
+    this.router.navigate(['/posteditform/' + postID])
+  }
 }

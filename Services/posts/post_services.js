@@ -1,10 +1,13 @@
 
+const mongodb = require('../database.js');
+
 //Add post data to database
-async function postAdd(database, userob) {
+async function postAdd(userob) {
     console.log(userob, 'User Object')
+    _database = mongodb.getDb().collection('Posts')
     try{
         //inserts data into the database
-        let data = await database.collection('Posts').insertOne(userob)
+        let data = await _database.insertOne(userob)
         //returns the unique id of the data created
         return data.insertedId
     } catch (err){
@@ -14,10 +17,11 @@ async function postAdd(database, userob) {
 }
 
 //Modify post data to database
-async function postModify(database, postId, updateData){
+async function postModify(postId, updateData){
+    _database = mongodb.getDb().collection('Posts')
     try{
         //modifies data using the id
-        let data = await database.collection('Posts').updateOne({_id: postId}, {$set: updateData})
+        let data = await _database.updateOne({_id: postId}, {$set: updateData})
         console.log('Post modified in mongodb')
         //return data;
     } catch (err) {
@@ -27,22 +31,30 @@ async function postModify(database, postId, updateData){
 }
 
 //Delete post data
-async function postDelete(database, postId){
+async function postDelete(postId){
+    _database = mongodb.getDb().collection('Posts')
     try{
         //deletes the post data using the id
-        let data = await database.collection('Posts').deleteOne({_id: postId})
+        let data = await _database.deleteOne({_id: postId})
         console.log('Post deleted')
     } catch (err) {
         console.error(err)
         throw err
     }
 }
+// Get ALL posts
+async function getPosts(){
+    _database = mongodb.getDb().collection('Posts')
+    let data = await _database.find().toArray()
+    return data
+}
 
 //Get post by location
-async function postByLocation(database, location){
+async function postByLocation(location){
+    _database = mongodb.getDb().collection('Posts')
     try{
         //creates an array of all the occurences of the location
-        let data = await database.collection('Posts').find({LocationName: location}).toArray()
+        let data = await _database.find({LocationName: location}).toArray()
         return data
     } catch (err) {
         console.error(err)
@@ -51,10 +63,11 @@ async function postByLocation(database, location){
 }
 
 //Get post by user
-async function postByUser(database, userId){
+async function postByUser(userId){
+    _database = mongodb.getDb().collection('Posts')
     try{
         //creates an array of all the occurences of the userId
-        let data = await database.collection('Posts').find({UserId: userId}).toArray()
+        let data = await _database.find({UserId: userId}).toArray()
         return data
     } catch (err) {
         console.error(err)
@@ -62,9 +75,11 @@ async function postByUser(database, userId){
     }
 }
 
-async function postByTag(database, tag, maxNumResults = Number.MAX_SAFE_INTEGER){
+async function postByTag(tag, maxNumResults = Number.MAX_SAFE_INTEGER){
+
+    _database = mongodb.getDb().collection('Posts')
     
-    cursor = database.collection("Posts").find(
+    cursor = _database.find(
         {
             Tags: tag,
         }
@@ -82,11 +97,19 @@ async function postByTag(database, tag, maxNumResults = Number.MAX_SAFE_INTEGER)
             console.log(`   Location name: ${result.LocationName}`);
             console.log(`   Date: ${result.Date}`);
         });
+        return results;
     } else {
         console.log(`No listings found with tag ${tag} (or something went wrong)`);
         console.log(`results : ${results}`);
         console.log(`search values : ${tag}`)
+        return 0;
     }
 }
 
-module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag};
+async function getPostInfo(postID){
+    _database = mongodb.getDb().collection('Posts')
+    let data = await _database.findOne({_id: postID})
+    return JSON.stringify(data)
+}
+
+module.exports = {postAdd, postModify, postDelete, postByLocation, postByUser, postByTag, getPosts, getPostInfo};

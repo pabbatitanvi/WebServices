@@ -1,9 +1,13 @@
+
+const mongodb = require('../database.js');
+
 // Add event to database
-async function eventAdd(database, userob){
+async function eventAdd(userob){
     console.log(userob,'User Object')
+    _database = mongodb.getDb().collection('Events')
     try{
         //inserts event data into the database
-        let data = await database.collection('Events').insertOne(userob)
+        let data = await _database.insertOne(userob)
         //returns the id of the event created
         return data.insertedId
     } catch (err){ 
@@ -13,10 +17,11 @@ async function eventAdd(database, userob){
 }
 
 //Modify Event data to database
-async function eventModify(database, eventID, updateData){
+async function eventModify(eventID, updateData){
+    _database = mongodb.getDb().collection('Events')
     try{
         //Delete event by id
-        let data = await database.collection('Events').updateOne(
+        let data = await _database.updateOne(
                 {_id: eventID}, 
                 {$set: updateData}
             )
@@ -28,23 +33,30 @@ async function eventModify(database, eventID, updateData){
 }
 
 //Delete Event
-async function eventDelete(database, eventID){
+async function eventDelete(eventID){
+    _database = mongodb.getDb().collection('Events')
     try{
         //delete user by id
-        let data = await database.collection('Events').deleteOne({_id: eventID})
+        let data = await _database.deleteOne({_id: eventID})
         console.log('Event Deleted')
     }catch (err){
         console.error(err)
         throw err
     }
 }
-
+//get all events
+async function getEvent(){
+    _database = mongodb.getDb().collection('Events')
+    let data = await _database.find().toArray()
+    return data
+}
 //Get event by price
-async function eventByPrice(database, price){
+async function eventByPrice(price){
+    _database = mongodb.getDb().collection('Events')
     if(price >= 0){
         try{
             //create an array of all occurences of the price
-            let data = await database.collection('Events').find({Price: price}).toArray()
+            let data = await _database.find({Price: price}).toArray()
             return data
         }catch (err){
             console.error(err)
@@ -57,10 +69,11 @@ async function eventByPrice(database, price){
 }
 
 //get event by tag
-async function eventByTag(database, tags){
+async function eventByTag(tags){
+    _database = mongodb.getDb().collection('Events')
     try{
         //creates an array of all occurences of tag
-        let data = await database.collection('Events').find({Tags: tags}).toArray()
+        let data = await _database.find({Tags: tags}).toArray()
         return data
     }catch{
         console.error(err)
@@ -69,10 +82,11 @@ async function eventByTag(database, tags){
 }
 
 //get event by area
-async function eventByArea(database, area){
+async function eventByArea(area){
+    _database = mongodb.getDb().collection('Events')
     try{
         //create a list of events at a location
-        let data = await database.collection('Events').find({Location: area}).toArray()
+        let data = await _database.find({Location: area}).toArray()
         return data
     }catch{
         console.error(err)
@@ -81,10 +95,11 @@ async function eventByArea(database, area){
 }
 
 //get event by host 
-async function eventByHost(database, host){
+async function eventByHost(host){
+    _database = mongodb.getDb().collection('Events')
     try{
         //create a list of events from a specific host
-        let data = await database.collection('Events').find({Host: host}).toArray()
+        let data = await _database.find({Host: host}).toArray()
         return data
     }catch{
         console.error(err)
@@ -93,9 +108,10 @@ async function eventByHost(database, host){
 }
 
 //Share event
-async function shareEvent(database, eventID){
+async function shareEvent(eventID){
+    _database = mongodb.getDb().collection('Events')
     try{
-        let data = await database.collection('Events').insertOne(eventID)
+        let data = await _database.insertOne(eventID)
         return data.insertedID
     }catch{
         console.error(err)
@@ -104,10 +120,11 @@ async function shareEvent(database, eventID){
 }
 
 //Get event address
-async function eventLocation(database, eventID){
+async function eventLocation(eventID){
+    _database = mongodb.getDb().collection('Events')
     try{
         //Returns location from event ID
-        let data = await database.collection('Events').find({_id: eventID})
+        let data = await _database.find({_id: eventID})
         return data
     }catch (err){
         console.error(err)
@@ -115,4 +132,4 @@ async function eventLocation(database, eventID){
     }
 }
 
-module.exports = {eventAdd, eventModify, eventDelete, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation};
+module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation};
