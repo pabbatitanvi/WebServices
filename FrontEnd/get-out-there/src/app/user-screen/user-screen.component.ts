@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
 export class UserScreenComponent implements OnInit{
   constructor(private router:Router){}
   ngOnInit(): void {
-    
+    console.log(this.USEROBJ);
   }
+  public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
+  
   public posts: any = [
     {"name" : "POST 1", "Description" : "Paris", "id" : 1},
     {"name" : "POST 2", "Description" : "London", "id" : 2} ,
@@ -28,8 +30,7 @@ export class UserScreenComponent implements OnInit{
   ]
   public current_user:any=[
     {"usertype":"user", 
-     "username":"Dragonfable",
-     "userinfo":"Software Engineer, PSU '25"
+     
     }
   ]
 

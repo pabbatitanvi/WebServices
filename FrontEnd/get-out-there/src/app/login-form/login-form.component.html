@@ -1,0 +1,29 @@
+  <div class="main-body">
+  <div class="container-fluid ">
+    <!--ROW 1 START-->
+    <div class="row" >
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-8">
+        <form [formGroup]="loginform">
+            <div class="mb-3">
+              <label for="exampleInputUsername" class="form-label">Username</label>
+              <input type="username" class="form-control"  formControlName="username">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control"  formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+          </form>   
+            
+        </div>
+      </div>
+      <div class="col-md-2">
+
+
+      </div>
+      <!--ROW 1 END-->
+    </div>
+</div>
