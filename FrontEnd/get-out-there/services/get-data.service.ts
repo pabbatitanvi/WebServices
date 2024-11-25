@@ -22,7 +22,12 @@ export class GetDataService {
     })
   }
 
-
+    login(Dataob:any):Observable<any>{
+      console.log("getdataservices LOGIN Passed")
+    let url = "http://localhost:3000/login"
+    let result = this.http.post(url,Dataob)
+    return result;
+  }
   createNewUser(Dataob:any):Observable<any>{
     console.log("received at backend", Dataob)
     if (Dataob.userType=="User")

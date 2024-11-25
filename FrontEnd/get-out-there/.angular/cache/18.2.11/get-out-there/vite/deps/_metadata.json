@@ -54,11 +54,11 @@
     }
   },
   "chunks": {
-    "chunk-T7DWQHMK": {
-      "file": "chunk-T7DWQHMK.js"
-    },
     "chunk-SRLFHSEL": {
       "file": "chunk-SRLFHSEL.js"
+    },
+    "chunk-T7DWQHMK": {
+      "file": "chunk-T7DWQHMK.js"
     },
     "chunk-AB2IXZW4": {
       "file": "chunk-AB2IXZW4.js"
