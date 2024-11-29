@@ -7,6 +7,17 @@
       </div>
       <div class="col-md-8">
         <form [formGroup]="loginform">
+          <div class = "fQuestion">
+            <label for = "userType">What type of account would you like to create?</label>
+        </div>
+        <div class = "chooseButtons">
+            <label id = "userButton">
+                <input type = "radio" formControlName = "userType" value = "User"/>User
+            </label>
+            <label id = "orgButton">
+                <input type = "radio" formControlName = "userType" value = "Organization"/>Organization
+            </label>
+        </div>
             <div class="mb-3">
               <label for="exampleInputUsername" class="form-label">Username</label>
               <input type="username" class="form-control"  formControlName="username">

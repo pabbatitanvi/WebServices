@@ -27,7 +27,7 @@ module.exports = function(app){
         console.log(data, "User deleted");
         return res.send("User deleted");
     })
-    app.post('/login', async(req, res) => {
+    app.post('/userlogin', async(req, res) => {
         
         let data=await user.userFind(req.body.username)
         if(data.username==req.body.username && data.password==req.body.password)

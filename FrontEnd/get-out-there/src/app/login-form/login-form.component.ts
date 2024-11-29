@@ -19,7 +19,8 @@ export class LoginFormComponent {
   }
   loginform=new FormGroup({
 
-    username: new FormControl(''),
+    userType: new FormControl(' '),
+    username: new FormControl(' '),
     password: new FormControl(' ')
 
   });

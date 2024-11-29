@@ -50,4 +50,17 @@ async function orgByTag(orgTag){
     }
 }
 
-module.exports={organizationAdd, orgModify, orgDelete,  orgByTag}
+async function orgFind(userName){
+    
+    _database =  mongodb.getDb().collection('Users')
+    try{
+        let data = await _database.findOne({username: userName})
+    
+        return data;
+    } catch(err){
+        console.log(err)
+        throw err;
+    }
+}
+
+module.exports={organizationAdd, orgModify, orgDelete,  orgByTag, orgFind}
