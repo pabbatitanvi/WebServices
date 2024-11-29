@@ -53,7 +53,7 @@ export class GetDataService {
     }
     else if(Dataob.userType=="Organization")
     {
-      let url="http://localhost:3000/creatorganization"
+      let url="http://localhost:3000/createorganization"
       let result = this.http.post(url,Dataob,this.httpoptions)
       return result;
     }
