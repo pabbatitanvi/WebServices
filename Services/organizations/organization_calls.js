@@ -39,8 +39,9 @@ module.exports = function(app){
     })
 
     app.post('/orglogin', async(req, res) => {
-        
+        console.log(req.body.username)
         let data=await org.orgFind(req.body.username)
+        console.log(data)
         if(data.username==req.body.username && data.password==req.body.password)
             return res.send(JSON.stringify(data));
         else

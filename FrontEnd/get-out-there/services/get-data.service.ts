@@ -24,7 +24,7 @@ export class GetDataService {
 
     login(Dataob:any):Observable<any>{
       console.log("getdataservices LOGIN Passed")
-      console.log(Dataob.userType)
+      console.log(Dataob.username)
       let url = "http://localhost:3000/userlogin"
 
       if(Dataob.userType=='User'){

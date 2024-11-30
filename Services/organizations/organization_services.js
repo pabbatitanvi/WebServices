@@ -52,10 +52,11 @@ async function orgByTag(orgTag){
 
 async function orgFind(userName){
     
-    _database =  mongodb.getDb().collection('Users')
+    _database =  mongodb.getDb().collection('Organizations')
+    console.log('ORGFIND ',userName)
     try{
         let data = await _database.findOne({username: userName})
-    
+        console.log("FOUND ORG:", data)
         return data;
     } catch(err){
         console.log(err)
