@@ -76,7 +76,7 @@ export class EventFormComponent {
     console.log("submit clicked")
     console.log(this.eventForm.value);
 
-    console.log(this.USEROBJ.id)
+    console.log(this.USEROBJ._id)
     if(this.eventForm.valid){
       console.log("event details are sent to the backend")
       let response = this.dataService.createEvent(this.eventForm.value).subscribe((result)=> {

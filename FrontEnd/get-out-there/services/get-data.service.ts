@@ -71,6 +71,11 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  deleteEvent(eventID: ObjectId):Observable<any>{
+    let url = "http://localhost:3000/deleteevent/" + eventID
+    let result = this.http.delete(url, this.httpoptions)
+    return result;
+  }
   createNewPost(Dataob:any):Observable<any>{
     console.log("received at middle man: ", Dataob)
     
