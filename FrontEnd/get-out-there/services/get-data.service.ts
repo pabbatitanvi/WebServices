@@ -88,6 +88,21 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  getPostsByTag(tag: string):Observable<any>{
+    let url = "http://localhost:3000/getpostbytag/" + tag
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  getPostsByLocation(location: string):Observable<any>{
+    let url = "http://localhost:3000/getpostbylocation/" + location
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  getPostsByUser(user: string):Observable<any>{
+    let url = "http://localhost:3000/getpostbyuser/" + user
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   deletePosts(postID: ObjectId):Observable<any>{
     let url = "http://localhost:3000/deletepost/" + postID
     let result = this.http.delete(url, this.httpoptions)

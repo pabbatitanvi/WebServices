@@ -102,3 +102,13 @@
 
     height: 25px;
 }
+/* The search bar */
+#mySearch {
+    width: 100%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #000000;
+    margin:10px;
+    border-radius: 50px;
+    font-family: monospace, monaco;
+  }

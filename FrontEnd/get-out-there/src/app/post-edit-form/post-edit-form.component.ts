@@ -76,7 +76,7 @@ export class PostEditFormComponent implements OnInit{
       Tags: new FormArray([]),
       LocationName: new FormControl(''),
       UserID: new FormControl(''),
-      Date: new FormControl()
+      Date: new FormControl(this.currentDate)
     });
     console.log("Test for reload!")
 

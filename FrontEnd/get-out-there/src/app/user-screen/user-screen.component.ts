@@ -4,11 +4,12 @@ import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GetDataService } from '../../../services/get-data.service';
 import {ObjectId} from 'mongodb';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule], //mentioning the objects to import from the imported components
+  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule], //mentioning the objects to import from the imported components
   templateUrl: './user-screen.component.html',
   styleUrl: './user-screen.component.css'
 })
@@ -38,5 +39,42 @@ export class UserScreenComponent implements OnInit{
   }
   onEditPost(postID: ObjectId){
     this.router.navigate(['/posteditform/' + postID])
+  }
+  //Search by tag funciton
+  selectedTag : string = "";
+  onSearchTag(value:string){
+    this.selectedTag = value;
+    if(this.selectedTag=="All"){
+      this.dataService.getPosts().subscribe((posts) => {
+        this.posts = posts
+      })
+    } else{
+      this.dataService.getPostsByTag(`${this.selectedTag}`).subscribe((posts) => {
+        this.posts = posts
+      })
+    }
+  }
+
+  //Search by tag funciton
+  selectedLocation : string = "";
+  onSearchLocation(value:string){
+    this.selectedLocation = value;
+    console.log(value)
+    if(this.selectedLocation=="All"){
+      this.dataService.getPosts().subscribe((posts) => {
+        this.posts = posts
+      })
+    } else{
+      this.dataService.getPostsByLocation(`${this.selectedLocation}`).subscribe((posts) => {
+        this.posts = posts
+      })
+    }
+  }
+  //Search by user function
+  onSearchUser(){
+    console.log(this.USEROBJ._id)
+    this.dataService.getPostsByUser(`${this.USEROBJ._id}`).subscribe((posts) => {
+      this.posts = posts
+    })
   }
 }

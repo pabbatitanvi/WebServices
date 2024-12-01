@@ -35,6 +35,29 @@
                 Modify profile
               </a>
             </div>
+            <div>
+
+            </div>
+            <div>
+              <select #tags (change)="onSearchTag(tags.value)" class="form-select" aria-label="Default select example">
+                <option selected value="All">All</option>
+                <option value="Art">Art</option>
+                <option value="Museum">Museum</option>
+                <option value="Coffee">Coffee</option>
+                <option value="Coffee">History</option>
+              </select>
+            </div>
+            <div>
+              <select #locations (change)="onSearchLocation(locations.value)" class="form-select" aria-label="Default select example">
+                <option selected value="All">All</option>
+                <option value="Erie">Erie</option>
+                <option value="Mars">Mars</option>
+              </select>
+            <div>
+              <a role="button" (click)="onSearchUser()" class="btn btn-success">
+                Get posts by user {{USEROBJ.username}}
+              </a>
+            </div>
 
 
           <p>
