@@ -81,5 +81,11 @@ export class GetDataService {
     console.log("RESULT: " + result)
     return result;
   }
+  editPost(postID: string, Dataob: any):Observable<any>{
+    let url = "http://localhost:3000/modifypost/" + postID
+    let result = this.http.put(url, Dataob, this.httpoptions)
+    console.log("RESULT: " + result)
+    return result;
+  }
 
 }
