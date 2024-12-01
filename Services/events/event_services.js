@@ -73,9 +73,9 @@ async function eventByTag(tags){
     _database = mongodb.getDb().collection('Events')
     try{
         //creates an array of all occurences of tag
-        let data = await _database.find({Tags: tags}).toArray()
+        let data = await _database.find({chooseTags: { $in: [tags]}}).toArray()
         return data
-    }catch{
+    }catch(err){
         console.error(err)
         throw err
     }

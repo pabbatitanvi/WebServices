@@ -7,6 +7,11 @@
         <div class="column">
             <!-- Search bar to look for events -->
             <input type="text" id="mySearch" placeholder="Search events" title="Type in a category">
+            <select class="form-select" aria-label="hoose a Tag" [(ngModel)]="selectedTagName" (change)="onTagSelect()">
+                <option value="" disabled selected>Choose a Tag</option>
+                <option value="All">All</option>
+                <option *ngFor="let tag of tagsArray" [value]="tag.itemName">{{tag.itemName}}</option>
+              </select>
 
             <!-- Make event box for every event in the list -->
             <div class="event-box" *ngFor="let event of events">

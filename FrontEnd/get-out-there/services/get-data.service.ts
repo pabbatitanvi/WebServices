@@ -71,8 +71,14 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  getEventByTag(tag: string):Observable<any>{
+    let url=`http://localhost:3000/geteventinfobytag/${tag}`
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   deleteEvent(eventID: ObjectId):Observable<any>{
-    let url = "http://localhost:3000/deleteevent/" + eventID
+    let url = `http://localhost:3000/deleteevent/${eventID}`
+    console.log("Delete URL:", url); 
     let result = this.http.delete(url, this.httpoptions)
     return result;
   }

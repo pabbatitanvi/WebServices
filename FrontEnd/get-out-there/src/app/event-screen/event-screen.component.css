@@ -130,3 +130,8 @@
     border-radius: 50px;
     font-family: monospace, monaco;
   }
+
+  .form-select{
+    width: 25%;
+    margin-left: 20px;
+  }

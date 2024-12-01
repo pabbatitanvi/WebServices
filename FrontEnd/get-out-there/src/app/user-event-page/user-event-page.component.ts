@@ -21,9 +21,6 @@ export class UserEventPageComponent {
     })
   }
   onDeleteEvent(eventID: ObjectId){
-    console.log("here")
-    console.log(eventID)
     this.dataService.deleteEvent(eventID).subscribe((result)=>{})
-    window.location.reload();
   }
 }

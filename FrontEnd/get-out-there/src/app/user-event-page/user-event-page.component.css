@@ -76,3 +76,7 @@
     color: white;
     text-decoration: underline;
 }
+.deletebutton{
+    display: flex;
+    justify-content: flex-end;
+}

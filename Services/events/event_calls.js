@@ -27,7 +27,7 @@ module.exports = function(app){
         const tags = req.params.tags;
         let data = await event.eventByTag(tags);
         console.log(data, "Events by tags");
-        return res.send("Event searched for by tags");
+        return res.json(data);
     })
     app.get('/getevents', async(req, res) => {
         let data = await event.getEvent();
