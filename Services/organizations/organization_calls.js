@@ -38,4 +38,17 @@ module.exports = function(app){
         return res.send("Information is displayed");
     })
 
+    app.post('/orglogin', async(req, res) => {
+        console.log(req.body.username)
+        let data=await org.orgFind(req.body.username)
+        console.log(data)
+        if(data.username==req.body.username && data.password==req.body.password)
+            return res.send(JSON.stringify(data));
+        else
+            return res.send("Invalid credentials")
+       
+            
+            
+    })
+
 }

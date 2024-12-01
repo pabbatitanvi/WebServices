@@ -55,4 +55,21 @@ async function userModify(userId, updateData){
     }
 }
 
-module.exports = {userAdd, userDelete, userModify};
+//Find users by username for validation
+async function userFind(userName){
+    
+    _database =  mongodb.getDb().collection('Users')
+    try{
+        let data = await _database.findOne({username: userName})
+    
+        return data;
+    } catch(err){
+        console.log(err)
+        throw err;
+    }
+}
+
+
+
+
+module.exports = {userAdd, userDelete, userModify, userFind};

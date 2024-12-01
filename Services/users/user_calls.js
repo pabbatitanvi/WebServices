@@ -1,7 +1,6 @@
 
 const {ObjectId} = require('mongodb');
 const user = require('./user_services.js')
-
 // ----------------------------------------- User Accounts -----------------------------------------
 module.exports = function(app){
 
@@ -28,8 +27,16 @@ module.exports = function(app){
         console.log(data, "User deleted");
         return res.send("User deleted");
     })
-    app.post('/login', async(req, res) => {
-        console.log(req.body);
-        return res.send("Logged in")
+    app.post('/userlogin', async(req, res) => {
+        
+        let data=await user.userFind(req.body.username)
+        if(data.username==req.body.username && data.password==req.body.password)
+            return res.send(JSON.stringify(data));
+        else
+            return res.send("Invalid credentials")
+       
+            
+            
     })
+
 }

@@ -1,0 +1,53 @@
+<div id="main-body" class="main-body">
+    <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
+  
+    <div class="container-fluid">
+      <!--ROW 1 START-->
+      <div class="row" >
+        <!--ROW 1 START-->
+        <div class="col-md-2">
+  
+        </div>
+        <div class="col-md-8">
+            
+            <h1 id = "userTitle">
+                 PROFILE SETTINGS
+            </h1>
+            
+        </div>
+        <div class="col-md-2">
+  
+  
+        </div>
+    </div>
+        
+        <!--ROW 1 END-->
+      </div>
+      <!--ROW 1 END-->
+    
+      <!--ROW 2 START-->
+      <div class="row">
+        <div class="col-md-2">
+  
+        </div>
+        <div class="col-md-8">
+            <form [formGroup]="userForm">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label" >Your Name</label>
+                  <input type="email" class="form-control" formControlName="profilename" aria-describedby="nameHelp">
+                  <div id="emailHelp" class="form-text">This name will be visible to other users.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">About you</label>
+                  <input type="password" class="form-control" formControlName="profileBio">
+                  <div id="biohelp" class="form-text">Share a little about yourself!</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+          
+        </div>
+        <div class="col-md-2">
+  
+      </div>
+      <!--ROW 2 END-->
+  </div>

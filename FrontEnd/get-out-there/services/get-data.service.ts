@@ -22,7 +22,25 @@ export class GetDataService {
     })
   }
 
+    login(Dataob:any):Observable<any>{
+      console.log("getdataservices LOGIN Passed")
+      console.log(Dataob.username)
+      let url = "http://localhost:3000/userlogin"
 
+      if(Dataob.userType=='User'){
+        url = "http://localhost:3000/userlogin"
+      }
+      else if(Dataob.userType=='Organization'){
+        url = "http://localhost:3000/orglogin"
+
+      }
+      else{
+        url = "http://localhost:3000/userlogin"
+
+      }
+        let result = this.http.post(url,Dataob)
+        return result;
+  }
   createNewUser(Dataob:any):Observable<any>{
     console.log("received at backend", Dataob)
     if (Dataob.userType=="User")
@@ -35,7 +53,7 @@ export class GetDataService {
     }
     else if(Dataob.userType=="Organization")
     {
-      let url="http://localhost:3000/creatorganization"
+      let url="http://localhost:3000/createorganization"
       let result = this.http.post(url,Dataob,this.httpoptions)
       return result;
     }
