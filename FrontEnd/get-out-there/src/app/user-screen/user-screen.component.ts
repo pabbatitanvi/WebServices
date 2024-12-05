@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { GetDataService } from '../../../services/get-data.service';
 import {ObjectId} from 'mongodb';
 import { FormsModule } from '@angular/forms';
+import { Post } from '../../models/post';
 
 @Component({
   selector: 'app-user-screen',
@@ -15,9 +16,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserScreenComponent implements OnInit{
 
+  // for getting user information from a post
+  private myObj !: Post;
+  // for storing a post temporarily while accessing its userId value
+  private post !: string;
+
   constructor(public dataService: GetDataService, private router:Router) { }
   public posts: any = []
   ngOnInit(): void {
+
     this.dataService.getPosts().subscribe((posts) => {
       this.posts = posts
     })
@@ -37,8 +44,29 @@ export class UserScreenComponent implements OnInit{
     this.dataService.deletePosts(postID).subscribe((result)=>{})
     window.location.reload();
   }
-  onEditPost(postID: ObjectId){
-    this.router.navigate(['/posteditform/' + postID])
+  onEditPost(postID: string){
+    
+    // get the user id of the user who made the post
+    this.dataService.getPostInfo(postID).subscribe((result)=>{
+      
+      console.log("getting post data...")
+      this.post = result;
+
+      // parse the JSON object received
+      this.myObj = JSON.parse(this.post);
+
+      console.log("POST SEARCH RESULT (postToEdit):" + this.post)
+      console.log("Post userid:", this.myObj.UserId)
+
+      if(this.USEROBJ._id != this.myObj.UserId){
+        console.log("ACCESS DENIED")
+      } else{
+        console.log("Be my guest")
+        this.router.navigate(['/posteditform/' + postID])
+      }
+    })
+
+
   }
   //Search by tag funciton
   selectedTag : string = "";
