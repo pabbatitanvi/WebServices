@@ -18,32 +18,23 @@ import { Post } from '../../models/post';
 
 export class PostEditFormComponent implements OnInit{
   
-  postID!: string;
-  public postToEdit!: string;
-  public myObj!: Post;
+  postID!: string;// The ID of the post to edit
+  public postToEdit!: string;// for holding all the information about the post to edit (to auto-fill the form at the start)
+
+  public myObj!: Post;// for the parsing process when getting the existing information about the post to edit
   constructor(public dataService: GetDataService, private router: Router, private route: ActivatedRoute) {}
 
-  public caption !: string;
-  // public location: string;
-
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.postID = params['postid'];
-    });
-
-    let response = this.dataService.getPostInfo(this.postID).subscribe((postResult)=>{
-      console.log("getting post data...")
-      this.postToEdit = postResult;
-      this.myObj = JSON.parse(this.postToEdit);
-      console.log("POST SEARCH RESULT (postToEdit):" + this.postToEdit)
-      console.log("Post caption:", this.myObj.Caption)
-      this.caption = this.myObj.Caption;
-    })
-  }
-
+  // Values for storing the information of the existing post. Part of the process of putting the existing post information in the form
+  //at the start.
+  public caption : string = "Error retrieving value";
+  public description : string = "Error retrieving value";
+  public location : string = "Error retrieving value";
+  public tags : Array<String> = [];
+  
   // This allows it to grab the CURRENT date for a post!
   currentDate : Date = new Date();
 
+  // Array of tags for the form
   tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
                       { id: 2, itemName: 'Books' },
                       { id: 3, itemName: 'Coffee' },
@@ -51,13 +42,14 @@ export class PostEditFormComponent implements OnInit{
                       { id: 5, itemName: 'Art' }
                     ]
 
+  // The postForm object declaration
   postForm = new FormGroup({
-    Caption: new FormControl(this.caption),
+    Caption: new FormControl(''),
     Description: new FormControl(''),
     Tags: new FormArray([]),
     LocationName: new FormControl(''),
     UserID: new FormControl(''),
-    Date: new FormControl(this.currentDate)
+    Date: new FormControl()
   });
 
   selected: any[] = [{ id: 1, itemName: 'Museum' }]
@@ -71,6 +63,52 @@ export class PostEditFormComponent implements OnInit{
     allowSearchFilter: true
   };
   
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.postID = params['postid'];
+    });
+
+
+    this.postForm = new FormGroup({
+      Caption: new FormControl(''),
+      Description: new FormControl(''),
+      Tags: new FormArray([]),
+      LocationName: new FormControl(''),
+      UserID: new FormControl(''),
+      Date: new FormControl(this.currentDate)
+    });
+    console.log("Test for reload!")
+
+    let response = this.dataService.getPostInfo(this.postID).subscribe((postResult)=>{
+      console.log("getting post data...")
+      this.postToEdit = postResult;
+
+      // parse the JSON object received
+      this.myObj = JSON.parse(this.postToEdit);
+
+      console.log("POST SEARCH RESULT (postToEdit):" + this.postToEdit)
+      console.log("Post caption:", this.myObj.Caption)
+
+      // Set the local variables to be the values obtained from the json
+      this.caption = this.myObj.Caption;
+      this.description = this.myObj.Description;
+      this.location = this.myObj.LocationName;
+      this.tags = this.myObj.Tags;
+
+      console.log("Post caption part 2", this.description)
+
+      // Immediately after getting these values, set the postform values (the whole point of this is so that when the user sees
+      //this form, the value in each input box is the values from the post being edited)
+      this.postForm.get("Caption")?.setValue(`${this.caption}`)
+      this.postForm.get("Description")?.setValue(`${this.description}`)
+      this.postForm.get("LocationName")?.setValue(`${this.location}`)
+      //this.postForm.get("Tags")?.setValue(never)// working on implementing tags
+    })
+
+    
+  }
+
   get chooseTags():FormArray{
     return this.postForm.get('Tags') as FormArray;
   }
@@ -93,8 +131,7 @@ export class PostEditFormComponent implements OnInit{
     console.log(this.postForm.value)
     if(this.postForm.valid){
 
-      // CHANGE TO MODIFY SERVICE!
-      let response = this.dataService.createNewPost(this.postForm.value).subscribe((result)=>{
+      let response = this.dataService.editPost(this.postID, this.postForm.value).subscribe((result)=>{
         console.log("post was sent to the middle man")
       })
     }

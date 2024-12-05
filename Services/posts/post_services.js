@@ -55,9 +55,15 @@ async function postByLocation(location){
     try{
         //creates an array of all the occurences of the location
         let data = await _database.find({LocationName: location}).toArray()
-        return data
+        if(data.length <= 0){
+            console.log("Results is empty. No results.")
+            return 0
+        } else{
+            return data
+        }
     } catch (err) {
         console.error(err)
+        console.error("An error has occured in the postByLocation backend function!")
         throw err
     }
 }
@@ -68,7 +74,12 @@ async function postByUser(userId){
     try{
         //creates an array of all the occurences of the userId
         let data = await _database.find({UserId: userId}).toArray()
-        return data
+        if(data.length <= 0){
+            console.log("Results is empty. No results.")
+            return 0
+        } else{
+            return data
+        }
     } catch (err) {
         console.error(err)
         throw err
