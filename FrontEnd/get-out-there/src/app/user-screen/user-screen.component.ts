@@ -55,7 +55,7 @@ export class UserScreenComponent implements OnInit{
     }
   }
 
-  //Search by tag funciton
+  //Search by location funciton
   selectedLocation : string = "";
   onSearchLocation(value:string){
     this.selectedLocation = value;

@@ -55,9 +55,12 @@ async function postByLocation(location){
     try{
         //creates an array of all the occurences of the location
         let data = await _database.find({LocationName: location}).toArray()
+        if(data.length <= 0)
+            console.log("Results is empty. No results.")
         return data
     } catch (err) {
         console.error(err)
+        console.error("An error has occured in the postByLocation backend function!")
         throw err
     }
 }

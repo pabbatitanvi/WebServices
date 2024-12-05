@@ -44,15 +44,19 @@
                 <option value="Art">Art</option>
                 <option value="Museum">Museum</option>
                 <option value="Coffee">Coffee</option>
-                <option value="Coffee">History</option>
+                <option value="History">History</option>
               </select>
             </div>
             <div>
-              <select #locations (change)="onSearchLocation(locations.value)" class="form-select" aria-label="Default select example">
+              <!-- <select #locations (change)="onSearchLocation(locations.value)" class="form-select" aria-label="Default select example">
                 <option selected value="All">All</option>
                 <option value="Erie">Erie</option>
                 <option value="Mars">Mars</option>
-              </select>
+              </select> -->
+
+              <!-- Search bar to look for posts -->
+            <input #searchbar type="text" id="mySearch" (keyup.enter)="onSearchLocation(searchbar.value)" placeholder="Search posts" title="Type in a category">
+
             <div>
               <a role="button" (click)="onSearchUser()" class="btn btn-success">
                 Get posts by user {{USEROBJ.username}}

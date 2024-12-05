@@ -36,7 +36,7 @@ module.exports = function(app){
         const location = req.params.location
         let data = await post.postByLocation(location)
         console.log("Posts based on inputted location", data);
-        return res.send("Information is displayed")
+        return res.json(data);
     })
 
     app.get('/getpostbytag/:tag', async(req, res) => {

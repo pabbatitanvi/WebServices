@@ -96,6 +96,7 @@ export class GetDataService {
   getPostsByLocation(location: string):Observable<any>{
     let url = "http://localhost:3000/getpostbylocation/" + location
     let result = this.http.get(url, this.httpoptions)
+    console.log("the call to the service was completed successfully")
     return result;
   }
   getPostsByUser(user: string):Observable<any>{
