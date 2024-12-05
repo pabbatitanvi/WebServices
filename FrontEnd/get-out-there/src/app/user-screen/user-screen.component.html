@@ -35,9 +35,8 @@
                 Modify profile
               </a>
             </div>
-            <div>
 
-            </div>
+            <!-- Dropdown bar to select tag to search by -->
             <div>
               <select #tags (change)="onSearchTag(tags.value)" class="form-select" aria-label="Default select example">
                 <option selected value="All">All</option>
@@ -47,19 +46,15 @@
                 <option value="History">History</option>
               </select>
             </div>
+
+            <!-- Serach bar for posts (search by location) -->
             <div>
-              <!-- <select #locations (change)="onSearchLocation(locations.value)" class="form-select" aria-label="Default select example">
-                <option selected value="All">All</option>
-                <option value="Erie">Erie</option>
-                <option value="Mars">Mars</option>
-              </select> -->
-
-              <!-- Search bar to look for posts -->
-            <input #searchbar type="text" id="mySearch" (keyup.enter)="onSearchLocation(searchbar.value)" placeholder="Search posts" title="Type in a category">
-
+              <input #searchbar type="text" id="mySearch" (keyup.enter)="onSearchLocation(searchbar.value)" placeholder="Search posts by loction" title="Type in a category">
+            </div>
+            <!-- Button to get posts by user -->
             <div>
               <a role="button" (click)="onSearchUser()" class="btn btn-success">
-                Get posts by user {{USEROBJ.username}}
+                Get posts by me
               </a>
             </div>
 

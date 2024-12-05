@@ -36,21 +36,36 @@ module.exports = function(app){
         const location = req.params.location
         let data = await post.postByLocation(location)
         console.log("Posts based on inputted location", data);
-        return res.json(data);
+        // if "data" is empty, return 0
+        if(data.length<=0){
+            return 0;
+        }else{
+            return res.json(data);
+        }
     })
 
     app.get('/getpostbytag/:tag', async(req, res) => {
         const tag = req.params.tag
         let data = await post.postByTag(tag)
         console.log(data);
-        return res.json(data);
+        // if "data" is empty, return 0
+        if(data.length<=0){
+            return 0;
+        }else{
+            return res.json(data);
+        }
     })
 
     app.get('/getpostbyuser/:userId', async(req, res) => {
         const users = req.params.userId
         let data = await post.postByUser(users)
         console.log("Posts based on inputted user", data);
-        return res.send("Information is displayed");
+        // if "data" is empty, return 0
+        if(data.length<=0){
+            return 0;
+        }else{
+            return res.json(data);
+        }
     })
 
     app.get('/getpostinfo/:postid', async(req, res) => {

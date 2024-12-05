@@ -21,6 +21,9 @@ export class PostFormComponent implements OnInit{
     
   }
 
+  // set up USEROBJ to help us get information about the current user
+  public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
+
   // This allows it to grab the CURRENT date for a post!
   currentDate : Date = new Date();
 
@@ -36,7 +39,7 @@ export class PostFormComponent implements OnInit{
     Description: new FormControl(''),
     Tags: new FormArray([]),
     LocationName: new FormControl(''),
-    UserID: new FormControl(''),
+    UserId: new FormControl(this.USEROBJ._id),
     Date: new FormControl(this.currentDate)
   });
 

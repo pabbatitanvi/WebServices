@@ -50,7 +50,11 @@ export class UserScreenComponent implements OnInit{
       })
     } else{
       this.dataService.getPostsByTag(`${this.selectedTag}`).subscribe((posts) => {
-        this.posts = posts
+        if(posts<=0){
+          this.posts = [];
+        } else{
+          this.posts = posts
+        }
       })
     }
   }
@@ -66,15 +70,25 @@ export class UserScreenComponent implements OnInit{
       })
     } else{
       this.dataService.getPostsByLocation(`${this.selectedLocation}`).subscribe((posts) => {
-        this.posts = posts
+        // honestly, this SHOULD happen on its own, but it didn't seem to so I had to take things into my own hands
+        if(posts<=0){
+          this.posts = [];
+        } else{
+          this.posts = posts
+        }
       })
     }
   }
   //Search by user function
   onSearchUser(){
     console.log(this.USEROBJ._id)
-    this.dataService.getPostsByUser(`${this.USEROBJ._id}`).subscribe((posts) => {
-      this.posts = posts
+    this.dataService.getPostsByUser(this.USEROBJ._id).subscribe((posts) => {
+      // if function returned 0, set posts to be an empty array (should clear the screen of all posts)
+      if(posts<=0){
+        this.posts = [];
+      } else{
+        this.posts = posts
+      }
     })
   }
 }
