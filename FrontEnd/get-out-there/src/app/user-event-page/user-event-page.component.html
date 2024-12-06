@@ -20,9 +20,12 @@
                         <p class="event-price">Price: ${{event.price}}</p>
                         <p class="event-time">Time of the event: {{event.startTime}} - {{event.endTime}}</p>
                     </div>
-                    <div class = "column">
-                        <button type="button" class="btn btn-danger" (click) = "onDeleteEvent(event._id)">
+                    <div class = "column m-3">
+                        <button type="button" class="btn btn-danger me-2" (click) = "onDeleteEvent(event._id)">
                             Delete event
+                          </button>
+                          <button type="button" class="btn btn-warning" (click) = "onModifyEvent(event._id)">
+                            Modify event
                           </button>
                     </div>
                     </div>

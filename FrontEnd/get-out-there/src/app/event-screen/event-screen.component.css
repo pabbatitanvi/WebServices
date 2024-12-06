@@ -132,6 +132,22 @@
   }
 
   .form-select{
-    width: 25%;
+    width: 90%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .form-label{
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: #98E072;
+    margin-left: 20px !important;
+  }
+  .priceHeader{
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: #98E072;
     margin-left: 20px;
   }

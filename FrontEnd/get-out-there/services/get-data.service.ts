@@ -76,6 +76,26 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  getEventByPrice(price: any):Observable<any>{
+    let url=`http://localhost:3000/geteventinfobyprice/${price}`
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  getEventByArea(location: any):Observable<any>{
+    let url=`http://localhost:3000/geteventinfobyarea/${location}`
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  getEventByID(eventID: string):Observable<any>{
+    let url = "http://localhost:3000/geteventid/" + eventID
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  modifyEvent(eventID: string, Dataob: any):Observable<any>{
+    let url = "http://localhost:3000/modifyevent/" + eventID
+    let result = this.http.put(url, Dataob, this.httpoptions)
+    return result;
+  }
   deleteEvent(eventID: ObjectId):Observable<any>{
     let url = `http://localhost:3000/deleteevent/${eventID}`
     console.log("Delete URL:", url); 

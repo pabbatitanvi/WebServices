@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
@@ -12,8 +12,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './event-screen.component.css'
 })
 export class EventScreenComponent {
-  constructor(public dataService: GetDataService) { }
+  constructor(public dataService: GetDataService, private change: ChangeDetectorRef) { }
   public events: any = []
+  public selectedPrice: number=0;
   ngOnInit(): void {
     this.dataService.getEvents().subscribe((events) => {
       this.events = events
@@ -30,7 +31,7 @@ export class EventScreenComponent {
     { id: 8, itemName: 'Arcade' },
   ]
   selectedTagName: string | null=""
-
+  selectedLocation: string | null=""
   onTagSelect(){
     if(this.selectedTagName === "All"){
       this.dataService.getEvents().subscribe((events) => {
@@ -42,6 +43,18 @@ export class EventScreenComponent {
         this.events = events
       })
     }
+  }
+  eventsByPrice(){
+    this.dataService.getEventByPrice(this.selectedPrice).subscribe((events) => {
+      this.events = events;
+      console.log(this.events)
+      this.change.detectChanges()
+    })
+  }
+  eventsByArea(){
+    this.dataService.getEventByArea(this.selectedLocation).subscribe((events) => {
+      this.events = events;
+    })
   }
 }
 

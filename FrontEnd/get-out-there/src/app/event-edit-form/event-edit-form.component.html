@@ -29,7 +29,7 @@
             </div>
             <div>
                 <label id = "price" for = "price">Price</label>
-                <input type = "number" step = "0.01" formControlName = "price">
+                <input type = "text" formControlName = "price">
             </div>
         </section>
         <section class = "choose-tags-container">
@@ -37,7 +37,7 @@
             <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
         </section>
         
-        <button class = "btn btn-light btn-outline-dark" (click) = "onSubmit()">Submit</button>
+        <button class = "btn btn-light btn-outline-dark" (click) = "onSave()">Save</button>
         </form>
     </div>
     <div class="col-md-2">

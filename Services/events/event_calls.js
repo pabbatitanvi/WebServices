@@ -38,7 +38,7 @@ module.exports = function(app){
         const price = req.params.price;
         let data = await event.eventByPrice(price);
         console.log(data, "Events by price");
-        return res.send("Event searched for by price");
+        return res.json(data);
     })
     app.get('/geteventinfobyarea/:area', async(req, res) => {
         const area = req.params.area; 
@@ -67,5 +67,11 @@ module.exports = function(app){
     app.post('/shareevent', (req, res) => {
         console.log(req.body);
         return res.send("Event shared");
+    })
+    app.get('/geteventid/:eventid', async(req, res) => {
+        const eventID = new ObjectId(req.params.eventid)
+        let data = await event.getEventByID(eventID)
+        console.log(data);
+        return res.json(data);
     })
 }

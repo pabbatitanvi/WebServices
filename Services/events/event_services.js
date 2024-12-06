@@ -53,10 +53,11 @@ async function getEvent(){
 //Get event by price
 async function eventByPrice(price){
     _database = mongodb.getDb().collection('Events')
-    if(price >= 0){
+    const priceDouble = parseFloat(price)
+    if(priceDouble >= 0){
         try{
             //create an array of all occurences of the price
-            let data = await _database.find({Price: price}).toArray()
+            let data = await _database.find({price: {$lte: priceDouble}}).toArray()
             return data
         }catch (err){
             console.error(err)
@@ -131,5 +132,9 @@ async function eventLocation(eventID){
         throw err
     }
 }
-
-module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation};
+async function getEventByID(eventID){
+    _database = mongodb.getDb().collection('Events')
+    let data = await _database.findOne({_id: eventID})
+    return JSON.stringify(data)
+}
+module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation, getEventByID};

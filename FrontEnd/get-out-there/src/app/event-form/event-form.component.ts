@@ -37,7 +37,7 @@ export class EventFormComponent {
     startTime: new FormControl(new Date()),
     endTime: new FormControl(''),
     chooseTags: new FormArray([]),
-    price: new FormControl(''),
+    price: new FormControl(null),
     organization: new FormControl(''),
     location: new FormControl(''),
 });
