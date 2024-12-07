@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from '../../models/post';
 
 @Component({
-  selector: 'app-user-form',
+  selector: 'app-post-edit-form',
   standalone: true,
   imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
 

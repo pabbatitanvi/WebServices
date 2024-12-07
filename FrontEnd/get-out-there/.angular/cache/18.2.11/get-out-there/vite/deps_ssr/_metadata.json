@@ -1,61 +1,61 @@
 {
-  "hash": "f43fda69",
-  "configHash": "76d0a18e",
-  "lockfileHash": "ef3d4407",
-  "browserHash": "32d1f663",
+  "hash": "122b0ff0",
+  "configHash": "dff8cad1",
+  "lockfileHash": "77ebc197",
+  "browserHash": "bca5ace6",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "194b7dde",
+      "fileHash": "179ac81e",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "c07fb818",
+      "fileHash": "c1368872",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "8bf6eefe",
+      "fileHash": "7ea19af4",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "59958717",
+      "fileHash": "a5d8b077",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "158b0c34",
+      "fileHash": "2e1b72ff",
       "needsInterop": false
     },
     "@angular/platform-server": {
       "src": "../../../../../../node_modules/@angular/platform-server/fesm2022/platform-server.mjs",
       "file": "@angular_platform-server.js",
-      "fileHash": "83b5a430",
+      "fileHash": "fb944583",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "71e11274",
+      "fileHash": "e0a1e9f1",
       "needsInterop": false
     },
     "ng-multiselect-dropdown": {
       "src": "../../../../../../node_modules/ng-multiselect-dropdown/fesm2022/ng-multiselect-dropdown.mjs",
       "file": "ng-multiselect-dropdown.js",
-      "fileHash": "dd40c541",
+      "fileHash": "dab66139",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../../node_modules/rxjs/dist/cjs/index.js",
       "file": "rxjs.js",
-      "fileHash": "bc6faf24",
+      "fileHash": "996bbae0",
       "needsInterop": true
     }
   },

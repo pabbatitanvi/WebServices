@@ -130,3 +130,38 @@
     border-radius: 50px;
     font-family: monospace, monaco;
   }
+
+  .form-select{
+    width: 90%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .form-label{
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: #98E072;
+    margin-left: 20px !important;
+  }
+  .priceHeader{
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: #98E072;
+    margin-left: 20px;
+  }
+
+  .shareButton{
+    background-color: transparent;
+    border-color: transparent;
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: #98E072;
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+  .bi::before{
+    margin-right: 10px;
+  }
