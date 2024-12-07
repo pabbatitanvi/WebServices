@@ -33,6 +33,7 @@ export class EventScreenComponent {
   ]
   selectedTagName: string | null=""
   selectedLocation: string | null=""
+  searchInput: string | null=""
   onTagSelect(){
     if(this.selectedTagName === "All"){
       this.dataService.getEvents().subscribe((events) => {
@@ -59,6 +60,14 @@ export class EventScreenComponent {
   }
   shareEventPage(){
     this.router.navigate(['/shareevent'])
+  }
+  searchEvents(){
+    this.dataService.getEventByName(this.searchInput).subscribe((events) => {
+      this.events = events;
+    })
+    this.dataService.getEventByHost(this.searchInput).subscribe((events) => {
+      this.events = events;
+    })
   }
 }
 

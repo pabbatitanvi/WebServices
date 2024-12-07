@@ -109,16 +109,22 @@ async function eventByArea(area){
 //get event by host 
 async function eventByHost(host){
     _database = mongodb.getDb().collection('Events')
+    _databaseOrg = mongodb.getDb().collection('Organizations')
     try{
-        //create a list of events from a specific host
-        let data = await _database.find({Host: host}).toArray()
-        return data
-    }catch{
+        let orgData = await _databaseOrg.findOne({organizationName: host})
+        if(!orgData){
+            console.log("error getting org")
+        }
+        else{
+            const orgID = orgData._id.toString()
+            let data = await _database.find({organization: orgID}).toArray()
+            return data
+        }
+    }catch(err){
         console.error(err)
         throw err
     }
 }
-
 //Share event
 async function shareEvent(eventID){
     _database = mongodb.getDb().collection('Events')

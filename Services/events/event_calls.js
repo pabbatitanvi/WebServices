@@ -56,9 +56,11 @@ module.exports = function(app){
     //These did not get done this week for various reasons
     //The team needs to further discuss how we are attaching hosts to the events
     app.get('/geteventinfobyhost/:host', async(req, res) => {
+        const host = req.params.host;
+        console.log(host)
         let data = await event.eventByHost(host);
         console.log(data, "Event by host");
-        return res.send("Event searched for by host");
+        return res.json(data)
     })
     //This will require the maps API which we are looking further in next week 
     app.get('/geteventaddress/id', async(req, res) => {
