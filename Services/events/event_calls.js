@@ -40,6 +40,12 @@ module.exports = function(app){
         console.log(data, "Events by price");
         return res.json(data);
     })
+    app.get('/geteventbyname/:name', async(req, res) => {
+        const name = req.params.name;
+        let data = await event.eventByName(name);
+        console.log(data, "Events by price");
+        return res.json(data);
+    })
     app.get('/geteventinfobyarea/:area', async(req, res) => {
         const area = req.params.area; 
         let data = await event.eventByArea(area);

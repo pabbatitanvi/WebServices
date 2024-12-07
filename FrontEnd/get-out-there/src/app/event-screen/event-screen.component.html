@@ -10,14 +10,14 @@
             <div class="row">
             <div class = "column">
                 <label for="customRange3" class="form-label m-2">Filter by tag:</label>
-            <select class="form-select" aria-label="Choose a Tag" [(ngModel)]="selectedTagName" (change)="onTagSelect()">
+              <select class="form-select" aria-label="Choose a Tag" [(ngModel)]="selectedTagName" (change)="onTagSelect()">
                 <option value="" disabled selected>Choose a Tag</option>
                 <option value="All">All</option>
                 <option *ngFor="let tag of tagsArray" [value]="tag.itemName">{{tag.itemName}}</option>
               </select>
             </div>
             <div class="column">
-                <label for="customRange3" class="form-label">Filter by price:</label>
+                <label for="customRange3" class="form-label m-2">Filter by price:</label>
                 <input type="range" class="form-range" min="0" max="100" step="0.5" id="customRange3" [(ngModel)]="selectedPrice" (input)="eventsByPrice()">
                 <h4 class="priceHeader">Price: ${{selectedPrice}}</h4>
             </div>
@@ -30,6 +30,11 @@
                     <option value="All">PA</option>
                     <!-- <option *ngFor="let tag of tagsArray" [value]="tag.itemName">{{tag.itemName}}</option> -->
                   </select>
+            </div>
+            <div class="column">
+                <button class="shareButton" type="button" (click)="shareEventPage()">
+                    <i class="bi bi-share"></i>Share Event
+                </button>
             </div>
             </div>
             <!-- Make event box for every event in the list -->

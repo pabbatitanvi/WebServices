@@ -81,6 +81,17 @@ async function eventByTag(tags){
         throw err
     }
 }
+async function eventByName(name){
+    _database = mongodb.getDb().collection('Events')
+    try{
+        const names = new RegExp(name, 'i')
+        let data = await _database.find({eventName: {$regex: names}}).toArray()
+        return data
+    }catch(err){
+        console.error(err)
+        throw err
+    }
+}
 
 //get event by area
 async function eventByArea(area){
@@ -137,4 +148,4 @@ async function getEventByID(eventID){
     let data = await _database.findOne({_id: eventID})
     return JSON.stringify(data)
 }
-module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation, getEventByID};
+module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation, getEventByID, eventByName};

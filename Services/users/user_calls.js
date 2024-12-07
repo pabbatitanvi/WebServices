@@ -38,5 +38,16 @@ module.exports = function(app){
             
             
     })
+    app.get('/getusers', async(req, res) => {
+        let data = await user.getUser();
+        console.log(data);
+        return res.json(data);
+    })
+    app.get('/getuserbyname/:name', async(req, res) => {
+        const name = req.params.name;
+        let data = await user.userByName(name);
+        console.log(data, "Users by name");
+        return res.json(data);
+    })
 
 }

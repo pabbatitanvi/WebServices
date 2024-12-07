@@ -3,6 +3,7 @@ import { NavigationBarComponent } from "../navigation-bar/navigation-bar.compone
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-screen',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './event-screen.component.css'
 })
 export class EventScreenComponent {
-  constructor(public dataService: GetDataService, private change: ChangeDetectorRef) { }
+  constructor(public dataService: GetDataService, private change: ChangeDetectorRef, private router: Router, private route: ActivatedRoute) { }
   public events: any = []
   public selectedPrice: number=0;
   ngOnInit(): void {
@@ -55,6 +56,9 @@ export class EventScreenComponent {
     this.dataService.getEventByArea(this.selectedLocation).subscribe((events) => {
       this.events = events;
     })
+  }
+  shareEventPage(){
+    this.router.navigate(['/shareevent'])
   }
 }
 
