@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { GetDataService } from '../../../services/get-data.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-user-form',
+  selector: 'app-post-form',
   standalone: true,
   imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
 

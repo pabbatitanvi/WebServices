@@ -53,10 +53,11 @@ async function getEvent(){
 //Get event by price
 async function eventByPrice(price){
     _database = mongodb.getDb().collection('Events')
-    if(price >= 0){
+    const priceDouble = parseFloat(price)
+    if(priceDouble >= 0){
         try{
             //create an array of all occurences of the price
-            let data = await _database.find({Price: price}).toArray()
+            let data = await _database.find({price: {$lte: priceDouble}}).toArray()
             return data
         }catch (err){
             console.error(err)
@@ -73,9 +74,20 @@ async function eventByTag(tags){
     _database = mongodb.getDb().collection('Events')
     try{
         //creates an array of all occurences of tag
-        let data = await _database.find({Tags: tags}).toArray()
+        let data = await _database.find({chooseTags: { $in: [tags]}}).toArray()
         return data
-    }catch{
+    }catch(err){
+        console.error(err)
+        throw err
+    }
+}
+async function eventByName(name){
+    _database = mongodb.getDb().collection('Events')
+    try{
+        const names = new RegExp(name, 'i')
+        let data = await _database.find({eventName: {$regex: names}}).toArray()
+        return data
+    }catch(err){
         console.error(err)
         throw err
     }
@@ -97,16 +109,22 @@ async function eventByArea(area){
 //get event by host 
 async function eventByHost(host){
     _database = mongodb.getDb().collection('Events')
+    _databaseOrg = mongodb.getDb().collection('Organizations')
     try{
-        //create a list of events from a specific host
-        let data = await _database.find({Host: host}).toArray()
-        return data
-    }catch{
+        let orgData = await _databaseOrg.findOne({organizationName: host})
+        if(!orgData){
+            console.log("error getting org")
+        }
+        else{
+            const orgID = orgData._id.toString()
+            let data = await _database.find({organization: orgID}).toArray()
+            return data
+        }
+    }catch(err){
         console.error(err)
         throw err
     }
 }
-
 //Share event
 async function shareEvent(eventID){
     _database = mongodb.getDb().collection('Events')
@@ -131,5 +149,9 @@ async function eventLocation(eventID){
         throw err
     }
 }
-
-module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation};
+async function getEventByID(eventID){
+    _database = mongodb.getDb().collection('Events')
+    let data = await _database.findOne({_id: eventID})
+    return JSON.stringify(data)
+}
+module.exports = {eventAdd, eventModify, eventDelete, getEvent, eventByPrice, eventByTag, eventByArea, eventByHost, shareEvent, eventLocation, getEventByID, eventByName};

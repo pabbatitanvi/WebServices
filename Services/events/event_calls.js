@@ -27,7 +27,7 @@ module.exports = function(app){
         const tags = req.params.tags;
         let data = await event.eventByTag(tags);
         console.log(data, "Events by tags");
-        return res.send("Event searched for by tags");
+        return res.json(data);
     })
     app.get('/getevents', async(req, res) => {
         let data = await event.getEvent();
@@ -38,7 +38,13 @@ module.exports = function(app){
         const price = req.params.price;
         let data = await event.eventByPrice(price);
         console.log(data, "Events by price");
-        return res.send("Event searched for by price");
+        return res.json(data);
+    })
+    app.get('/geteventbyname/:name', async(req, res) => {
+        const name = req.params.name;
+        let data = await event.eventByName(name);
+        console.log(data, "Events by price");
+        return res.json(data);
     })
     app.get('/geteventinfobyarea/:area', async(req, res) => {
         const area = req.params.area; 
@@ -50,9 +56,11 @@ module.exports = function(app){
     //These did not get done this week for various reasons
     //The team needs to further discuss how we are attaching hosts to the events
     app.get('/geteventinfobyhost/:host', async(req, res) => {
+        const host = req.params.host;
+        console.log(host)
         let data = await event.eventByHost(host);
         console.log(data, "Event by host");
-        return res.send("Event searched for by host");
+        return res.json(data)
     })
     //This will require the maps API which we are looking further in next week 
     app.get('/geteventaddress/id', async(req, res) => {
@@ -67,5 +75,11 @@ module.exports = function(app){
     app.post('/shareevent', (req, res) => {
         console.log(req.body);
         return res.send("Event shared");
+    })
+    app.get('/geteventid/:eventid', async(req, res) => {
+        const eventID = new ObjectId(req.params.eventid)
+        let data = await event.getEventByID(eventID)
+        console.log(data);
+        return res.json(data);
     })
 }

@@ -37,7 +37,7 @@ export class EventFormComponent {
     startTime: new FormControl(new Date()),
     endTime: new FormControl(''),
     chooseTags: new FormArray([]),
-    price: new FormControl(''),
+    price: new FormControl(null),
     organization: new FormControl(''),
     location: new FormControl(''),
 });
@@ -74,6 +74,7 @@ export class EventFormComponent {
   onSubmit(){
     console.log("submit clicked")
     console.log(this.eventForm.value);
+
     if(this.eventForm.valid){
       console.log("event details are sent to the backend")
       let response = this.dataService.createEvent(this.eventForm.value).subscribe((result)=> {

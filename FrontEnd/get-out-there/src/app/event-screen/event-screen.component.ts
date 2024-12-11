@@ -1,29 +1,74 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
 import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
+import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule],
+  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule],
   templateUrl: './event-screen.component.html',
   styleUrl: './event-screen.component.css'
 })
 export class EventScreenComponent {
-  constructor(public dataService: GetDataService) { }
+  constructor(public dataService: GetDataService, private change: ChangeDetectorRef, private router: Router, private route: ActivatedRoute) { }
   public events: any = []
+  public selectedPrice: number=0;
   ngOnInit(): void {
     this.dataService.getEvents().subscribe((events) => {
       this.events = events
     })
   }
-  // public events: any = [
-  //   {"name" : "EVENT 1", "location" : "Museum", "id" : 1},
-  //   {"name" : "EVENT 2", "location" : "Park", "id" : 2} ,
-  //   {"name" : "EVENT 3", "location" : "Park", "id" : 3}, 
-  //   {"name" : "EVENT 4", "location" : "Hiking Trail", "id" : 4},
-  // ]
+  public tagsArray: any[] = [
+    { id: 1, itemName: 'Museum' }, 
+    { id: 2, itemName: 'Books' },
+    { id: 3, itemName: 'Coffee' },
+    { id: 4, itemName: 'History' },
+    { id: 5, itemName: 'Art' },
+    { id: 6, itemName: 'Nature' },
+    { id: 7, itemName: 'Hiking' },
+    { id: 8, itemName: 'Arcade' },
+  ]
+  selectedTagName: string | null=""
+  selectedLocation: string | null=""
+  searchInput: string | null=""
+  onTagSelect(){
+    if(this.selectedTagName === "All"){
+      this.dataService.getEvents().subscribe((events) => {
+        this.events = events
+      })
+    }  
+    else if(this.selectedTagName){
+      this.dataService.getEventByTag(this.selectedTagName).subscribe((events) => {
+        this.events = events
+      })
+    }
+  }
+  eventsByPrice(){
+    this.dataService.getEventByPrice(this.selectedPrice).subscribe((events) => {
+      this.events = events;
+      console.log(this.events)
+      this.change.detectChanges()
+    })
+  }
+  eventsByArea(){
+    this.dataService.getEventByArea(this.selectedLocation).subscribe((events) => {
+      this.events = events;
+    })
+  }
+  shareEventPage(){
+    this.router.navigate(['/shareevent'])
+  }
+  searchEvents(){
+    this.dataService.getEventByName(this.searchInput).subscribe((events) => {
+      this.events = events;
+    })
+    this.dataService.getEventByHost(this.searchInput).subscribe((events) => {
+      this.events = events;
+    })
+  }
 }
 
 

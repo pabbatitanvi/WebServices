@@ -1,0 +1,61 @@
+<section class="event">
+    <div class="shareevent">
+    <button type="button" class="btn-close" aria-label="Close" (click) = "onQuit()"></button>
+    <div class="row">
+    <div class = "column">
+        <label for="customRange3" class="form-label m-2">Choose an Event to Share:</label>
+        <select class="form-select" aria-label="Choose an Event" [(ngModel)]="selectedEventName" (change)="onEventSelect()">
+            <option value="" disabled selected>Choose an Event</option>
+            <option *ngFor="let event of events" [value]="event.eventName">{{event.eventName}}</option>
+        </select>
+    </div>
+    <div class="column arrow-column">
+        <i class="bi bi-arrow-right"></i>
+    </div>
+    <div class = "column">
+        <label for="customRange3" class="form-label m-2">Choose a Friend to Share the Event to:</label>
+        <select class="form-select" aria-label="Choose a User" [(ngModel)]="selectedUserName" (change)="onUserSelect()">
+            <option value="" disabled selected>Choose a User</option>
+            <option *ngFor="let user of users" [value]="user.username">{{user.username}}</option>
+        </select>
+    </div>
+    </div>
+    <div class="row">
+    <div class = "column">
+    <div class="event-box" *ngIf="selectedEventName">
+        <div class="event" *ngFor="let selectedEvent of selectedEvents">
+            <div class="event-date-box">
+                <p class="event-day">{{selectedEvent.date | date: 'd'}}</p>
+                <p class="event-month">{{selectedEvent.date | date: 'MMMM'}}</p>
+                <p class="event-year">{{selectedEvent.date | date: 'yyyy'}}</p>
+            </div>
+
+        <div class="event-details">
+            <p class="event-name">{{selectedEvent.eventName | uppercase}}</p>
+            <p class="event-desc">{{selectedEvent.description}}</p>
+            <p class="event-price">Price: ${{selectedEvent.price}}</p>
+            <p class="event-time">Time of the event: {{selectedEvent.startTime}} - {{selectedEvent.endTime}}</p>
+        </div>
+        
+    </div>
+</div>
+    </div>
+    <div class = "column">
+        <div class="user-box" *ngIf="selectedUserName">
+            <div class="user" *ngFor="let selectedUser of selectedUsers">
+            <div class="user-details">
+                <p class="event-day">Username: {{selectedUser.username}}</p>
+                <p class="user-fname">First Name: {{selectedUser.firstName}}</p>
+                <p class="user-mname">Middle Name: {{selectedUser.middleName}}</p>
+                <p class="user-lname">Last Name: {{selectedUser.lastName}}</p>
+            </div>
+            
+        </div>
+    </div>
+        </div>
+    </div>
+    <div class="center-button">
+        <button class = "btn btn-light btn-outline-dark" (click) = "onShare()">Share Event</button>
+    </div>
+    </div>
+</section>

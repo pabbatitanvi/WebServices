@@ -68,8 +68,22 @@ async function userFind(userName){
         throw err;
     }
 }
+async function getUser(){
+    _database = mongodb.getDb().collection('Users')
+    let data = await _database.find().toArray()
+    return data
+}
+async function userByName(name){
+    _database = mongodb.getDb().collection('Users')
+    try{
+        const names = new RegExp(name, 'i')
+        let data = await _database.find({username: {$regex: names}}).toArray()
+        return data
+    }catch(err){
+        console.error(err)
+        throw err
+    }
+}
 
 
-
-
-module.exports = {userAdd, userDelete, userModify, userFind};
+module.exports = {userAdd, userDelete, userModify, userFind, getUser, userByName};
