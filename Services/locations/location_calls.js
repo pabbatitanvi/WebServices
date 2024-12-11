@@ -31,8 +31,14 @@ module.exports = function(app){
         return res.send("Location modified");
     })
 
+    app.get('/getlocations', async(req, res) => {
+        let data = await location.getLocations();
+        console.log(data);
+        return res.json(data);
+    })
+
     // Return all locations with the inputted tag
-    app.get('/taginfo/:tag', async(req, res) =>{
+    app.get('/getlocationbytag/:tag', async(req, res) =>{
         const tag = req.params.tag
         let data = await location.locationSearch(searchFor = "tags", {searchValue : tag});
         console.log(`LOCATION SEARCHED FOR ${tag} tag`)
@@ -40,7 +46,7 @@ module.exports = function(app){
     })
 
     // Return all locations that match the specified price range
-    app.get('/priceinfo/:price', async (req,res)=>{
+    app.get('/getlocationbytag/:price', async (req,res)=>{
         const price = Number(req.params.price)
         let data = await location.locationSearch(searchFor = "price", {searchValue : price})
         console.log(data, "LOCATION SEARCHED FOR")
@@ -48,7 +54,7 @@ module.exports = function(app){
     })
 
     // Return all locations in the specified area (NEEDS WORK)
-    app.get('/areainfo/:area', async (req,res)=>{
+    app.get('/getlocationbyarea/:area', async (req,res)=>{
         const area = req.params.area
         let data = await location.locationSearch(searchFor = "area", {searchValue : area})
         console.log(data, "LOCATION SEARCHED FOR")

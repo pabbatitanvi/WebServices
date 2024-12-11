@@ -3,6 +3,11 @@ import { Observable, of } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ObjectId} from 'mongodb';
 
+/* This should 100% be split into separate files for each type of service. However, that is not a high enough priority at the
+moment to consider doing it this semester. Just a note of something that (if this were to be a project that were continued)
+should be done in the near future.
+*/
+
 // interface Data {  
 //   colour: string,
 //   value: string 
@@ -61,6 +66,8 @@ export class GetDataService {
     return of(Dataob)
 
   }
+  
+  // ----------------------------- EVENTS RELATED SERVICE CALLS -----------------------------
   createEvent(Dataob:any):Observable<any>{
     let url="http://localhost:3000/createevent"
     let result = this.http.post(url, Dataob, this.httpoptions)
@@ -127,6 +134,8 @@ export class GetDataService {
     let result = this.http.delete(url, this.httpoptions)
     return result;
   }
+  
+  // -------------------------------- POST RELATED CALLS ------------------------------------
   createNewPost(Dataob:any):Observable<any>{
     console.log("received at middle man: ", Dataob)
     
@@ -178,4 +187,10 @@ export class GetDataService {
     return result;
   }
 
+  // ----------------------------- LOCATION RELATED CALLS -----------------------------------
+  getLocations():Observable<any>{
+    let url = "http://localhost:3000/getlocations"
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
 }

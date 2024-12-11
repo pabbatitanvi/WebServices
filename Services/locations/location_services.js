@@ -94,4 +94,10 @@ async function locationModify(locationID, updateData){
     }
 }
 
-module.exports = {locationAdd, locationSearch, locationDelete, locationModify};
+async function getLocations(){
+    _database = mongodb.getDb().collection('Locations')
+    let data = await _database.find().toArray()
+    return data
+}
+
+module.exports = {locationAdd, locationSearch, locationDelete, locationModify,getLocations};

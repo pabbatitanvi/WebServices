@@ -12,14 +12,16 @@ and the locations and navigation boxes split the left half.
 
 <div class="row">
     <div class="column" id="quarter-l">
-        <div class="locations-box">
-            <h2 class="box-text">location 1</h2>
-        </div>
+        <h1 class="title-text">LOCATIONS!</h1>
+        <button class="locations-box" *ngFor="let location of locations">
+            <h2 class="box-text">{{location.locationName}}</h2>
+        </button>
     </div>
     <div class="column" id="quarter-e">
-        <div class="events-box">
-            <h2 class="box-text">Event 1</h2>
-        </div>
+        <h1 class="title-text-d">EVENTS!</h1>
+        <button class="events-box" *ngFor="let event of events">
+            <h2 class="box-text">{{event.eventName}}</h2>
+        </button>
     </div>
     <div class="column" id="half">
         <img

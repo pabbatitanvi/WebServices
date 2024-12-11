@@ -3,6 +3,7 @@
   float: left;
   height: 100vh;
   /* border: 5px solid black; */
+  text-align: center;
 }
 
 /* Quarter of the screen for locations */
@@ -43,6 +44,7 @@
   width: 103.3%;
   height: 75px;
   background-color: var(--dark-green);
+  margin-top: 10px;
 }
 
 .text {
@@ -61,6 +63,24 @@
   text-align: center;
   height: 100px;
   color: var(--lightest-green);
+}
+
+.title-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  height: 100px;
+  color: var(--lightest-green);
+}
+
+.title-text-d {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  height: 100px;
+  color: var(--dark-green);
 }
 
 .container {
