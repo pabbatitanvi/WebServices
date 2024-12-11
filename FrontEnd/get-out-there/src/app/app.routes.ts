@@ -14,6 +14,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { UserEventPageComponent } from './user-event-page/user-event-page.component';
 import { EventEditFormComponent } from './event-edit-form/event-edit-form.component';
 import { ShareEventComponent } from './share-event/share-event.component';
+import { UserPostPageComponent } from './user-post-page/user-post-page.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'login', pathMatch:'full'},//This means that when the path is empty after the 4200 in the url, it redirects to the /home url, loading the home screen
@@ -28,9 +29,10 @@ export const routes: Routes = [
     {path: 'usereventpage', component: UserEventPageComponent},
     {path: 'usereditform/:eventid', component: EventEditFormComponent},
     {path: 'postform', component: PostFormComponent},
+    {path: 'userpostpage', component: UserPostPageComponent},
     {path: 'posteditform/:postid', component: PostEditFormComponent},
     {path: 'modifyprofile', component: UserSettingsPageComponent},
-    {path: 'shareevent', component:ShareEventComponent}
+    {path: 'shareevent', component:ShareEventComponent},
 ];
 
 @NgModule({

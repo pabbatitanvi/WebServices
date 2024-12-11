@@ -15,10 +15,12 @@ import { Router } from '@angular/router';
 export class UserEventPageComponent {
   constructor(public dataService: GetDataService, private router: Router) { }
   public events: any = []
+  public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
   ngOnInit(): void {
     this.dataService.getEvents().subscribe((events) => {
       this.events = events
     })
+    console.log(this.USEROBJ._id)
   }
   onDeleteEvent(eventID: ObjectId){
     this.dataService.deleteEvent(eventID).subscribe((result)=>{})

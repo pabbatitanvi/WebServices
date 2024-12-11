@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { GetDataService } from '../../../services/get-data.service';
 import {ObjectId} from 'mongodb';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-user-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule], //mentioning the objects to import from the imported components
+  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, SidebarComponent], //mentioning the objects to import from the imported components
   templateUrl: './user-screen.component.html',
   styleUrl: './user-screen.component.css'
 })

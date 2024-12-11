@@ -4,7 +4,8 @@
     background-position: center;
     background-size: "cover";
     background-attachment: fixed;
-    width: 100%;
+    width: 15%;
+    height: 100vh;
     border-bottom: 1px solid white;
     display: flex;
     list-style-type: none;
@@ -15,14 +16,28 @@
     font-size: xx-large;
     font-weight: bold;
     font-family: monospace, monaco;
+    text-align: start;
 }
 
 .nav-link-active{
     color: #E8FCCF;
     text-decoration: none;
-    margin-left: 40px;
     font-size: x-large;
+    margin-left: 50px;
     font-family: monospace, monaco;
+    text-align: start;
+}
+
+.navbar-nav-scroll{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.header{
+    color: #E8FCCF;
+    font-size: 40px;
+    font-family: monospace, monaco;
+    margin-left: 35px;
 }
 
 #home:hover{
