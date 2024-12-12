@@ -7,8 +7,8 @@ module.exports = function(app){
     app.get('/friendsByTag/:tags', async(req, res) =>{
         const tags = req.params.tags;
         let data = await friends.friendsByTag(tags);
-        console.log(data, "Freinds by tags");
-        return res.send("Freinds searched for by tag");
+        console.log(data, "Friends by tags");
+        return res.send("Friends searched for by tag");
     })
     app.post('/friendsbyusername/:userId/:username', async(req, res) => {
         const userId = req.params.userId;

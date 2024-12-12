@@ -25,7 +25,14 @@ export class FriendScreenComponent implements OnInit{
     // this.dataService.getCurrentFriends(this.USEROBJ._id).subscribe((friends) => {
     //   this.currentFriends = this.USEROBJ.friends
     // })
-    this.currentFriends = this.USEROBJ.friends
+    let tempArray = [];
+    tempArray = this.USEROBJ.friends
+
+    tempArray.forEach( (friend : string) => {
+      let tempValue = this.dataService.getUserById(friend)
+
+//      this.currentFriends[]
+    });
   }
 
 
