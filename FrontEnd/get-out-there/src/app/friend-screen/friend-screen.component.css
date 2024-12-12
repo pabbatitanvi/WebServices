@@ -1,16 +1,12 @@
-.main-body{
-    /* background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: flex; 
-     */
+.friends{
     background-image: url(../assets/background_gradient.png);
     background-size: cover;
-    width: 100vw;
     /*height: 100vh;*/
     background-repeat: repeat;
     background-position: center;
     /*background-color: #E8FCCF;*/
+    margin-left: 0px;
+    padding-top: 125px;
 }
 h1{
     font-size: xx-large;
@@ -40,4 +36,23 @@ ul li{
     margin:10px;
     border-radius: 50px;
     font-family: monospace, monaco;
+}
+
+/* Friend boxes */
+.friend-box > * {
+    display: flex;
+    border: 5px solid white;
+    box-sizing: border-box;
+    flex-grow: 1;
+    background-color: #134611;
+    border-radius: 38px;
+    font-family: monospace, monaco;
+}
+
+.friend-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 2em;
+    margin-bottom: 20px;
+    padding: 30px;
 }

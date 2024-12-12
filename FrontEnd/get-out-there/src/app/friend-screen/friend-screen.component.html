@@ -1,53 +1,59 @@
-<div id="main-body" class="main-body">
-  <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="topnav">
-            <input type="text" id="mySearch" placeholder="Search for friends">
-          </div>
+
+<body style="background-color: #E8FCCF;"></body>
+  <app-navigation-bar> </app-navigation-bar>
+
+<section class="friends">
+  
+  <div class="row">
+    <div class="col-md-3">
+      
+      <input type="text" id="mySearch" placeholder="Search for friends">
+        
+    </div>
+    <div class="col-md-3">
+      <div id = "mfriends">
+        <h1>
+          Meet New Friends!
+        </h1>
       </div>
-      <div class="col-md-8">
-        <div id = "mfriends">
-          <h1>
-            Meet New Friends!
-          </h1>
-        </div>
+    </div>
+    <div class="col-md-6">
+      <div>
+        <h1>
+          Current Friends
+        </h1>
       </div>
-      <div class="col-md-3">
-        <div>
-          <h1>
-            Current Friends
-          </h1>
-        </div>
-      </div>
-      <!--ROW 1 END-->
     </div>
     <!--ROW 1 END-->
-
-
+    
     <!--ROW 2 START-->
     <div class="row">
+
+      <!-- Column for searching for friends -->
       <div class="col-md-3">
+        
+        <div class="friend-box" *ngFor="let friend of searchFriends">
+          {{friend.username}}
+        </div>
 
       </div>
-      <div class="col-md-8">
-        <ul>
-            <li>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQciZUXDEUgpAVtexBM1iA6rMAaqnebXAQL5NUK9bgWK8Wig1CGGaAFvXCV3fIImzbON1Y&usqp=CAU"
-                alt="I studied software Engineering at Penn State Behrend's School of Engineering"
-                style="width:450px; height:500px">
-            </li>
-            <li>
-                <img src="https://images.unsplash.com/photo-1730407401172-aeed1b1ace5b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"
-                alt="A picture of a library"
-                style="width:450px; height:500px">
-            </li>
-        </ul>
+
+      <!-- Column for recommended friends -->
+      <div class="col-md-6">
+
+        <div class="friend-box" *ngFor="let friend of recommendedFriends">
+          {{friend.username}}
+        </div>
         
       </div>
-      <div class="col-md-2">
 
+      <!-- Column for current friends -->
+      <div class="col-md-3">
+        <div class="friend-box" *ngFor="let friend of currentFriends">
+          {{friend}}
+        </div>
       </div>
+    </div>
+  </div>
       
-</div>
+</section>
