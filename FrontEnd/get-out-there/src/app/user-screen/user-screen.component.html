@@ -1,45 +1,43 @@
 <div id="main-body" class="main-body">
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
   <app-sidebar></app-sidebar>
-  <!-- <div class="container-fluid"> -->
+  
+  <div class="user-screen-part">
     <!--ROW 1 START-->
-    <!-- <div class="row" > -->
+    <div class="row" >
       <!--ROW 1 START-->
-      <!-- <div class="col-md-2"> -->
+      <div class="col-md-2">
 
-      <!-- </div>
+      </div>
       <div class="col-md-8">
         <div>
           <h1 id = "userTitle">
-            {{USEROBJ.username}}
+            Welcome, {{USEROBJ.username}}!
           </h1>
-            <div>
-              <button (click)="onEventCreate()" type="submit" class="btn btn-success">
-                Create post
-              </button>
-            </div>
-            <div>
 
-            </div>
-              <a href = "/eventform">
-              <button type="button" class="btn btn-outline-success">
-                Create event
-              </button>
-              </a>
-              <a href = "/usereventpage">
-                <button type="button" class="btn btn-success">
-                  Show events
-                </button>
-                </a>
-            </div>
-            <div>
-
-            </div>
-            <div>
-              <a role="button" href="/modifyprofile" class="btn btn-success">
-                Modify profile
-              </a>
-            </div> -->
+          <p>
+            <ul>
+                <li>
+                    User Profile Information to be inserted here
+                </li>
+                <li>
+                    Profile details to be inserted here
+                </li>
+                <li>
+                  Think of this as one single post. Will work on divving this up into a dynamic thing in time.
+                </li>
+            </ul>
+          
+          <div>
+            <a role="button" href="/modifyprofile" class="btn btn-success">
+              Modify profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
             <!-- Dropdown bar to select tag to search by -->
             <!-- <div>

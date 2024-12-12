@@ -1,3 +1,11 @@
+
+.user-post-page{
+    position: absolute;
+    top: 100px;
+    left: 30%;
+    z-index: 1;
+}
+
 .main-body{
     background-image: url(../assets/background_gradient.png);
     background-repeat: repeat;
@@ -29,7 +37,7 @@
     border: 5px solid var(--dark-green);
     box-sizing: border-box;
     flex-grow: 1;
-    background-color: var(--medium-green);
+    background-color: transparent;
     border-radius: 38px;
     font-family: monospace, monaco;
 }
@@ -39,6 +47,7 @@
     gap: 10px 2em;
     margin-bottom: 20px;
     padding: 10px;
+    background-color: transparent;
 }
 
 .post-details{

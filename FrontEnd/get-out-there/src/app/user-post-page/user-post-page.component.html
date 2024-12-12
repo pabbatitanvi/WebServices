@@ -1,56 +1,60 @@
 
-
+<app-navigation-bar> </app-navigation-bar>
+  <app-sidebar></app-sidebar>
 <!-- Dropdown bar to select tag to search by -->
-<div>
-  <select #tags (change)="onSearchTag(tags.value)" class="form-select" aria-label="Default select example">
-    <option selected value="All">All</option>
-    <option value="Art">Art</option>
-    <option value="Museum">Museum</option>
-    <option value="Coffee">Coffee</option>
-    <option value="History">History</option>
-  </select>
-</div>
+<div class="user-post-page">
 
-<!-- Serach bar for posts (search by location) -->
-<div>
-  <input #searchbar type="text" id="mySearch" (keyup.enter)="onSearchLocation(searchbar.value)" placeholder="Search posts by loction" title="Type in a category">
-</div>
+  <div>
+    <select #tags (change)="onSearchTag(tags.value)" class="form-select" aria-label="Default select example">
+      <option selected value="All">All</option>
+      <option value="Art">Art</option>
+      <option value="Museum">Museum</option>
+      <option value="Coffee">Coffee</option>
+      <option value="History">History</option>
+    </select>
+  </div>
 
-<!-- Button to get posts by user -->
-<div>
-  <a role="button" (click)="onSearchUser()" class="btn btn-success">
-    Get posts by me
-  </a>
-</div>
-    
-<div class="row">
-      
-  <div class="col">
-    <!-- Make event box for every event in the list -->
-    <div class="post-box" *ngFor="let post of posts">
-      <div class="post">
-        <!-- Delete Button-->
-        <button type="button" class="btn-close" aria-label="Close" (click)="onDeletePost(post._id)"></button>
-        <!-- Date in the date box -->
-        <div class="post-date-box">
-            <p class="post-day">{{post.Date | date: 'd'}}</p>
-            <p class="post-month">{{post.Date | date: 'MMMM'}}</p>
-            <p class="post-year">{{post.Date | date: 'yyyy'}}</p>
-        </div>
+  <!-- Serach bar for posts (search by location) -->
+  <div>
+    <input #searchbar type="text" id="mySearch" (keyup.enter)="onSearchLocation(searchbar.value)" placeholder="Search posts by loction" title="Type in a category">
+  </div>
 
-        <!-- Post details in the post details section-->
-        <div class="post-details">
-            <p class="post-name">{{post.Caption | uppercase}}</p>
-            <p class="post-desc">Location: {{post.LocationName}}</p>
-            <p class="post-desc">{{post.Description}}</p>
-        </div>
-        <div class="post-tags-box" *ngFor="let tag of post.Tags">
-          {{tag}}
-        </div>
-        <button type="button" class="btn-close" aria-label="Open" (click)="onEditPost(post._id)"></button>
-      </div>
-    </div>
-        
+  <!-- Button to get posts by user -->
+  <div>
+    <a role="button" (click)="onSearchUser()" class="btn btn-success">
+      Get posts by me
+    </a>
   </div>
       
+  <div class="row">
+    
+    <div class="col">
+      <!-- Make event box for every event in the list -->
+      <div class="post-box" *ngFor="let post of posts">
+        <div class="post">
+          <!-- Delete Button-->
+          <button type="button" class="btn-close" aria-label="Close" (click)="onDeletePost(post._id)"></button>
+          <!-- Date in the date box -->
+          <div class="post-date-box">
+              <p class="post-day">{{post.Date | date: 'd'}}</p>
+              <p class="post-month">{{post.Date | date: 'MMMM'}}</p>
+              <p class="post-year">{{post.Date | date: 'yyyy'}}</p>
+            </div>
+            
+            <!-- Post details in the post details section-->
+            <div class="post-details">
+              <p class="post-name">{{post.Caption | uppercase}}</p>
+              <p class="post-desc">Location: {{post.LocationName}}</p>
+              <p class="post-desc">{{post.Description}}</p>
+            </div>
+          <div class="post-tags-box" *ngFor="let tag of post.Tags">
+            {{tag}}
+          </div>
+          <button type="button" class="btn-close" aria-label="Open" (click)="onEditPost(post._id)"></button>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
 </div>
