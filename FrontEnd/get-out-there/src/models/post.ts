@@ -7,4 +7,5 @@ export interface Post {
     Date: Date;
     Tags: Array<string>;
     _id?: ObjectId;
+    UserId: string;
 }
