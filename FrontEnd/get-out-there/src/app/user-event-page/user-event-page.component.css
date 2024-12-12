@@ -1,11 +1,12 @@
 .events{
     background-image: url(../assets/background_gradient.png);
     background-size: cover;
-    width: 100vw;
     /*height: 100vh;*/
     background-repeat: repeat;
     background-position: center;
     /*background-color: #E8FCCF;*/
+    margin-left: 290px;
+    padding-top: 125px;
 }
 .event-box > * {
     display: flex;

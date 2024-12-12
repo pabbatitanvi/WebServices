@@ -1,10 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --lightest-green: #E8FCCF;
+    --lightest-green: #DCE9DD;
+    --lighter-green: #E8FCCF;
     --light-green: #96E072;
     --middle-green: #3DA35D;
     --dark-green: #3E8914;
+    --darker-green: #2E6F40;
+    --green: #1D691A;
     --darkest-green: #134611;
+    --light-blue: #45B1E7;
+    --medium-blue: #2E8AB9;
 }
 /* Sets the page color */
 html {

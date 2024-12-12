@@ -78,6 +78,11 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  getEventByOrgId(id: any):Observable<any>{
+    let url=`http://localhost:3000/geteventbyorgid/${id}`
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   getUsers():Observable<any>{
     let url="http://localhost:3000/getusers"
     let result = this.http.get(url, this.httpoptions)

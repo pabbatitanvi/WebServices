@@ -5,17 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import { Router } from '@angular/router';
-
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-event-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
   templateUrl: './event-form.component.html',
   styleUrl: './event-form.component.css'
 })
 export class EventFormComponent {
   constructor(public dataService: GetDataService, private router: Router) { }
+  public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
   ngOnInit(): void {
     
   }
@@ -74,6 +76,10 @@ export class EventFormComponent {
   onSubmit(){
     console.log("submit clicked")
     console.log(this.eventForm.value);
+
+    this.eventForm.patchValue({
+      organization: this.USEROBJ._id
+    })
 
     if(this.eventForm.valid){
       console.log("event details are sent to the backend")

@@ -20,6 +20,16 @@
             Share Posts
           </a>
         </li>
+        <h4 class = "header" *ngIf = "USEROBJ.userType === 'Organization'">Events</h4>
+        <li class="nav-item" id = "createE" *ngIf = "USEROBJ.userType === 'Organization'">
+          <a class="nav-link-active" role="button" href="/eventform" aria-current="page" routerLink="/eventform">Create Events</a>
+        </li>
+
+        <li class="nav-item" id = "showE" *ngIf = "USEROBJ.userType === 'Organization'">
+          <a class="nav-link-active" href="/usereventpage" role="button" aria-expanded="false" >
+            Show Events
+          </a>
+        </li>
 
       </ul>
     </div>

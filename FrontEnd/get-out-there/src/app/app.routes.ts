@@ -33,7 +33,6 @@ export const routes: Routes = [
     {path: 'posteditform/:postid', component: PostEditFormComponent},
     {path: 'modifyprofile', component: UserSettingsPageComponent},
     {path: 'shareevent', component:ShareEventComponent},
-    {path: 'userpostpage', component: UserPostPageComponent},
 ];
 
 @NgModule({

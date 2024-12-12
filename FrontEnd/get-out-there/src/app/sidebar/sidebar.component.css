@@ -1,16 +1,17 @@
 
 :host{
     display:block;
-    width:25%;
+    width:15%;
+    background-color: #E8FCCF;
 }
 
 #navbar{
+    position: fixed;
     background-color: #134611;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
-    background-size: "cover";
-    background-attachment: fixed;
-    /* width: 15%; */
+    width: 15%;
+    margin-top: 70px;
     height: 100vh;
     border-bottom: 1px solid white;
     display: flex;

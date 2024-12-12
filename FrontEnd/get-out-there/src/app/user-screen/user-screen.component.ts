@@ -29,7 +29,6 @@ export class UserScreenComponent implements OnInit{
     this.dataService.getPosts().subscribe((posts) => {
       this.posts = posts
     })
-    // console.log(this.USEROBJ);
   }
   public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
   // public current_user:any=[
