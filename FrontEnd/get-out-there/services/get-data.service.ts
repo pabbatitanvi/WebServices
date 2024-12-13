@@ -205,5 +205,17 @@ export class GetDataService {
   }
   
   // ------------------------------- FRIENDS RELATED CALLS ----------------------------------
+  recommendFriends(tags : Array<string>):Observable<any>{
+    let url = "http://localhost:3000/friendsbytag?tags=" + tags[0]
+
+    tags.forEach(tag => {
+      url.concat("&tags=" + tag)
+    });
+
+    console.log("url is", url)
+
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   
 }

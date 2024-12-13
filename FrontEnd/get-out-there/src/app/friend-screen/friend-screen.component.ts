@@ -39,6 +39,12 @@ export class FriendScreenComponent implements OnInit{
         console.log("friend #", index, "is", this.currentFriends[index], "with username", this.currentFriends[index].username);
       })
     });
+
+    // Setting up recommended friends
+    console.log("Tags sending: ", this.USEROBJ.chooseTags)
+    this.dataService.recommendFriends(this.USEROBJ.chooseTags).subscribe((recommendations) => {
+      this.recommendedFriends = recommendations;
+    })
   }
 
 

@@ -1,11 +1,11 @@
 const mongodb = require('../database.js');
 const {ObjectId} = require('mongodb');
 
-//Search for freinds by tag
+//Search for friends by finding other users with all the same tags as this user
 async function friendsByTag(tags){
     _database = mongodb.getDb().collection('Users')
     try{
-        let data = await _database.find({ChooseTags: tags}).toArray()
+        let data = await _database.find({chooseTags: { $all : tags} }).toArray()
         return data
     }catch (err){
         console.error(err)

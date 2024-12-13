@@ -4,8 +4,17 @@ const friends = require('./friends_services.js')
 
 // ----------------------------------------- Friends -----------------------------------------
 module.exports = function(app){
-    app.get('/friendsByTag/:tags', async(req, res) =>{
-        const tags = req.params.tags;
+    app.get('/friendsbytag', async(req, res) =>{
+
+        var tags;
+        // to avoid the function this calls giving an error if you send it a single, non-array item
+        if(Object.keys(req.query).length <= 1){
+            tags = new Array(req.query.tags);
+        } else {
+            tags = req.query.tags
+        }
+        
+        console.log("query.tags.length:", Object.keys(req.query).length, "TAGS: ", tags)
         let data = await friends.friendsByTag(tags);
         console.log(data, "Friends by tags");
         return res.send("Friends searched for by tag");
