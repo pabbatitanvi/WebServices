@@ -39,7 +39,7 @@
       </div>
 
       <!-- Column for recommended friends -->
-      <div class="col-md-6">
+      <div class="col-md-3">
 
         <div class="friend-box" *ngFor="let friend of recommendedFriends">
           {{friend.username}}
@@ -50,7 +50,14 @@
       <!-- Column for current friends -->
       <div class="col-md-3">
         <div class="friend-box" *ngFor="let friend of currentFriends">
-          {{friend}}
+          <div class="friend-details">
+            Username: {{friend.username}}
+
+            Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}
+          </div>
+          <div class="friend-tags-box" *ngFor="let tag of friend.chooseTags">
+            {{tag}}
+          </div>
         </div>
       </div>
     </div>

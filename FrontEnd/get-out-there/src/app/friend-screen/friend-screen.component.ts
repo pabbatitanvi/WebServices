@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
 import { NgFor, NgIf } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-friend-screen',
@@ -17,21 +18,26 @@ export class FriendScreenComponent implements OnInit{
   public currentFriends: any = []
   public recommendedFriends: any = []
 
+  public myObj!: User;// for the parsing process when getting the existing information about the post to edit
+
   // Store info about current user
   public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
 
   // Initializer
   ngOnInit(): void {
-    // this.dataService.getCurrentFriends(this.USEROBJ._id).subscribe((friends) => {
-    //   this.currentFriends = this.USEROBJ.friends
-    // })
     let tempArray = [];
     tempArray = this.USEROBJ.friends
 
-    tempArray.forEach( (friend : string) => {
-      let tempValue = this.dataService.getUserById(friend)
-
-//      this.currentFriends[]
+    // All this mess of several arrays iterating and copying into each other is just to get the array currentFriends to be an
+    //array containing FULL USER INFORMATION of each friend.
+    tempArray.forEach( (friend : any, index : any) => {
+      this.dataService.getUserById(friend).subscribe((tempValue) => {
+        
+        let myObj = JSON.parse(tempValue);
+        
+        this.currentFriends[index] = myObj;
+        console.log("friend #", index, "is", this.currentFriends[index], "with username", this.currentFriends[index].username);
+      })
     });
   }
 
