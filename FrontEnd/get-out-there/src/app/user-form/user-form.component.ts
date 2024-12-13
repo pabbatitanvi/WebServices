@@ -4,6 +4,8 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
 import { GetDataService } from '../../../services/get-data.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-user-form',
   standalone: true,
@@ -14,10 +16,6 @@ import { GetDataService } from '../../../services/get-data.service';
 
 
 export class UserFormComponent {
-
-  // ngOnInit() {
-  //   console.log('UserForm:', this.userForm);
-  // }  
 
   tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
                       { id: 2, itemName: 'Books' },
@@ -92,7 +90,7 @@ export class UserFormComponent {
     })
   }
 
-  constructor(public dataService: GetDataService) { }
+  constructor(public dataService: GetDataService, private router: Router) { }
   onSubmit(){
     console.log(this.userForm.value)
     if(this.userForm.valid){
@@ -106,6 +104,8 @@ export class UserFormComponent {
       console.log("oops")
     }
   }
-  
+  onQuit(){
+    this.router.navigate(['/login'])
+  }
   
 }

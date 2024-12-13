@@ -14,23 +14,30 @@
           <h1 id = "userTitle">
             Welcome, {{USEROBJ.username}}!
           </h1>
-
-          <p>
-            <ul>
+            <ul class="list">
                 <li>
-                    User Profile Information to be inserted here
+                    First Name: {{USEROBJ.firstName}}
                 </li>
                 <li>
-                    Profile details to be inserted here
+                    Middle name: {{USEROBJ.middleName}}
                 </li>
                 <li>
-                  Think of this as one single post. Will work on divving this up into a dynamic thing in time.
+                    Last Name: {{USEROBJ.lastName}}
                 </li>
+                <li>
+                  Tags:
+                  <ul>
+                    <li *ngFor="let tag of USEROBJ.chooseTags">{{tag}}</li>
+                  </ul>
+              </li>
             </ul>
           
           <div>
-            <a role="button" href="/modifyprofile" class="btn btn-success">
+            <a role="button" href="/modifyprofile" class="btn btn-warning">
               Modify profile
+            </a>
+            <a role="button" href="/login" class="btn btn-primary">
+              Logout
             </a>
           </div>
         </div>

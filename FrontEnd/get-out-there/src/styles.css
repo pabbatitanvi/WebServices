@@ -9,7 +9,10 @@
     --green: #1D691A;
     --darkest-green: #134611;
     --light-blue: #45B1E7;
+    --lighter-blue: #C6FCFF;
+    --lightest-blue: #E5F3FD;
     --medium-blue: #2E8AB9;
+    --dark-blue: #1B7593
 }
 /* Sets the page color */
 html {

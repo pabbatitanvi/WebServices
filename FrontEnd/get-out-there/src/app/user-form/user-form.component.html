@@ -2,12 +2,14 @@
 https://blog.angular-university.io/angular-file-upload/ 
 https://www.bezkoder.com/node-js-upload-store-images-mongodb/
 -->
+<div class="main-body">
 <div class="row">
     <div class="col-md-2">
 
     </div>
     <div class="col-md-8">
         <form class = "form" [formGroup] = "userForm" (ngSubmit) = "onSubmit()">
+            <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
             <div class = "fQuestion">
                 <label for = "userType">What type of account would you like to create?</label>
             </div>
@@ -23,11 +25,11 @@ https://www.bezkoder.com/node-js-upload-store-images-mongodb/
             <section class = "questions">
                 <div>
                     <label id = "uName" for = "username">Username</label>
-                    <input type = "text" formControlName = "username">
+                    <input type = "text" id="username" formControlName = "username">
                 </div>
                 <div>
-                    <label id = "password" for = "password">Password</label>
-                    <input type = "password" formControlName = "password">
+                    <label id = "pword" for = "password">Password</label>
+                    <input type = "password" id="password" formControlName = "password">
                 </div>
                 <section class = "choose-tags-container">
                     <label for = "chooseTags">Choose Tags</label>
@@ -36,37 +38,38 @@ https://www.bezkoder.com/node-js-upload-store-images-mongodb/
                 <section class = "name">
                     <div *ngIf = "userForm.get('userType')?.value == 'User'">
                         <label id = "fName" for = "firstName">First name</label>
-                        <input type = "text" formControlName = "firstName">
+                        <input type = "text" id="firstName" formControlName = "firstName">
                     </div>
                     <div *ngIf = "userForm.get('userType')?.value == 'User'">
                         <label id = "mName" for = "middleName">Middle name</label>
-                        <input type = "text" formControlName = "middleName">
+                        <input type = "text" id="middleName" formControlName = "middleName">
                     </div>
                     <div *ngIf = "userForm.get('userType')?.value == 'User'">
                         <label id = "lName" for = "lastName">Last name</label>
-                        <input type = "text" formControlName = "lastName">
+                        <input type = "text" id="lastName" formControlName = "lastName">
                     </div>
                 </section>
                 <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
                     <label id = "oName" for = "organizationname">Organization Name</label>
-                    <input type = "text" formControlName = "organizationName" required>
+                    <input type = "text" id="organizationName" formControlName = "organizationName" required>
                 </div>
                 <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
                     <label id = "cMem" for = "choosemembership">Choose Membership</label>
-                    <input type = "text" formControlName = "chooseMembership" required>
+                    <input type = "text" id="chooseMembership" formControlName = "chooseMembership" required>
                 </div>
                 <div *ngIf = "userForm.get('userType')?.value == 'Organization'">
-                    <label id = "location" for = "location">Location</label>
-                    <input type = "text" formControlName = "location" required>
+                    <label id = "l" for = "location">Location</label>
+                    <input type = "text" id="location" formControlName = "location" required>
                 </div>
             </section>
-            <button class = "submit-button" type = "submit">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <div class="col-md-2">
         
     </div>
 
+</div>
 </div>
 
 

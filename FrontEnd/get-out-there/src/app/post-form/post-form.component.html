@@ -1,3 +1,4 @@
+<div class="main-body">
 <app-navigation-bar></app-navigation-bar>
 <app-sidebar></app-sidebar>
 <div class="row">
@@ -25,11 +26,12 @@
                     <label for = "Tags">Choose Tags</label>
                     <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
                 </section>
-            <button class = "submit-button" type = "submit">Create</button>
+            <button class = "btn btn-primary" type = "submit">Create</button>
         
     <div class="col-md-2">
         
 
 </div>
+</section>
 
 
