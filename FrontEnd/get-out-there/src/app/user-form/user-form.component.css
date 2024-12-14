@@ -18,12 +18,6 @@
     align-items: center; 
     margin-bottom: 10px;
 }
-
-.col-md-2{
-    background-color: green;
-    color: turquoise;
-
-}
 .form{
     position: absolute;
     top: 50%;

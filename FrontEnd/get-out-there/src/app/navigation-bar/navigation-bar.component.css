@@ -18,14 +18,14 @@
     --bs-btn-active-bg: #687864
 }
 .navbar-brand{
-    color: #E8FCCF;
+    color: var(--lighter-green);
     font-size: xx-large;
     font-weight: bold;
     font-family: monospace, monaco;
 }
 
 .nav-link-active{
-    color: #E8FCCF;
+    color: var(--lighter-green);
     text-decoration: none;
     margin-left: 40px;
     font-size: 25px;
@@ -45,5 +45,5 @@
 #btn{
     font-size: x-large;
     font-family: monospace, monaco;
-    color: #E8FCCF;
+    color: var(--lighter-green);
 }
