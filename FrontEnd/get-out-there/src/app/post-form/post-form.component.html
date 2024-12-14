@@ -1,5 +1,7 @@
 <div class="main-body">
+<!-- navigation bar-->
 <app-navigation-bar></app-navigation-bar>
+<!-- sidebar-->
 <app-sidebar></app-sidebar>
 <div class="row">
     <div class="col-md-2">
@@ -9,6 +11,7 @@
             <!-- close button (exit the form)-->
             <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
             <p>{{currentDate | date:'shortDate'}}</p>
+            <!-- post form questions-->
             <section class = "questions">
                 <div>
                     <label id = "postName" for = "Caption">Caption</label>
@@ -26,6 +29,7 @@
                     <label for = "Tags">Choose Tags</label>
                     <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
                 </section>
+            <!-- cerate button to add the post to the database-->
             <button class = "btn btn-primary" type = "submit">Create</button>
         
     <div class="col-md-2">

@@ -17,10 +17,14 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 })
 export class EventFormComponent {
   constructor(public dataService: GetDataService, private router: Router) { }
+  
+  //gets the logged in userobj
   public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
   ngOnInit(): void {
     
   }
+
+  //tags dropdown
   tagsArray: any[] = [
     { id: 1, itemName: 'Museum' }, 
     { id: 2, itemName: 'Books' },
@@ -32,6 +36,7 @@ export class EventFormComponent {
     { id: 8, itemName: 'Arcade' },
   ]
 
+  //event form for event details
   eventForm = new FormGroup({
     eventName: new FormControl(''),
     description: new FormControl(''),
@@ -42,11 +47,12 @@ export class EventFormComponent {
     price: new FormControl(null),
     organization: new FormControl(''),
     location: new FormControl(''),
-});
+  });
 
-
+  //stores the choosen selected tags
   selected: any[] = [{ id: 1, itemName: 'Museum' }]
 
+  //tags dopdown settings
   dropdownSettings = {
     singleSelection: false,
     idField: 'id',
@@ -56,10 +62,12 @@ export class EventFormComponent {
     allowSearchFilter: true
   };
 
+  //gets the tags
   get chooseTags():FormArray{
     return this.eventForm.get('chooseTags') as FormArray;
   }
 
+  //handles selected tags
   onSelectedTags($event: any){
     console.log(':', $event)
 
@@ -73,6 +81,7 @@ export class EventFormComponent {
     }
   }
 
+  //submit button to add the details to the database
   onSubmit(){
     console.log("submit clicked")
     console.log(this.eventForm.value);
@@ -91,10 +100,11 @@ export class EventFormComponent {
       console.log("oops")
     }
     this.router.navigate(['/userprofile'])
- }
+  }
  
- onQuit(){
-  this.router.navigate(['/userprofile'])
-}
+  //handles close button
+  onQuit(){
+    this.router.navigate(['/userprofile'])
+  }
 }
 

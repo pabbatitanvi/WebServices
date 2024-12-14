@@ -23,9 +23,11 @@ export class UserEventPageComponent {
     })
     console.log(this.USEROBJ._id)
   }
+  //handles delete button
   onDeleteEvent(eventID: ObjectId){
     this.dataService.deleteEvent(eventID).subscribe((result)=>{})
   }
+  //handles modify button
   onModifyEvent(eventID: ObjectId){
     this.router.navigate(['/usereditform/' + eventID])
   }

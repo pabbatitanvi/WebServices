@@ -1,3 +1,4 @@
+/* background styling for the whole page */
 .main-body{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
@@ -6,6 +7,7 @@
     background-repeat: repeat;
     background-position: center;
 }
+/* multiselect dropdown */
 :host ::ng-deep .multiselect-dropdown{
     width: 95%!important;
     margin-left: 50px;
@@ -23,7 +25,6 @@
 
 }
 .form{
-    /*background-image: url(../assets/background_gradient.png);*/
     position: absolute;
     top: 50%;
     left: 50%;
@@ -59,7 +60,7 @@
 #userButton{
     margin-right: 20px;
 }
-
+/* login form questions */
 #uName{
     margin-bottom: 20px;
     margin-right: 20px;
@@ -125,6 +126,7 @@
     border-radius: 20px;
     border: 3px solid var(--medium-blue);
 }
+/* submit button */
 .btn-primary{
     margin-top: 20px;
     margin-left: 200px;
@@ -137,6 +139,7 @@
     font-family: monospace, monaco;
     font-size: 24px;
 }
+/* close button */
 .btn-close{
     margin-bottom: 20px;
     margin-right: 50px;

@@ -2,6 +2,7 @@
     margin-top: 150px;
     margin-left: 100px;
 }
+/* background styling for the page */
 .main-body{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
@@ -21,6 +22,7 @@
     width: 50%;
     margin-bottom: 30px;
 }
+/* label on top of the input field */
 .form-label{
     font-family: monospace, monaco;
     color: var(--darkest-green);
@@ -34,6 +36,7 @@
     color: var(--dark-blue);
     margin-bottom: 50px;
 }
+/* save button */
 .btn-primary{
     margin-top: 20px;
     align-items: center;
@@ -45,6 +48,7 @@
     font-family: monospace, monaco;
     font-size: 24px;
 }
+/* close button */
 .btn-close{
     margin-bottom: 20px;
     margin-right: 50px;

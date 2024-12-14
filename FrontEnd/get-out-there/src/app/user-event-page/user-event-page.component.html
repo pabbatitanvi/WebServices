@@ -1,5 +1,6 @@
 <!-- Navigation bar -->
-<app-navigation-bar>    </app-navigation-bar>
+<app-navigation-bar></app-navigation-bar>
+<!-- sidebar -->
 <app-sidebar></app-sidebar>
 
 <section class="events">
@@ -7,16 +8,11 @@
     <div class="row">
             <!-- Make event box for every event in the list -->
             <div class="event-box" *ngFor="let event of events">
-                
-                    
                         <div class="event-date-box">
                             <p class="event-date">{{event.date | date: 'd'}}/{{event.date | date: 'MM'}}/{{event.date | date: 'yyyy'}}</p>
-                            <!-- <p class="event-day">{{event.date | date: 'd'}}</p>
-                            <p class="event-month">{{event.date | date: 'MM'}}</p>
-                            <p class="event-year">{{event.date | date: 'yyyy'}}</p> -->
                         </div>
                         <div class="event">       
-            <!-- <div class="event-info">                 -->
+                    <!-- event details in the event box -->
                     <div class="event-details">
                         <p class="event-name">{{event.eventName | uppercase}}</p>
                         <p class="event-desc">{{event.description}}</p>
@@ -26,13 +22,12 @@
                     <div class = "buttons">
                         <button type="button" class="btn btn-danger me-2" (click) = "onDeleteEvent(event._id)">
                             Delete event
-                          </button>
-                          <button type="button" class="btn btn-warning" (click) = "onModifyEvent(event._id)">
+                        </button>
+                        <button type="button" class="btn btn-warning" (click) = "onModifyEvent(event._id)">
                             Modify event
-                          </button>
+                        </button>
                     </div>
-                    </div>
+                </div>
             </div>
-            <!-- </div> -->
         </div>
 </section>
