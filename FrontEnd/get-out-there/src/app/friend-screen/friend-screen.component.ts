@@ -32,33 +32,51 @@ export class FriendScreenComponent implements OnInit{
 
     // All this mess of several arrays iterating and copying into each other is just to get the array currentFriends to be an
     //array containing FULL USER INFORMATION of each friend.
-    tempArray.forEach( (friend : any, index : any) => {
-      this.dataService.getUserById(friend).subscribe((tempValue) => {
-        
-        let myObj = JSON.parse(tempValue);
-        
-        this.currentFriends[index] = myObj;
-        console.log("friend #", index, "is", this.currentFriends[index], "with username", this.currentFriends[index].username);
-      })
-    });
+    if(tempArray == undefined){
+      console.log("current user has no friends...yet!")
+    } else{
+      tempArray.forEach( (friend : any, index : any) => {
+        this.dataService.getUserById(friend).subscribe((tempValue) => {
+          
+          let myObj = JSON.parse(tempValue);
+          
+          this.currentFriends[index] = myObj;
+          //console.log("friend #", index, "is", this.currentFriends[index], "with username", this.currentFriends[index].username);
+        })
+      });
+    }
 
     // Setting up recommended friends
     console.log("Tags sending: ", this.USEROBJ.chooseTags)
     this.dataService.recommendFriends(this.USEROBJ.chooseTags).subscribe((recommendations) => {
-      this.recommendedFriends = recommendations;
+
+      // The intention is for this to eventually filter current friends from the friend recommendations
+      this.recommendedFriends = this.removeCommonElements(recommendations, this.currentFriends);
     })
   }
+
+  //stores search input
   searchInput: string | null=""
+  //gets the friends information based on search
   searchFriends(){
     this.dataService.getUserByName(this.searchInput).subscribe((friend) => {
       this.usernameFriends = friend;
     })
   }
+
+  //handles add button
   onAdd(userid:any, username:any){
     const userID = userid.toString()
     this.dataService.addFriends(userID, username).subscribe((result) => {
       console.log("friend added")
       // window.location.reload();
     })
+  }
+
+  // For removing friends from the "search" and "recommendations" areas
+  // Use: const result = removeCommonElements(array1, array2); will return array that has only unique elements in array1
+  removeCommonElements(array1: any[], array2: any[]): any[] {
+    const set2 = new Set(array2);
+    return array1.filter(element => !set2.has(element));
   }
 }

@@ -1,13 +1,11 @@
-
 :host{
     display:block;
     width:15%;
-    background-color: #E8FCCF;
+    background-color: var(--lighter-green);
 }
-
 #navbar{
     position: fixed;
-    background-color: #134611;
+    background-color: var(--darkest-green);
     background-repeat: repeat;
     background-position: center;
     width: 16%;
@@ -19,7 +17,7 @@
 }
 
 .navbar-brand{
-    color: #E8FCCF;
+    color: var(--lighter-green);
     font-size: xx-large;
     font-weight: bold;
     font-family: monospace, monaco;
@@ -30,7 +28,7 @@
 
 }
 .nav-link-active{
-    color: #E8FCCF;
+    color: var(--lighter-green);
     text-decoration: none;
     font-size:30px;
     margin-left: 50px;
@@ -46,25 +44,9 @@
     text-align: start;
 }
 .header{
-    color: #E8FCCF;
+    color: var(--lighter-green);
     font-size: 40px;
     font-family: monospace, monaco;
     margin-left: 20px;
     margin-top: 30px;
-}
-
-#home:hover{
-    font-weight: bold; 
-}
-#events:hover{
-    font-weight: bold; 
-}
-#friends:hover{
-    font-weight: bold; 
-}
-
-#btn{
-    font-size: x-large;
-    font-family: monospace, monaco;
-    color: #E8FCCF;
 }

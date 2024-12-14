@@ -1,5 +1,7 @@
 <section class="main-body">
-    <app-navigation-bar>    </app-navigation-bar>
+<!--navigation bar-->
+<app-navigation-bar></app-navigation-bar>
+<!--sidebar in the user profile page-->
 <app-sidebar></app-sidebar>
 <div class = "row">
     <div class = "col-md-2">
@@ -9,6 +11,7 @@
         <form class = "form" [formGroup] = "eventForm">
         <!-- close button (exit the form)-->
         <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
+        <!--questions to edit an event-->
         <section class = "questions">
             <div>
                 <label id = "eName" for = "eventName">Event Name</label>
@@ -39,7 +42,7 @@
             <label id = "chooseTags" for = "chooseTags">Choose Tags</label>
             <ng-multiselect-dropdown id = "multi" [placeholder] = "'Select Tags'" [settings] = "dropdownSettings" [data] = "tagsArray" (onSelect) = "onSelectedTags($event)"></ng-multiselect-dropdown>
         </section>
-        
+        <!--save button to update  the event details to the database-->
         <button class = "btn btn-primary" (click) = "onSave()">Save</button>
         </form>
     </div>

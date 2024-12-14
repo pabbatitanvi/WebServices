@@ -14,6 +14,7 @@ export class LoginScreenComponent implements OnInit{
   ngOnInit(): void {
     
   }
+  //navigates to the login form page
   onLogin(): void{
     this.router.navigate(['/loginpage'])
   }

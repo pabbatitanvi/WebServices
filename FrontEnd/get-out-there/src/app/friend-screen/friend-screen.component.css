@@ -1,4 +1,4 @@
-
+/* handles background for the whole page */
 .main-body{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
@@ -10,23 +10,7 @@
 .friends{
     padding-top: 90px;
 }
-
-#mfriends{
-    margin-left: 20px;
-    margin-top: 20px;
-}
-#cfriends{
-    margin-left: 20px;
-    margin-top: 20px;
-}
-h1{
-    font-size: xx-large;
-    font-family: monospace, monaco;
-    color: #E8FCCF;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 10px;
-}
+/* search bar */
 #mySearch {
     width: 100%;
     font-size: 20px;
@@ -37,11 +21,41 @@ h1{
     margin:10px;
     border-radius: 50px;
     font-family: monospace, monaco;
-  }
-
- .friend-tags-box{
+}
+/* handles add button */
+.btn-secondary{
+    margin-right: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+    font-family: monospace, monaco;
+    font-size: 24px;
+}
+/* meet friends heading */
+#mfriends{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+/* current friends heading */
+#cfriends{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+h1{
+    font-size: xx-large;
+    font-family: monospace, monaco;
+    color: var(--lighter-green);
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
+}
+/* handless friends tags in the friends box */
+.friend-tags-box{
     margin-left: 90px;
- }
+}
+/* handles firends box */
 .friend-box > * {
     display: flex;
     flex-direction: column;
@@ -52,7 +66,6 @@ h1{
     font-family: monospace, monaco;
     background-color: var(--darker-green);
 }
-
 .friend-box { 
     width: 100%;
     display: flex;
@@ -63,6 +76,7 @@ h1{
     height: auto;
     box-sizing: border-box;
 }
+/* handles information in friends box */
 .friend-details{
     display: flex;
     flex-direction:column;
@@ -71,7 +85,7 @@ h1{
     flex-grow: 1;
     font-size: 25px;
     font-weight: bold;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     text-align: center;
     padding-left: 30px;
 }

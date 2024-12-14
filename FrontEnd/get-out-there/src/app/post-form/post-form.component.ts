@@ -30,12 +30,16 @@ export class PostFormComponent implements OnInit{
   // This allows it to grab the CURRENT date for a post!
   currentDate : Date = new Date();
 
-  tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
-                      { id: 2, itemName: 'Books' },
-                      { id: 3, itemName: 'Coffee' },
-                      { id: 4, itemName: 'History' },
-                      { id: 5, itemName: 'Art' }
-                    ]
+  tagsArray: any[] = [
+    { id: 1, itemName: 'Museum' }, 
+    { id: 2, itemName: 'Books' },
+    { id: 3, itemName: 'Coffee' },
+    { id: 4, itemName: 'History' },
+    { id: 5, itemName: 'Art' },
+    { id: 6, itemName: 'Nature' },
+    { id: 7, itemName: 'Hiking' },
+    { id: 8, itemName: 'Arcade' },
+  ]
 
   postForm = new FormGroup({
     Caption: new FormControl(''),
@@ -87,6 +91,7 @@ export class PostFormComponent implements OnInit{
     }
     this.router.navigate(['/userprofile'])
   }
+  
   // Called by the "close" button, navigates back to the user profile
   onQuit(){
     this.router.navigate(['/userprofile'])

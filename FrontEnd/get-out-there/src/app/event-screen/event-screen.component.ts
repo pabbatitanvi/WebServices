@@ -22,6 +22,7 @@ export class EventScreenComponent {
       this.events = events
     })
   }
+  //tags for dropdown
   public tagsArray: any[] = [
     { id: 1, itemName: 'Museum' }, 
     { id: 2, itemName: 'Books' },
@@ -32,9 +33,12 @@ export class EventScreenComponent {
     { id: 7, itemName: 'Hiking' },
     { id: 8, itemName: 'Arcade' },
   ]
+  //handles user chosen values
   selectedTagName: string | null=""
   selectedLocation: string | null=""
   searchInput: string | null=""
+
+  //handles the tags and gets the events based on that
   onTagSelect(){
     if(this.selectedTagName === "All"){
       this.dataService.getEvents().subscribe((events) => {
@@ -47,6 +51,8 @@ export class EventScreenComponent {
       })
     }
   }
+
+  //handles the price and gets the events based on that
   eventsByPrice(){
     this.dataService.getEventByPrice(this.selectedPrice).subscribe((events) => {
       this.events = events;
@@ -54,14 +60,19 @@ export class EventScreenComponent {
       this.change.detectChanges()
     })
   }
+  //handles the location and gets the events based on that
   eventsByArea(){
     this.dataService.getEventByArea(this.selectedLocation).subscribe((events) => {
       this.events = events;
     })
   }
+
+  //navigates share button to share event page
   shareEventPage(){
     this.router.navigate(['/shareevent'])
   }
+
+  //searched events based on the search input
   searchEvents(){
     this.dataService.getEventByName(this.searchInput).subscribe((events) => {
       this.events = events;

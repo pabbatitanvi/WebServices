@@ -65,98 +65,9 @@ ul.list li{
     text-align: left;
     font-size: x-large;
     font-family: monospace, monaco;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     width: 200vh;
 }
 .col ul{
     list-style: none;
 }
-
-.post-box > * {
-    display: flex;
-    border: 5px solid var(--dark-green);
-    box-sizing: border-box;
-    flex-grow: 1;
-    background-color: var(--medium-green);
-    border-radius: 38px;
-    font-family: monospace, monaco;
-}
-.post-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 2em;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.post-details{
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-.post-date-box{
-    color: black;
-    border-radius: 35px;
-    background-color: #E8FCCF;
-    padding: 10px;
-    border: 2px solid #134611;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.post-day{
-    font-size: 35px;
-    font-weight: bolder;
-}
-.post-month, .post-year{
-    font-size: 20px;
-    font-weight: bold;
-}
-.post-date-box p{
-    margin:0;
-    padding: 1px;
-}
-.post-name{
-    font-size: 50px;
-    color: #E8FCCF;
-    font-weight: bolder;
-}
-.post-desc{
-    font-size: 25px;
-    font-weight: bold;
-    color: #E8FCCF;
-    text-align: center;
-}
-.post-tags-box{
-    font-size: 15px;
-    font-weight: bold;
-    text-align: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
-
-    color: var(--lightest-green);
-    border-radius: 35px;
-    background-color: var(--darkest-green);
-    border: 2px solid var(--dark-green);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: 25px;
-}
-/* The search bar */
-#mySearch {
-    width: 100%;
-    font-size: 18px;
-    padding: 11px;
-    border: 1px solid #000000;
-    margin:10px;
-    border-radius: 50px;
-    font-family: monospace, monaco;
-  }

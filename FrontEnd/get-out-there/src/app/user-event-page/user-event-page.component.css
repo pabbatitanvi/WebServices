@@ -1,3 +1,4 @@
+/* handles the background for the whole page */
 .events{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
@@ -9,16 +10,16 @@
     margin-left: 290px;
     padding-top: 125px;
 }
+/* event box styling */
 .event-box > * {
     display: flex;
     border: 5px solid white;
     box-sizing: border-box;
     flex-grow: 1;
-    background-color: #134611;
+    background-color: var(--darkest-green);
     border-radius: 38px;
     font-family: monospace, monaco;
 }
-
 .event-box {
     width: 50%;
     display: flex;
@@ -29,9 +30,7 @@
     height: auto;
     box-sizing: border-box;
 }
-
 .event-details{
-    /* margin: 10px; */
     display: flex;
     flex-direction:column;
     justify-content: center;
@@ -59,7 +58,7 @@
     color: white;
 
 }
-
+/* handles event date box above the event box */
 .event-date-box p{
     margin:0;
     padding: 1px;
@@ -69,15 +68,16 @@
     justify-content: center;
     margin-bottom: 0px;
 }
+/* event details in te event box */
 .event-name{
     font-size: 50px;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     font-weight: bolder;
 }
 .event-desc{
     font-size: 25px;
     font-weight: bold;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     text-align: center;
 }
 .event-price{
@@ -89,6 +89,7 @@
     color: white;
     text-decoration: underline;
 }
+/* modify button */
 .btn-warning{
     margin-left: 20px;
     margin-bottom: 10px;
@@ -99,6 +100,7 @@
     font-family: monospace, monaco;
     font-size: 24px;
 }
+/* delete button */
 .btn-danger{
     margin-right: 20px;
     margin-bottom: 10px;

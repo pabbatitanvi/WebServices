@@ -1,6 +1,7 @@
 <section class="main-body">
-  <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
-  <app-sidebar></app-sidebar>
+<app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
+<!--sidebar-->
+<app-sidebar></app-sidebar>
   
   <div class="user-screen-part">
     <!--ROW 1 START-->
@@ -14,6 +15,7 @@
           <h1 id = "userTitle">
             Welcome, {{USEROBJ.username}}!
           </h1>
+          <!--shows user information, shows different information for users and organizations-->
             <ul class="list">
                 <li *ngIf = "USEROBJ.userType === 'User'">
                     First Name: {{USEROBJ.firstName}}
@@ -40,7 +42,7 @@
                   </ul>
               </li>
             </ul>
-          
+          <!--modify and logout button-->
           <div>
             <a role="button" href="/modifyprofile" class="btn btn-warning">
               Modify profile
