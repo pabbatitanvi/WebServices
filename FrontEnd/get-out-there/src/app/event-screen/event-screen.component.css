@@ -18,9 +18,15 @@
 .event-box > * {
     display: flex;
     border: 5px solid var(--medium-blue);
+    /* border: 5px solid white; */
     box-sizing: border-box;
     flex-grow: 1;
-    background-color: var(--darkest-green);
+    /* background-color: var(--darkest-green); */
+    /* background-image: linear-gradient(180deg, #1a512e, #63a91f); */
+    background-color: #63d471;
+background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);
+
+
     border-radius: 38px;
     font-family: monospace, monaco;
 }
@@ -45,7 +51,10 @@
 .event-date-box{
     color: black;
     border-radius: 35px;
-    background-color: var(--lighter-green);
+    /* background-color: var(--lighter-green); */
+    background-color: #e7eff9;
+background-image: linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
+
     padding: 10px;
     border: 2px solid var(--darkest-green);
     display: flex;

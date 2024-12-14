@@ -1,4 +1,4 @@
-<div id="main-body" class="main-body">
+<section class="main-body">
   <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
   <app-sidebar></app-sidebar>
   
@@ -15,15 +15,24 @@
             Welcome, {{USEROBJ.username}}!
           </h1>
             <ul class="list">
-                <li>
+                <li *ngIf = "USEROBJ.userType === 'User'">
                     First Name: {{USEROBJ.firstName}}
                 </li>
-                <li>
+                <li *ngIf = "USEROBJ.userType === 'User'">
                     Middle name: {{USEROBJ.middleName}}
                 </li>
-                <li>
+                <li *ngIf = "USEROBJ.userType === 'User'">
                     Last Name: {{USEROBJ.lastName}}
                 </li>
+                <li *ngIf = "USEROBJ.userType === 'Organization'">
+                  Organization Name: {{USEROBJ.organizationName}}
+                </li>
+                <li *ngIf = "USEROBJ.userType === 'Organization'">
+                  Membership: {{USEROBJ.chooseMembership}}
+                </li>
+                <li *ngIf = "USEROBJ.userType === 'Organization'">
+                  Location: {{USEROBJ.location}}
+                </li>                                
                 <li>
                   Tags:
                   <ul>
@@ -44,7 +53,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
             <!-- Dropdown bar to select tag to search by -->
             <!-- <div>

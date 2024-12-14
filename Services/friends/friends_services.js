@@ -16,7 +16,8 @@ async function friendsByTag(tags){
 async function friendsByUsername(userId, username){
     _database = mongodb.getDb().collection('Users')
     try{
-        let data = await _database.updateOne({_id: new ObjectId(userId)}, {$addToSet: {Friends: username}});
+        const userAdd = await _database.findOne({username: username});
+        let data = await _database.updateOne({_id: new ObjectId(userId)}, {$addToSet: {friends: userAdd._id.toString()}});
         return data
     }catch (err){
         console.error(err)

@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import { User } from '../../models/user';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-friend-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf],
+  imports: [NavigationBarComponent, FormsModule, CommonModule, NgFor, NgIf],
   templateUrl: './friend-screen.component.html',
   styleUrl: './friend-screen.component.css'
 })
 export class FriendScreenComponent implements OnInit{
 
   constructor(public dataService: GetDataService) { }
-  public searchFriends: any = []
+  public findFriends: any = []
   public currentFriends: any = []
+  public usernameFriends: any = []
   public recommendedFriends: any = []
 
   public myObj!: User;// for the parsing process when getting the existing information about the post to edit
@@ -46,6 +48,17 @@ export class FriendScreenComponent implements OnInit{
       this.recommendedFriends = recommendations;
     })
   }
-
-
+  searchInput: string | null=""
+  searchFriends(){
+    this.dataService.getUserByName(this.searchInput).subscribe((friend) => {
+      this.usernameFriends = friend;
+    })
+  }
+  onAdd(userid:any, username:any){
+    const userID = userid.toString()
+    this.dataService.addFriends(userID, username).subscribe((result) => {
+      console.log("friend added")
+      // window.location.reload();
+    })
+  }
 }

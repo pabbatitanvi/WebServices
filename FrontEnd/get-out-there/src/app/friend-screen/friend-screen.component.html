@@ -1,5 +1,5 @@
 
-<body style="background-color: #E8FCCF;"></body>
+<section class="main-body">
   <app-navigation-bar> </app-navigation-bar>
 
 <section class="friends">
@@ -7,8 +7,19 @@
   <div class="row">
     <div class="col-md-3">
       
-      <input type="text" id="mySearch" placeholder="Search for friends">
-        
+      <input type="text" id="mySearch" placeholder="Search for friends" [(ngModel)] = "searchInput" (input)="searchFriends()">
+      <div class="friend-box" *ngFor="let f of usernameFriends">
+        <div class="friend-details">
+          <p>Username: {{f.username}}</p>
+
+          <p>Name: {{f.firstName}} {{f.middleName}} {{f.lastName}}</p>
+          <p id="tag">Tags: </p>
+        <div class="friend-tags-box" *ngFor="let tag of f.chooseTags">
+          {{tag}}
+        </div>
+        <button class = "btn btn-secondary" (click) = "onAdd(USEROBJ._id, f.username)">Add</button>
+        </div>
+      </div>
     </div>
     <div class="col-md-3">
       <div id = "mfriends">
@@ -18,7 +29,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div>
+      <div id="cfriends">
         <h1>
           Current Friends
         </h1>
@@ -32,7 +43,7 @@
       <!-- Column for searching for friends -->
       <div class="col-md-3">
         
-        <div class="friend-box" *ngFor="let friend of searchFriends">
+        <div class="friend-box" *ngFor="let friend of findFriends">
           {{friend.username}}
         </div>
 
@@ -51,16 +62,18 @@
       <div class="col-md-3">
         <div class="friend-box" *ngFor="let friend of currentFriends">
           <div class="friend-details">
-            Username: {{friend.username}}
+            <p>Username: {{friend.username}}</p>
 
-            Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}
-          </div>
+            <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
+            <p id="tag">Tags: </p>
           <div class="friend-tags-box" *ngFor="let tag of friend.chooseTags">
             {{tag}}
+          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
       
+</section>
 </section>

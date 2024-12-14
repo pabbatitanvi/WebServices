@@ -217,5 +217,10 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  addFriends(userId: any, username: any):Observable<any>{
+    let url = `http://localhost:3000/friendsbyusername/${userId}/${username}`
+    let result = this.http.post(url, this.httpoptions)
+    return result;
+  }
   
 }

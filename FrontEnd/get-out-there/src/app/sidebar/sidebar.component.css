@@ -10,7 +10,7 @@
     background-color: #134611;
     background-repeat: repeat;
     background-position: center;
-    width: 15%;
+    width: 16%;
     margin-top: 70px;
     height: 100vh;
     border-bottom: 1px solid white;
@@ -25,16 +25,21 @@
     font-family: monospace, monaco;
     text-align: start;
 }
+.navbar-item{
+    margin-bottom: 750px;
 
+}
 .nav-link-active{
     color: #E8FCCF;
     text-decoration: none;
-    font-size: x-large;
+    font-size:30px;
     margin-left: 50px;
     font-family: monospace, monaco;
     text-align: start;
 }
-
+.nav-link-active:hover{
+    font-weight: bold;
+}
 .navbar-nav-scroll{
     display: flex;
     flex-direction: column;
@@ -44,7 +49,8 @@
     color: #E8FCCF;
     font-size: 40px;
     font-family: monospace, monaco;
-    margin-left: 35px;
+    margin-left: 20px;
+    margin-top: 30px;
 }
 
 #home:hover{
