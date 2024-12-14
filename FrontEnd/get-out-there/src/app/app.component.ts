@@ -5,10 +5,11 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
+import {AngularOpenlayersModule} from "ng-openlayers"
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavigationBarComponent, LoginScreenComponent, HomeScreenComponent, FormsModule, SidebarComponent],
+  imports: [RouterOutlet, AngularOpenlayersModule, NavigationBarComponent, LoginScreenComponent, HomeScreenComponent, FormsModule, SidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

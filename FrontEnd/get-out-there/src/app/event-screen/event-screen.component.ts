@@ -4,11 +4,12 @@ import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MapComponent } from "../map/map.component";
 
 @Component({
   selector: 'app-event-screen',
   standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule],
+  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, MapComponent],
   templateUrl: './event-screen.component.html',
   styleUrl: './event-screen.component.css'
 })
