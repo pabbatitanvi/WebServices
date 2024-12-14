@@ -50,10 +50,8 @@ export class FriendScreenComponent implements OnInit{
     console.log("Tags sending: ", this.USEROBJ.chooseTags)
     this.dataService.recommendFriends(this.USEROBJ.chooseTags).subscribe((recommendations) => {
 
+      // The intention is for this to eventually filter current friends from the friend recommendations
       this.recommendedFriends = this.removeCommonElements(recommendations, this.currentFriends);
-      console.log("current friends:", this.currentFriends)
-      console.log("recommendations:", recommendations)
-      console.log("recommendations: ", this.recommendedFriends)
     })
   }
   searchInput: string | null=""
