@@ -30,7 +30,7 @@ export class UserPostPageComponent implements OnInit {
   }
   onDeletePost(postID: ObjectId){
     this.dataService.deletePosts(postID).subscribe((result)=>{})
-    window.location.reload();
+    // window.location.reload();
   }
   onEditPost(postID: ObjectId){
     this.router.navigate(['/posteditform/' + postID])

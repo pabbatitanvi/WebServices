@@ -2,6 +2,16 @@
     width: 95%!important;
     margin-left: 50px;
 }
+.main-body{
+    background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    background-repeat: repeat;
+    background-position: center;
+    padding-bottom: 50px;
+    position: relative;
+}
 .choose-tags-container {
     display: flex;
     align-items: center; 
@@ -10,30 +20,81 @@
     font-family: monospace, monaco;
 }
 .form{
-    /*background-image: url(../assets/background_gradient.png);*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-left: 2%;
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-top: 90px;
+    width: 75%;
+    margin-left: 300px;
+}
+.form-control{
+    margin-bottom: 20px;
+    border-radius: 50px;
+    font-family: monospace, monaco;
+    border: 3px solid var(--medium-blue);
+    color: var(--darkest-green);
+    font-size: 24px;
+    font-weight: bold;
 }
 .questions{
     font-size: 24px;
     font-family: monospace, monaco;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 #eName{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
 }
 #description{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
 }
 #date{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
 }
 #startTime{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
 }
 #endTime{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
+}
+#price{
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
+}
+#chooseTags{
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace, monaco;
+}
+.btn-primary{
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-blue);
+    border-width: 1px solid var(--medium-blue);
+    border-radius: 15px;
+    color: black;
+    font-family: monospace, monaco;
+    font-size: 24px;
+}
+.btn-close{
+    margin-bottom: 20px;
+    margin-right: 50px;
 }

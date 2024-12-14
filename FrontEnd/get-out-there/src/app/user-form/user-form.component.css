@@ -1,7 +1,15 @@
-
+.main-body{
+    background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: repeat;
+    background-position: center;
+}
 :host ::ng-deep .multiselect-dropdown{
     width: 95%!important;
     margin-left: 50px;
+    color: black;
 }
 .choose-tags-container {
     display: flex;
@@ -24,21 +32,27 @@
 }
 
 .fQuestion{
+    color: black;
+    font-family: monospace, monaco;
     font-size: 24px;
-    font-family: Georgia, serif;
-    margin-bottom: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .questions{
+    color: black;
+    font-family: monospace, monaco;
     font-size: 24px;
-    font-family: Georgia, serif;
-    margin-bottom: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .chooseButtons{
+    color: black;
+    font-family: monospace, monaco;
     font-size: 24px;
-    font-family: Georgia, serif;
-    margin-bottom: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
 
 }
 
@@ -47,33 +61,84 @@
 }
 
 #uName{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
-
+#username{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
+#pword{
+    margin-bottom: 20px;
+    margin-right: 20px;
+    
+}
 #password{
-    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
 }
-
 #fName{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
-
+#firstName{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
 #mName{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
-
+#middleName{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
 #lName{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
-
+#lastName{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
 #oName{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
-
+#organizationName{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
 #cMem{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+#chooseMembership{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
+#l{
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+#location{
+    border-radius: 20px;
+    border: 3px solid var(--medium-blue);
+}
+.btn-primary{
+    margin-top: 20px;
+    margin-left: 200px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-blue);
+    border-width: 1px solid var(--medium-blue);
+    border-radius: 15px;
+    color: black;
+    font-family: monospace, monaco;
+    font-size: 24px;
+}
+.btn-close{
+    margin-bottom: 20px;
+    margin-right: 50px;
 }
 
-#location{
-    margin-bottom: 10px;
-}

@@ -34,6 +34,13 @@ module.exports = function(app){
         console.log(data);
         return res.json(data);
     })
+    app.get('/geteventbyorgid/:id', async(req, res) => {
+        const orgId = req.params.id;
+        console.log(orgId)
+        let data = await event.eventByOrg(orgId)
+        console.log(data, "org events")
+        return res.json(data)
+    })
     app.get('/geteventinfobyprice/:price', async(req, res) => {
         const price = req.params.price;
         let data = await event.eventByPrice(price);

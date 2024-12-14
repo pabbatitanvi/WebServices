@@ -1,22 +1,11 @@
 <div id="main-body" class="main-body">
     <app-navigation-bar> </app-navigation-bar><!--This basically says "include the navigation bar in this component". Refer to the .ts file as well from here.-->
-  
+    <app-sidebar></app-sidebar>
     <div class="container-fluid">
       <!--ROW 1 START-->
       <div class="row" >
         <!--ROW 1 START-->
         <div class="col-md-2">
-  
-        </div>
-        <div class="col-md-8">
-            
-            <h1 id = "userTitle">
-                 PROFILE SETTINGS
-            </h1>
-            
-        </div>
-        <div class="col-md-2">
-  
   
         </div>
     </div>
@@ -30,17 +19,23 @@
         <div class="col-md-2">
   
         </div>
+        
         <div class="col-md-8">
+          <button type="button" class="btn-close" aria-label="Close" (click)="onQuit()"></button>
+
+          <h1 id = "userTitle">
+            Modify Profile
+       </h1>
             <form [formGroup]="userForm">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label" >Your Name</label>
+                  <label for="exampleInputEmail1" class="form-label" >Change Username</label>
                   <input type="email" class="form-control" formControlName="profilename" aria-describedby="nameHelp">
-                  <div id="emailHelp" class="form-text">This name will be visible to other users.</div>
+                  
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">About you</label>
+                  <label for="exampleInputPassword1" class="form-label">Change Password</label>
                   <input type="password" class="form-control" formControlName="profileBio">
-                  <div id="biohelp" class="form-text">Share a little about yourself!</div>
+
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
