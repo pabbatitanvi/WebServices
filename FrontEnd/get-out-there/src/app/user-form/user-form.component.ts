@@ -105,8 +105,17 @@ export class UserFormComponent {
     console.log(this.userForm.value)
     if(this.userForm.valid){
       console.log("sent to backend")
-      let response = this.dataService.createNewUser(this.userForm.value).subscribe((result)=>{
+      this.dataService.createNewUser(this.userForm.value).subscribe((result)=>{
         console.log("backend result received at front end")
+
+      })
+
+      let response = this.dataService.login(this.userForm.value).subscribe((result)=>{
+        console.log("initial validation result log:",result)
+        console.log("stored  in local")
+        localStorage.setItem('Current_user',JSON.stringify(result))
+        localStorage.setItem('LoggedinKey','true')
+        this.router.navigate(['/home'])
 
       })
     }

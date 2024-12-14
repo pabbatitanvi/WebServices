@@ -8,9 +8,9 @@
     background-color: var(--darkest-green);
     background-repeat: repeat;
     background-position: center;
-    width: 16%;
+    width: 20%;
     margin-top: 70px;
-    height: 100vh;
+    height: 110vh;
     border-bottom: 1px solid white;
     display: flex;
     list-style-type: none;

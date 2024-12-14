@@ -66,6 +66,26 @@ export class GetDataService {
     return of(Dataob)
 
   }
+  deleteUser(Dataob:any):Observable<any>{
+    console.log("getdataservices DELETE Passed")
+    console.log(Dataob)
+    let id=Dataob._id
+    let url = "http://localhost:3000/deleteuser/"+ Dataob._id
+
+    if(Dataob.userType=='User'){
+      url = "http://localhost:3000/deleteuser/" + Dataob._id
+    }
+    else if(Dataob.userType=='Organization'){
+      url = "http://localhost:3000/deleteorg/"+ Dataob._id
+
+    }
+    else{
+      url = "http://localhost:3000/deleteuser/" + Dataob._id
+
+    }
+      let result = this.http.delete(url,Dataob)
+      return result;
+}
   getUsers():Observable<any>{
     let url="http://localhost:3000/getusers"
     let result = this.http.get(url, this.httpoptions)
@@ -222,6 +242,11 @@ export class GetDataService {
   addFriends(userId: any, username: any):Observable<any>{
     let url = `http://localhost:3000/friendsbyusername/${userId}/${username}`
     let result = this.http.post(url, this.httpoptions)
+    return result;
+  }
+  removeFriend(userId: any, username: any):Observable<any>{
+    let url = `http://localhost:3000/deletefriend/${userId}/${username}`
+    let result = this.http.delete(url, this.httpoptions)
     return result;
   }
   

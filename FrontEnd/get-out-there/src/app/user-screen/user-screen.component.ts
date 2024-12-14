@@ -115,4 +115,18 @@ export class UserScreenComponent implements OnInit{
       }
     })
   }
+
+  onDeleteClick(){
+    console.log(this.USEROBJ._id)
+    if(confirm("Delete user?"))
+    {
+      this.dataService.deleteUser(this.USEROBJ).subscribe((result)=>{
+        alert("User deleted")
+        this.router.navigate(['/login'])
+
+      })
+
+    }
+
+  }
 }

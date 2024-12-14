@@ -31,13 +31,13 @@ export class LoginFormComponent {
      
        // Implement your login logic here
       let response = this.dataService.login(this.loginform.value).subscribe((result)=>{
-      console.log("initial validation result log:",result)
-      console.log("stored  in local")
-      localStorage.setItem('Current_user',JSON.stringify(result))
-      localStorage.setItem('LoggedinKey','true')
-      this.router.navigate(['/home'])
+        console.log("initial validation result log:",result)
+        console.log("stored  in local")
+        localStorage.setItem('Current_user',JSON.stringify(result))
+        localStorage.setItem('LoggedinKey','true')
+        this.router.navigate(['/home'])
 
-        })
+      })
     // Add authentication logic and navigate to the next page upon successful login
 }
 onQuit(){
