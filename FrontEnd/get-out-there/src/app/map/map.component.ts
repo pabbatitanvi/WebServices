@@ -7,7 +7,8 @@ import OSM from 'ol/source/OSM';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
+  standalone:true
 })
 export class MapComponent implements AfterViewInit {
   @ViewChild('map') mapElement!: ElementRef;

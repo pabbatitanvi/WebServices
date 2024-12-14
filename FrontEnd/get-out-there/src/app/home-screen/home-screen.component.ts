@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { NgFor /*, CommonModule */ } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
-import { MapComponent } from 'ng-openlayers';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-home-screen',
