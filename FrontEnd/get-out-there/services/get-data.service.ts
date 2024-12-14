@@ -66,6 +66,21 @@ export class GetDataService {
     return of(Dataob)
 
   }
+  getUsers():Observable<any>{
+    let url="http://localhost:3000/getusers"
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  getUserByName(name: any):Observable<any>{
+    let url=`http://localhost:3000/getuserbyname/${name}`
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  getUserById(userId: string):Observable<any>{
+    let url = `http://localhost:3000/getuserbyid/${userId}`
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
   
   // ----------------------------- EVENTS RELATED SERVICE CALLS -----------------------------
   createEvent(Dataob:any):Observable<any>{
@@ -78,8 +93,8 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
-  getUsers():Observable<any>{
-    let url="http://localhost:3000/getusers"
+  getEventByOrgId(id: any):Observable<any>{
+    let url=`http://localhost:3000/geteventbyorgid/${id}`
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
@@ -105,11 +120,6 @@ export class GetDataService {
   }
   getEventByHost(host: any):Observable<any>{
     let url=`http://localhost:3000/geteventinfobyhost/${host}`
-    let result = this.http.get(url, this.httpoptions)
-    return result;
-  }
-  getUserByName(name: any):Observable<any>{
-    let url=`http://localhost:3000/getuserbyname/${name}`
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
@@ -193,4 +203,24 @@ export class GetDataService {
     let result = this.http.get(url, this.httpoptions)
     return result;
   }
+  
+  // ------------------------------- FRIENDS RELATED CALLS ----------------------------------
+  recommendFriends(tags : Array<string>):Observable<any>{
+    let url = "http://localhost:3000/friendsbytag?tags=" + tags[0]
+
+    tags.forEach(tag => {
+      url.concat("&tags=" + tag)
+    });
+
+    console.log("url is", url)
+
+    let result = this.http.get(url, this.httpoptions)
+    return result;
+  }
+  addFriends(userId: any, username: any):Observable<any>{
+    let url = `http://localhost:3000/friendsbyusername/${userId}/${username}`
+    let result = this.http.post(url, this.httpoptions)
+    return result;
+  }
+  
 }

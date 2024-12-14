@@ -85,5 +85,16 @@ async function userByName(name){
     }
 }
 
+// Return the details of a user by id
+async function userById(userId){
+    _database = mongodb.getDb().collection('Users')
+    try{
+        let data = await _database.findOne({_id: userId})
+        return JSON.stringify(data)
+    }catch(err){
+        console.error(err)
+        throw err
+    }
+}
 
-module.exports = {userAdd, userDelete, userModify, userFind, getUser, userByName};
+module.exports = {userAdd, userDelete, userModify, userFind, getUser, userByName, userById};

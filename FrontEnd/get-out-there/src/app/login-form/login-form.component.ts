@@ -40,6 +40,8 @@ export class LoginFormComponent {
         })
     // Add authentication logic and navigate to the next page upon successful login
 }
-
+onQuit(){
+  this.router.navigate(['/login'])
+}
 }
 

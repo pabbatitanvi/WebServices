@@ -1,26 +1,29 @@
 <!-- Navigation bar -->
 <app-navigation-bar>    </app-navigation-bar>
+<app-sidebar></app-sidebar>
+
 <section class="events">
 
     <div class="row">
             <!-- Make event box for every event in the list -->
             <div class="event-box" *ngFor="let event of events">
                 
-                    <div class="event">
+                    
                         <div class="event-date-box">
-                            <p class="event-day">{{event.date | date: 'd'}}</p>
-                            <p class="event-month">{{event.date | date: 'MMMM'}}</p>
-                            <p class="event-year">{{event.date | date: 'yyyy'}}</p>
+                            <p class="event-date">{{event.date | date: 'd'}}/{{event.date | date: 'MM'}}/{{event.date | date: 'yyyy'}}</p>
+                            <!-- <p class="event-day">{{event.date | date: 'd'}}</p>
+                            <p class="event-month">{{event.date | date: 'MM'}}</p>
+                            <p class="event-year">{{event.date | date: 'yyyy'}}</p> -->
                         </div>
-                        
-
+                        <div class="event">       
+            <!-- <div class="event-info">                 -->
                     <div class="event-details">
                         <p class="event-name">{{event.eventName | uppercase}}</p>
                         <p class="event-desc">{{event.description}}</p>
                         <p class="event-price">Price: ${{event.price}}</p>
                         <p class="event-time">Time of the event: {{event.startTime}} - {{event.endTime}}</p>
                     </div>
-                    <div class = "column m-3">
+                    <div class = "buttons">
                         <button type="button" class="btn btn-danger me-2" (click) = "onDeleteEvent(event._id)">
                             Delete event
                           </button>
@@ -30,5 +33,6 @@
                     </div>
                     </div>
             </div>
+            <!-- </div> -->
         </div>
 </section>

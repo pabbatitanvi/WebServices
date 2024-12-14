@@ -34,8 +34,6 @@ module.exports = function(app){
             return res.send(JSON.stringify(data));
         else
             return res.send("Invalid credentials")
-       
-            
             
     })
     app.get('/getusers', async(req, res) => {
@@ -47,6 +45,12 @@ module.exports = function(app){
         const name = req.params.name;
         let data = await user.userByName(name);
         console.log(data, "Users by name");
+        return res.json(data);
+    })
+    app.get('/getuserbyid/:id', async(req,res) => {
+        const id = new ObjectId(req.params.id);
+        let data = await user.userById(id);
+        console.log(data, "Users by id", id);
         return res.json(data);
     })
 

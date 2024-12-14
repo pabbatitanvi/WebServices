@@ -1,11 +1,11 @@
 const mongodb = require('../database.js');
 const {ObjectId} = require('mongodb');
 
-//Search for freinds by tag
+//Search for friends by finding other users with all the same tags as this user
 async function friendsByTag(tags){
     _database = mongodb.getDb().collection('Users')
     try{
-        let data = await _database.find({ChooseTags: tags}).toArray()
+        let data = await _database.find({chooseTags: { $all : tags} }).toArray()
         return data
     }catch (err){
         console.error(err)
@@ -16,7 +16,8 @@ async function friendsByTag(tags){
 async function friendsByUsername(userId, username){
     _database = mongodb.getDb().collection('Users')
     try{
-        let data = await _database.updateOne({_id: new ObjectId(userId)}, {$addToSet: {Friends: username}});
+        const userAdd = await _database.findOne({username: username});
+        let data = await _database.updateOne({_id: new ObjectId(userId)}, {$addToSet: {friends: userAdd._id.toString()}});
         return data
     }catch (err){
         console.error(err)

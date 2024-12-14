@@ -1,15 +1,21 @@
 #navbar{
-    background-color: #134611;
+    position: fixed;
+    background-color: var(--darkest-green);
     background-repeat: no-repeat;
     background-position: center;
     background-size: "cover";
     background-attachment: fixed;
     width: 100%;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
     display: flex;
     list-style-type: none;
+    z-index: 1000;
 }
-
+.btn-outline-success{
+    --bs-btn-hover-bg: gray;
+    --bs-btn-border-color: white;
+    --bs-btn-active-bg: #687864
+}
 .navbar-brand{
     color: #E8FCCF;
     font-size: xx-large;
@@ -21,7 +27,7 @@
     color: #E8FCCF;
     text-decoration: none;
     margin-left: 40px;
-    font-size: x-large;
+    font-size: 25px;
     font-family: monospace, monaco;
 }
 

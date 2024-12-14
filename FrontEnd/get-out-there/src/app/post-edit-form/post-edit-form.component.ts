@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { GetDataService } from '../../../services/get-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from '../../models/post';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-post-edit-form',
   standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
+  imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
 
   templateUrl: './post-edit-form.component.html',
   styleUrl: './post-edit-form.component.css'

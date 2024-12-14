@@ -1,25 +1,43 @@
+
+
 <nav class="navbar navbar-expand-lg" id="navbar">
-    <div class="navbar-item">
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <h4 class = "header">Posts</h4>
-          <li class="nav-item" id = "createP">
-            <a class="nav-link-active" role="button" href="/postform" aria-current="page" routerLink="/postform">Create Posts</a>
-          </li>
-  
-          <li class="nav-item" id = "showP">
-            <a class="nav-link-active" href="/userpostpage" role="button" aria-expanded="false" >
-              Show Posts
-            </a>
-          </li>
-  
-          <li class="nav-item" id = "shareP">
-            <a class="nav-link-active" href="/friends" role="button" aria-expanded="false" >
-              Share Posts
-            </a>
-          </li>
-  
-        </ul>
-      </div>
+  <div class="navbar-item">
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <h4 class = "header">User Profile</h4>
+        <li class="nav-item" id = "userProfile">
+          <a class="nav-link-active" role="button" href="/userprofile" aria-current="page" routerLink="/userprofile">
+            Account
+          </a>
+        </li>
+        <h4 class = "header">Posts</h4>
+        <li class="nav-item" id = "createP">
+          <a class="nav-link-active" role="button" href="/postform" aria-current="page" routerLink="/postform">Create Posts</a>
+        </li>
+
+        <li class="nav-item" id = "showP">
+          <a class="nav-link-active" href="/userpostpage" role="button" aria-expanded="false" >
+            Show Posts
+          </a>
+        </li>
+
+        <li class="nav-item" id = "shareP">
+          <a class="nav-link-active" href="/friends" role="button" aria-expanded="false" >
+            Share Posts
+          </a>
+        </li>
+        <h4 class = "header" *ngIf = "USEROBJ.userType === 'Organization'">Events</h4>
+        <li class="nav-item" id = "createE" *ngIf = "USEROBJ.userType === 'Organization'">
+          <a class="nav-link-active" role="button" href="/eventform" aria-current="page" routerLink="/eventform">Create Events</a>
+        </li>
+
+        <li class="nav-item" id = "showE" *ngIf = "USEROBJ.userType === 'Organization'">
+          <a class="nav-link-active" href="/usereventpage" role="button" aria-expanded="false" >
+            Show Events
+          </a>
+        </li>
+
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
