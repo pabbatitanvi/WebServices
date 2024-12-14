@@ -14,14 +14,14 @@
     font-size: xx-large;
     font-family: monospace, monaco;
     font-weight: bold;
-    color: #E8FCCF;
+    color: var(--lighter-green);
 }
 
 .col-md-8{
     text-align: left;
     font-size: x-large;
     font-family: monospace, monaco;
-    color: #E8FCCF;
+    color: var(--lighter-green);
 }
 .col ul{
     list-style: none;
@@ -64,9 +64,9 @@
 .post-date-box{
     color: black;
     border-radius: 35px;
-    background-color: #E8FCCF;
+    background-color: var(--lighter-green);
     padding: 10px;
-    border: 2px solid #134611;
+    border: 2px solid var(--darkest-green);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,13 +84,13 @@
 }
 .post-name{
     font-size: 50px;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     font-weight: bolder;
 }
 .post-desc{
     font-size: 25px;
     font-weight: bold;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     text-align: center;
 }
 .post-tags-box > *{

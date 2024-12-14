@@ -16,7 +16,7 @@
     border: 5px solid white;
     box-sizing: border-box;
     flex-grow: 1;
-    background-color: #134611;
+    background-color: var(--darkest-green);
     border-radius: 38px;
     font-family: monospace, monaco;
 }
@@ -71,13 +71,13 @@
 /* event details in te event box */
 .event-name{
     font-size: 50px;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     font-weight: bolder;
 }
 .event-desc{
     font-size: 25px;
     font-weight: bold;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     text-align: center;
 }
 .event-price{

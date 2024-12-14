@@ -54,7 +54,7 @@ ul.list li{
     text-align: left;
     font-size: x-large;
     font-family: monospace, monaco;
-    color: #E8FCCF;
+    color: var(--lighter-green);
     width: 200vh;
 }
 .col ul{
