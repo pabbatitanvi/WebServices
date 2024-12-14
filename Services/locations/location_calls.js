@@ -46,7 +46,7 @@ module.exports = function(app){
     })
 
     // Return all locations that match the specified price range
-    app.get('/getlocationbytag/:price', async (req,res)=>{
+    app.get('/getlocationbyprice/:price', async (req,res)=>{
         const price = Number(req.params.price)
         let data = await location.locationSearch(searchFor = "price", {searchValue : price})
         console.log(data, "LOCATION SEARCHED FOR")
