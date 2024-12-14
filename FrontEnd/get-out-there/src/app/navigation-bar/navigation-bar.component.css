@@ -1,3 +1,4 @@
+/* handles the navigation bar that is in all the pages */
 #navbar{
     position: fixed;
     background-color: var(--darkest-green);

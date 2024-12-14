@@ -1,13 +1,4 @@
-
-:host ::ng-deep .multiselect-dropdown{
-    width: 95%!important;
-    margin-left: 50px;
-}
-.choose-tags-container {
-    display: flex;
-    align-items: center; 
-    margin-bottom: 10px;
-}
+/* background styling for the whole page */
 .main-body{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
@@ -18,7 +9,7 @@
     padding-bottom: 50px;
     position: relative;
 }
-
+/* handles the styling for the whole form */
 .form{
     position: relative;
     top: auto;
@@ -27,6 +18,12 @@
     width: 75%;
     margin-left: 300px;
 }
+/* close button */
+.btn-close{
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+/* handles input fields */
 .form-control{
     margin-bottom: 20px;
     border-radius: 50px;
@@ -36,39 +33,39 @@
     font-size: 24px;
     font-weight: bold;
 }
-
+/* handles styling for questions */
 .questions{
     font-size: 24px;
     font-family: monospace, monaco;
     margin-bottom: 20px;
 }
-
-.chooseButtons{
-    font-size: 24px;
-    font-family: Georgia, serif;
-    margin-bottom: 10px;
-
-}
-
 #postName{
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
     font-family: monospace, monaco;
 }
-
 #description{
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
     font-family: monospace, monaco;
 }
-
 #location{
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
     font-family: monospace, monaco;
+}
+/* multiselect-dropdown */
+:host ::ng-deep .multiselect-dropdown{
+    width: 95%!important;
+    margin-left: 50px;
+}
+.choose-tags-container {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px;
 }
 #chooseTags{
     margin-bottom: 20px;
@@ -76,6 +73,7 @@
     font-weight: bold;
     font-family: monospace, monaco;
 }
+/* save button */
 .btn-primary{
     margin-top: 20px;
     align-items: center;
@@ -86,8 +84,4 @@
     color: black;
     font-family: monospace, monaco;
     font-size: 24px;
-}
-.btn-close{
-    margin-bottom: 20px;
-    margin-right: 50px;
 }

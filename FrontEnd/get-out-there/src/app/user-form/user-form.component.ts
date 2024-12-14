@@ -16,14 +16,18 @@ import { Router } from '@angular/router';
 
 
 export class UserFormComponent {
-
-  tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
-                      { id: 2, itemName: 'Books' },
-                      { id: 3, itemName: 'Coffee' },
-                      { id: 4, itemName: 'History' },
-                      { id: 5, itemName: 'Art' }
-                    ]
-
+  //tags for dropdown
+  tagsArray: any[] = [
+    { id: 1, itemName: 'Museum' }, 
+    { id: 2, itemName: 'Books' },
+    { id: 3, itemName: 'Coffee' },
+    { id: 4, itemName: 'History' },
+    { id: 5, itemName: 'Art' },
+    { id: 6, itemName: 'Nature' },
+    { id: 7, itemName: 'Hiking' },
+    { id: 8, itemName: 'Arcade' },
+  ]
+  
   userForm = new FormGroup({
     userType: new FormControl(''),
     username: new FormControl(''),
@@ -33,7 +37,6 @@ export class UserFormComponent {
     firstName: new FormControl(''),
     middleName: new FormControl(''),
     lastName: new FormControl(''),
-    //friends: new FormArray([]),
     //organization fields
     organizationName: new FormControl(''),
     chooseMembership: new FormControl(''),
@@ -44,7 +47,7 @@ export class UserFormComponent {
   
   userTypes = ['User', 'Organization'];
 
-  
+  //handles which input fields are displayed based on the radio button chosen
   onUser(){
     const uType = this.userForm.get('userType')?.value
     if (uType == 'Organization') {
@@ -81,6 +84,7 @@ export class UserFormComponent {
   get chooseTags():FormArray{
     return this.userForm.get('chooseTags') as FormArray;
   }
+  //handels tags
   onSelectedTags($event: any){
     console.log(':', $event)
 
@@ -91,6 +95,7 @@ export class UserFormComponent {
   }
 
   constructor(public dataService: GetDataService, private router: Router) { }
+  //handles submit button, create user in the database
   onSubmit(){
     console.log(this.userForm.value)
     if(this.userForm.valid){
@@ -104,6 +109,7 @@ export class UserFormComponent {
       console.log("oops")
     }
   }
+  //handels close button
   onQuit(){
     this.router.navigate(['/login'])
   }

@@ -1,7 +1,4 @@
-:host ::ng-deep .multiselect-dropdown{
-    width: 95%!important;
-    margin-left: 50px;
-}
+/* background for the whole page */
 .main-body{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
@@ -12,13 +9,7 @@
     padding-bottom: 50px;
     position: relative;
 }
-.choose-tags-container {
-    display: flex;
-    align-items: center; 
-    margin-bottom: 10px;
-    font-size: 24px;
-    font-family: monospace, monaco;
-}
+/* form details */
 .form{
     position: relative;
     top: auto;
@@ -27,6 +18,12 @@
     width: 75%;
     margin-left: 300px;
 }
+/* close button */
+.btn-close{
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+/* form input */
 .form-control{
     margin-bottom: 20px;
     border-radius: 50px;
@@ -36,6 +33,7 @@
     font-size: 24px;
     font-weight: bold;
 }
+/* css for questions */
 .questions{
     font-size: 24px;
     font-family: monospace, monaco;
@@ -77,12 +75,25 @@
     font-weight: bold;
     font-family: monospace, monaco;
 }
+/* multiselect-dropdown */
+:host ::ng-deep .multiselect-dropdown{
+    width: 95%!important;
+    margin-left: 50px;
+}
+.choose-tags-container {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-family: monospace, monaco;
+}
 #chooseTags{
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
     font-family: monospace, monaco;
 }
+/* save button */
 .btn-primary{
     margin-top: 20px;
     align-items: center;
@@ -93,8 +104,4 @@
     color: black;
     font-family: monospace, monaco;
     font-size: 24px;
-}
-.btn-close{
-    margin-bottom: 20px;
-    margin-right: 50px;
 }

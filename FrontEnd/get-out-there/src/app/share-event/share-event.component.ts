@@ -27,6 +27,7 @@ export class ShareEventComponent {
       this.users = users
     })
   }
+  //handles event select
   onEventSelect(){
    if(this.selectedEventName){
       this.dataService.getEventByName(this.selectedEventName).subscribe((events) => {
@@ -34,6 +35,7 @@ export class ShareEventComponent {
       })
     }
   }
+  //handles user select
   onUserSelect(){
     if(this.selectedUserName){
       this.dataService.getUserByName(this.selectedUserName).subscribe((users) => {
@@ -41,9 +43,11 @@ export class ShareEventComponent {
       })
     }
   }
+  //handles close button
   onQuit(){
     this.router.navigate(['/events'])
   }
+  //handles share button
   onShare(){
     this.dataService.shareEvent().subscribe((users)=>{
 

@@ -1,37 +1,79 @@
-
+/* handles the background of the whole page */
 .events{
     background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);
     background-size: cover;
     width: 100vw;
-    /*height: 100vh;*/
     background-repeat: repeat;
     background-position: center;
     padding-top: 90px;
-    /*background-color: #E8FCCF;*/
 }
 .column {
     float: left;
     width: 50%;
 
 }
-
+/* handles the dropdown to filter events */
+.form-select{
+    width: 90%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    font-family: monospace, monaco;
+    border: 3px solid var(--medium-blue);
+    color: var(--darkest-green);
+    font-size: 20px;
+    font-weight: bold;
+}
+/* handles the label for the filters */
+.form-label{
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--darkest-green);
+    margin-left: 20px !important;
+}
+/* The search bar */
+#mySearch {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 11px;
+    border: 3px solid var(--medium-blue);
+    color: var(--darkest-green);
+    margin:10px;
+    border-radius: 50px;
+    font-family: monospace, monaco;
+}
+/* handles price range */
+.priceHeader{
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--darkest-green);
+    margin-left: 20px;
+}
+/* handles share button */
+.shareButton{
+    background-color: transparent;
+    border-color: transparent;
+    font-family: monospace, monaco;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--darkest-green);
+    margin-top: 30px;
+    margin-left: 20px;
+}
+/* handles the event box */
 .event-box > * {
     display: flex;
     border: 5px solid var(--medium-blue);
-    /* border: 5px solid white; */
     box-sizing: border-box;
     flex-grow: 1;
-    /* background-color: var(--darkest-green); */
-    /* background-image: linear-gradient(180deg, #1a512e, #63a91f); */
     background-color: #63d471;
-background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);
-
-
+    background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);
     border-radius: 38px;
     font-family: monospace, monaco;
 }
-
-
 .event-box {
     display: flex;
     flex-wrap: wrap;
@@ -39,22 +81,12 @@ background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);
     margin-bottom: 20px;
     padding: 10px;
 }
-
-.event-details{
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
+/* handles the event date box that is in the event box */
 .event-date-box{
     color: black;
     border-radius: 35px;
-    /* background-color: var(--lighter-green); */
     background-color: #e7eff9;
-background-image: linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
-
+    background-image: linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
     padding: 10px;
     border: 2px solid var(--darkest-green);
     display: flex;
@@ -73,6 +105,15 @@ background-image: linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
 .event-date-box p{
     margin:0;
     padding: 1px;
+}
+/* handles the event details in the event box */
+.event-details{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 .event-name{
     font-size: 50px;
@@ -94,8 +135,8 @@ background-image: linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
     color: white;
     text-decoration: underline;
 }
+/* map */
 .fit-picture{
-    /*algigns the map to center of the column*/
     margin: 0;
     position: absolute;
     top: 50%;
@@ -103,57 +144,6 @@ background-image: linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%);
     transform: translateY(-50%);    
     width: 45%;
 }
-
-/* The search bar */
-#mySearch {
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 11px;
-    border: 3px solid var(--medium-blue);
-    color: var(--darkest-green);
-    margin:10px;
-    border-radius: 50px;
-    font-family: monospace, monaco;
-  }
-
-  .form-select{
-    width: 90%;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    border-radius: 50px;
-    font-family: monospace, monaco;
-    border: 3px solid var(--medium-blue);
-    color: var(--darkest-green);
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .form-label{
-    font-family: monospace, monaco;
-    font-size: 25px;
-    font-weight: bold;
-    color: var(--darkest-green);
-    margin-left: 20px !important;
-  }
-  .priceHeader{
-    font-family: monospace, monaco;
-    font-size: 25px;
-    font-weight: bold;
-    color: var(--darkest-green);
-    margin-left: 20px;
-  }
-
-  .shareButton{
-    background-color: transparent;
-    border-color: transparent;
-    font-family: monospace, monaco;
-    font-size: 25px;
-    font-weight: bold;
-    color: var(--darkest-green);
-    margin-top: 30px;
-    margin-left: 20px;
-  }
-  .bi::before{
+.bi::before{
     margin-right: 10px;
-  }
+}

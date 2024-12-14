@@ -54,12 +54,17 @@ export class FriendScreenComponent implements OnInit{
       this.recommendedFriends = this.removeCommonElements(recommendations, this.currentFriends);
     })
   }
+
+  //stores search input
   searchInput: string | null=""
+  //gets the friends information based on search
   searchFriends(){
     this.dataService.getUserByName(this.searchInput).subscribe((friend) => {
       this.usernameFriends = friend;
     })
   }
+
+  //handles add button
   onAdd(userid:any, username:any){
     const userID = userid.toString()
     this.dataService.addFriends(userID, username).subscribe((result) => {

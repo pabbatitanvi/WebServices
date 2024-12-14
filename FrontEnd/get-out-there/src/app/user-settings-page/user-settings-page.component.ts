@@ -22,6 +22,8 @@ export class UserSettingsPageComponent {
     profileBio: new FormControl(' ')
     //friends: new FormArray([]),
   });
+
+  //close button
   onQuit(){
     this.router.navigate(['/userprofile'])
   }
