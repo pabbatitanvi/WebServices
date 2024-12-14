@@ -84,14 +84,19 @@ export class UserFormComponent {
   get chooseTags():FormArray{
     return this.userForm.get('chooseTags') as FormArray;
   }
-  //handels tags
+  //handles tags
   onSelectedTags($event: any){
     console.log(':', $event)
 
 
-    $event.forEach((tag: any) => {
-      this.chooseTags.push(new FormControl(tag.itemName));
-    })
+    if(Array.isArray($event)){
+      $event.forEach((tag: any) => {
+        this.chooseTags.push(new FormControl(tag.itemName));
+      })
+    }
+    else{
+      this.chooseTags.push(new FormControl($event.itemName));
+    }
   }
 
   constructor(public dataService: GetDataService, private router: Router) { }
