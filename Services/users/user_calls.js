@@ -25,7 +25,7 @@ module.exports = function(app){
         const userId = new ObjectId(req.params.id)
         let data=await user.userDelete(userId);
         console.log(data, "User deleted");
-        return res.send("User deleted");
+        return res.send("");
     })
     app.post('/userlogin', async(req, res) => {
         
