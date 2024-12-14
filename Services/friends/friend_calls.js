@@ -27,13 +27,14 @@ module.exports = function(app){
         const username = req.params.username;
         let data = await friends.friendsByUsername(userId, username);
         console.log(data, "Friend added");
-        return res.send("");
+        return res.send("");// blank because it gives you an error (that doesn't really do anything) whenever there's any text in here
     })
+    // Enter the userId of the currently logged in user and the username of the friend to remove
     app.delete('/deletefriend/:userId/:username', async(req, res) => {
         const userId = req.params.userId;
         const username = req.params.username;
         let data = await friends.deleteFriend(userId, username);
         console.log(data, "Friend deleted");
-        return res.send("Deleted Friend")
+        return res.send("")
     })
 }

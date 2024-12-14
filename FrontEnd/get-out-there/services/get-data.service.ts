@@ -224,5 +224,10 @@ export class GetDataService {
     let result = this.http.post(url, this.httpoptions)
     return result;
   }
+  removeFriend(userId: any, username: any):Observable<any>{
+    let url = `http://localhost:3000/deletefriend/${userId}/${username}`
+    let result = this.http.delete(url, this.httpoptions)
+    return result;
+  }
   
 }

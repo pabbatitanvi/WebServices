@@ -78,7 +78,6 @@ export class FriendScreenComponent implements OnInit{
         localStorage.setItem('Current_user',result)
       })
     })
-
   }
 
   // For removing friends from the "search" and "recommendations" areas

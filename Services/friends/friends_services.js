@@ -25,7 +25,7 @@ async function friendsByUsername(userId, username){
     }
 }
 
-//delete friend
+// Enter userId (of currently logged in user) and username (of user to remove from friends)
 async function deleteFriend(userId, username){
     _database = mongodb.getDb().collection('Users')
     try{
