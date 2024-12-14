@@ -1,17 +1,17 @@
-
 <section class="main-body">
-  <app-navigation-bar> </app-navigation-bar>
+<!--navigation bar-->
+<app-navigation-bar></app-navigation-bar>
 
 <section class="friends">
   
   <div class="row">
     <div class="col-md-3">
-      
+      <!--search bar-->
       <input type="text" id="mySearch" placeholder="Search for friends" [(ngModel)] = "searchInput" (input)="searchFriends()">
+      <!--handles friend box with friends details and tags-->
       <div class="friend-box" *ngFor="let f of usernameFriends">
         <div class="friend-details">
           <p>Username: {{f.username}}</p>
-
           <p>Name: {{f.firstName}} {{f.middleName}} {{f.lastName}}</p>
           <p id="tag">Tags: </p>
         <div class="friend-tags-box" *ngFor="let tag of f.chooseTags">
@@ -63,7 +63,6 @@
         <div class="friend-box" *ngFor="let friend of currentFriends">
           <div class="friend-details">
             <p>Username: {{friend.username}}</p>
-
             <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
             <p id="tag">Tags: </p>
           <div class="friend-tags-box" *ngFor="let tag of friend.chooseTags">

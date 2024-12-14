@@ -12,6 +12,6 @@ import { CommonModule } from '@angular/common';
 export class SidebarComponent {
   public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
   ngOnInit(): void {
-  console.log(this.USEROBJ.userType)
+    console.log(this.USEROBJ.userType)
   }
 }

@@ -32,12 +32,7 @@ export class UserScreenComponent implements OnInit{
     console.log(this.USEROBJ.chooseTags)
   }
   public USEROBJ=JSON.parse(localStorage.getItem("Current_user")||"oops")
-  // public current_user:any=[
-  //   {"usertype":"user", 
-     
-  //   }
-  // ]
-
+ 
   onEventCreate(): void{
     this.router.navigate(['/postform'])
   }

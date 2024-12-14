@@ -13,7 +13,6 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   selector: 'app-post-edit-form',
   standalone: true,
   imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
-
   templateUrl: './post-edit-form.component.html',
   styleUrl: './post-edit-form.component.css'
 })
@@ -37,12 +36,16 @@ export class PostEditFormComponent implements OnInit{
   currentDate : Date = new Date();
 
   // Array of tags for the form
-  tagsArray: any[] = [{ id: 1, itemName: 'Museum' }, 
-                      { id: 2, itemName: 'Books' },
-                      { id: 3, itemName: 'Coffee' },
-                      { id: 4, itemName: 'History' },
-                      { id: 5, itemName: 'Art' }
-                    ]
+  tagsArray: any[] = [
+    { id: 1, itemName: 'Museum' }, 
+    { id: 2, itemName: 'Books' },
+    { id: 3, itemName: 'Coffee' },
+    { id: 4, itemName: 'History' },
+    { id: 5, itemName: 'Art' },
+    { id: 6, itemName: 'Nature' },
+    { id: 7, itemName: 'Hiking' },
+    { id: 8, itemName: 'Arcade' },
+  ]
 
   // The postForm object declaration
   postForm = new FormGroup({
@@ -114,6 +117,8 @@ export class PostEditFormComponent implements OnInit{
   get chooseTags():FormArray{
     return this.postForm.get('Tags') as FormArray;
   }
+
+  //handles selected tags
   onSelectedTags($event: any){
     console.log(':', $event)
 
@@ -140,10 +145,11 @@ export class PostEditFormComponent implements OnInit{
     else{
       console.log("Something went wrong! Post was not sent.")
     }
-    this.router.navigate(['/userprofile'])
+    this.router.navigate(['/userpostpage'])
   }
+  
   // Called by the "close" button, navigates back to the user profile
   onQuit(){
-    this.router.navigate(['/userprofile'])
+    this.router.navigate(['/userpostpage'])
   }
 }
