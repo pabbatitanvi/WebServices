@@ -17,7 +17,7 @@ module.exports = function(app){
         console.log("query.tags.length:", Object.keys(req.query).length, "TAGS: ", tags)
         let data = await friends.friendsByTag(tags);
         console.log(data, "Friends by tags");
-        return res.send("Friends searched for by tag");
+        return res.json(data);
     })
     app.post('/friendsbyusername/:userId/:username', async(req, res) => {
         const userId = req.params.userId;

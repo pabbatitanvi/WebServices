@@ -52,8 +52,21 @@
       <!-- Column for recommended friends -->
       <div class="col-md-3">
 
+        <!-- <div class="friend-box" *ngFor="let friend of recommendedFriends">
+          {{friend.username}}
+        </div> -->
+
         <div class="friend-box" *ngFor="let friend of recommendedFriends">
-          Hey
+          <div class="friend-details">
+            <p>Username: {{friend.username}}</p>
+
+            <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
+            <p id="tag">Tags: </p>
+          <div class="friend-tags-box" *ngFor="let tag of friend.chooseTags">
+            {{tag}}
+          </div>
+          </div>
+          <button class = "btn btn-secondary" (click) = "onAdd(USEROBJ._id, friend.username)">Add</button>
         </div>
         
       </div>

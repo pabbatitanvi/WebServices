@@ -206,10 +206,12 @@ export class GetDataService {
   
   // ------------------------------- FRIENDS RELATED CALLS ----------------------------------
   recommendFriends(tags : Array<string>):Observable<any>{
-    let url = "http://localhost:3000/friendsbytag?tags=" + tags[0]
-
+    let url = "http://localhost:3000/friendsbytag?"
+    
+    console.log("TAGS IN get-data.services.ts: ", tags)
     tags.forEach(tag => {
-      url.concat("&tags=" + tag)
+      url = url.concat("&tags=" + tag)
+      console.log("I don't get what the problem is...", tag)
     });
 
     console.log("url is", url)
