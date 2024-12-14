@@ -30,23 +30,34 @@ ul.list li{
     color: var(--darker-green);
 
 }
-.btn-warning{
+.btn-secondary{
     margin-top: 50px;
     margin-left: 200px;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    color: black;
+    color: white;
     font-family: monospace, monaco;
     font-size: 24px;
 }
-.btn-primary{
+
+.btn-danger{
+    margin-top: 50px;
+    margin-left: 200px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+    font-family: monospace, monaco;
+    font-size: 24px;
+}
+.btn-warning{
     margin-top: 50px;
     margin-left: 100px;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    color: black;
+    color: white;
     font-family: monospace, monaco;
     font-size: 24px;
 }
