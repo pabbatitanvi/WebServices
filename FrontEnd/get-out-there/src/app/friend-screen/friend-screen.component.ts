@@ -69,8 +69,16 @@ export class FriendScreenComponent implements OnInit{
     const userID = userid.toString()
     this.dataService.addFriends(userID, username).subscribe((result) => {
       console.log("friend added")
+      console.log(result, " this is likely the problem")
       // window.location.reload();
+      // We have now updated the user, so we need to get this user again
+      this.dataService.getUserById(userID).subscribe((result) => {
+        console.log("RESULT USER: ", result)
+        localStorage.removeItem('Current_user')
+        localStorage.setItem('Current_user',result)
+      })
     })
+
   }
 
   // For removing friends from the "search" and "recommendations" areas
