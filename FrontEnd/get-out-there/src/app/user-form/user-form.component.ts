@@ -115,7 +115,7 @@ export class UserFormComponent {
         console.log("stored  in local")
         localStorage.setItem('Current_user',JSON.stringify(result))
         localStorage.setItem('LoggedinKey','true')
-        this.router.navigate(['/home'])
+        this.router.navigate(['/login'])
 
       })
     }

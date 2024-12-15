@@ -5,7 +5,8 @@
     "angular": "^1.8.3",
     "bootstrap": "^5.3.3",
     "express": "^4.21.1",
-    "mongodb": "^6.9.0"
+    "mongodb": "^6.9.0",
+    "ng-openlayers": "^19.0.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0"
