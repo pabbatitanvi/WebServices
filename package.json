@@ -4,7 +4,7 @@
     "@angular/ssr": "^18.2.10",
     "angular": "^1.8.3",
     "bootstrap": "^5.3.3",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "mongodb": "^6.9.0",
     "ng-openlayers": "^19.0.1"
   },
