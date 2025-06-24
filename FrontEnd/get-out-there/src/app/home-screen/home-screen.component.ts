@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
-import { NgFor /*, CommonModule */ } from '@angular/common';
+
 import { GetDataService } from '../../../services/get-data.service';
 import { MapComponent } from '../map/map.component';
 
 @Component({
     selector: 'app-home-screen',
-    imports: [NavigationBarComponent, NgFor, MapComponent],
+    imports: [NavigationBarComponent, MapComponent],
     templateUrl: './home-screen.component.html',
     styleUrl: './home-screen.component.css'
 })

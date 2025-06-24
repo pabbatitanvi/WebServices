@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { GetDataService } from '../../../services/get-data.service';
 import { Router } from '@angular/router';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
@@ -10,7 +10,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
     selector: 'app-event-form',
-    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
+    imports: [ReactiveFormsModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
     templateUrl: './event-form.component.html',
     styleUrl: './event-form.component.css'
 })

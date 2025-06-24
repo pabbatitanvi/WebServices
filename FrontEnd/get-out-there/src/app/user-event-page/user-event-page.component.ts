@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
-import { NgFor, NgIf, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import {ObjectId} from 'mongodb';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
     selector: 'app-user-event-page',
-    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, SidebarComponent],
+    imports: [NavigationBarComponent, CommonModule, SidebarComponent],
     templateUrl: './user-event-page.component.html',
     styleUrl: './user-event-page.component.css'
 })

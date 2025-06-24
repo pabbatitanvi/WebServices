@@ -1,31 +1,35 @@
 <!-- background -->
 <body style="background-image: linear-gradient(180deg, #A1B5D8, #C2D8B9);">
-<!-- Navigation bar -->
-<app-navigation-bar></app-navigation-bar>
+  <!-- Navigation bar -->
+  <app-navigation-bar></app-navigation-bar>
 
-<!--
-    This page consists of a navigation bar along the top
-    The majority of the screen is broken into three parts: locations, navigation to pages, and a map. The map takes up the right half of the screen,
-and the locations and navigation boxes split the left half.
-    
--->
+  <!--
+  This page consists of a navigation bar along the top
+  The majority of the screen is broken into three parts: locations, navigation to pages, and a map. The map takes up the right half of the screen,
+  and the locations and navigation boxes split the left half.
 
-<div class="row">
+  -->
+
+  <div class="row">
     <div class="column" id="quarter-l">
-        <h1 class="title-text">LOCATIONS!</h1>
-        <button class="locations-box" *ngFor="let location of locations">
-            <h2 class="location-text">{{location.locationName}}</h2>
+      <h1 class="title-text">LOCATIONS!</h1>
+      @for (location of locations; track location) {
+        <button class="locations-box">
+          <h2 class="location-text">{{location.locationName}}</h2>
         </button>
+      }
     </div>
     <div class="column" id="quarter-e">
-        <h1 class="title-text-d">EVENTS!</h1>
-        <button class="events-box" *ngFor="let event of events">
-            <h2 class="event-text">{{event.eventName}}</h2>
+      <h1 class="title-text-d">EVENTS!</h1>
+      @for (event of events; track event) {
+        <button class="events-box">
+          <h2 class="event-text">{{event.eventName}}</h2>
         </button>
+      }
     </div>
     <div class="column" id="half">
-        <app-map></app-map>
+      <app-map></app-map>
     </div>
 
-</div>
+  </div>
 </body>

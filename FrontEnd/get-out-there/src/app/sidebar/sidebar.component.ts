@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'app-sidebar',
-    imports: [FormsModule, CommonModule],
+    imports: [FormsModule],
     templateUrl: './sidebar.component.html',
     styleUrl: './sidebar.component.css'
 })

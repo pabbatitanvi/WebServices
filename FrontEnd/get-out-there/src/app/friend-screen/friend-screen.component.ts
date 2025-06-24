@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
-import { NgFor, NgIf, CommonModule } from '@angular/common';
+
 import { GetDataService } from '../../../services/get-data.service';
 import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-friend-screen',
-    imports: [NavigationBarComponent, FormsModule, CommonModule, NgFor, NgIf],
+    imports: [NavigationBarComponent, FormsModule],
     templateUrl: './friend-screen.component.html',
     styleUrl: './friend-screen.component.css'
 })

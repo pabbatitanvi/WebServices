@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
-import { NgFor, NgIf, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { GetDataService } from '../../../services/get-data.service';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,7 +8,7 @@ import { MapComponent } from "../map/map.component";
 
 @Component({
     selector: 'app-event-screen',
-    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, MapComponent],
+    imports: [NavigationBarComponent, CommonModule, FormsModule, MapComponent],
     templateUrl: './event-screen.component.html',
     styleUrl: './event-screen.component.css'
 })

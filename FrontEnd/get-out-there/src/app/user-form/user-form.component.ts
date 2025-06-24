@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-user-form',
-    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
+    imports: [ReactiveFormsModule, NgMultiSelectDropDownModule, FormsModule],
     templateUrl: './user-form.component.html',
     styleUrl: './user-form.component.css'
 })

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-user-settings-page',
-    imports: [NavigationBarComponent, CommonModule, ReactiveFormsModule, SidebarComponent],
+    imports: [NavigationBarComponent, ReactiveFormsModule, SidebarComponent],
     templateUrl: './user-settings-page.component.html',
     styleUrl: './user-settings-page.component.css'
 })

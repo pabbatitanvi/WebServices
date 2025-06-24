@@ -4,14 +4,14 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CommonModule, formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { Event } from '../../models/events';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
     selector: 'app-event-edit-form',
-    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
+    imports: [ReactiveFormsModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
     templateUrl: './event-edit-form.component.html',
     styleUrl: './event-edit-form.component.css'
 })

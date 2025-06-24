@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GetDataService } from '../../../services/get-data.service';
-import { NgFor, NgIf, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-share-event',
-    imports: [NgFor, NgIf, CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule],
     templateUrl: './share-event.component.html',
     styleUrl: './share-event.component.css'
 })

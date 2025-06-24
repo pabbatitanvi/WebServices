@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationBarComponent } from "../navigation-bar/navigation-bar.component";//this imports the nav bar component into this file allowing its use here
-import { NgFor, NgIf, CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import { GetDataService } from '../../../services/get-data.service';
 import {ObjectId} from 'mongodb';
@@ -10,7 +10,7 @@ import { Post } from '../../models/post';
 
 @Component({
     selector: 'app-user-screen',
-    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, SidebarComponent], //mentioning the objects to import from the imported components
+    imports: [NavigationBarComponent, FormsModule, SidebarComponent], //mentioning the objects to import from the imported components
     templateUrl: './user-screen.component.html',
     styleUrl: './user-screen.component.css'
 })

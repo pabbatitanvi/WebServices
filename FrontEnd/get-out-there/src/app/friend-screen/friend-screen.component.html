@@ -1,91 +1,104 @@
 <section class="main-body">
-<!--navigation bar-->
-<app-navigation-bar></app-navigation-bar>
+  <!--navigation bar-->
+  <app-navigation-bar></app-navigation-bar>
 
-<section class="friends">
-  
-  <div class="row">
-    <div class="col-md-3">
-      <!--search bar-->
-      <input type="text" id="mySearch" placeholder="Search for friends" [(ngModel)] = "searchInput" (input)="searchFriends()">
-      <!--handles friend box with friends details and tags-->
-      <div class="friend-box" *ngFor="let f of usernameFriends">
-        <div class="friend-details">
-          <p>Username: {{f.username}}</p>
-          <p>Name: {{f.firstName}} {{f.middleName}} {{f.lastName}}</p>
-          <p id="tag">Tags: </p>
-        <div class="friend-tags-box" *ngFor="let tag of f.chooseTags">
-          {{tag}}
-        </div>
-        <button class = "btn btn-secondary" (click) = "onAdd(USEROBJ._id, f.username)">Add</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div id = "mfriends">
-        <h1>
-          Meet New Friends!
-        </h1>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div id="cfriends">
-        <h1>
-          Current Friends
-        </h1>
-      </div>
-    </div>
-    <!--ROW 1 END-->
-    
-    <!--ROW 2 START-->
+  <section class="friends">
+
     <div class="row">
-
-      <!-- Column for searching for friends -->
       <div class="col-md-3">
-        
-        <div class="friend-box" *ngFor="let friend of findFriends">
-          {{friend.username}}
+        <!--search bar-->
+        <input type="text" id="mySearch" placeholder="Search for friends" [(ngModel)] = "searchInput" (input)="searchFriends()">
+        <!--handles friend box with friends details and tags-->
+        @for (f of usernameFriends; track f) {
+          <div class="friend-box">
+            <div class="friend-details">
+              <p>Username: {{f.username}}</p>
+              <p>Name: {{f.firstName}} {{f.middleName}} {{f.lastName}}</p>
+              <p id="tag">Tags: </p>
+              @for (tag of f.chooseTags; track tag) {
+                <div class="friend-tags-box">
+                  {{tag}}
+                </div>
+              }
+              <button class = "btn btn-secondary" (click) = "onAdd(USEROBJ._id, f.username)">Add</button>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="col-md-3">
+        <div id = "mfriends">
+          <h1>
+            Meet New Friends!
+          </h1>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="cfriends">
+          <h1>
+            Current Friends
+          </h1>
+        </div>
+      </div>
+      <!--ROW 1 END-->
+
+      <!--ROW 2 START-->
+      <div class="row">
+
+        <!-- Column for searching for friends -->
+        <div class="col-md-3">
+
+          @for (friend of findFriends; track friend) {
+            <div class="friend-box">
+              {{friend.username}}
+            </div>
+          }
+
         </div>
 
-      </div>
+        <!-- Column for recommended friends -->
+        <div class="col-md-3">
 
-      <!-- Column for recommended friends -->
-      <div class="col-md-3">
-
-        <!-- <div class="friend-box" *ngFor="let friend of recommendedFriends">
+          <!-- <div class="friend-box" *ngFor="let friend of recommendedFriends">
           {{friend.username}}
         </div> -->
 
-        <div class="friend-box" *ngFor="let friend of recommendedFriends">
-          <div class="friend-details">
-            <p>Username: {{friend.username}}</p>
+        @for (friend of recommendedFriends; track friend) {
+          <div class="friend-box">
+            <div class="friend-details">
+              <p>Username: {{friend.username}}</p>
+              <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
+              <p id="tag">Tags: </p>
+              @for (tag of friend.chooseTags; track tag) {
+                <div class="friend-tags-box">
+                  {{tag}}
+                </div>
+              }
+            </div>
+            <button class = "btn btn-secondary" (click) = "onAdd(USEROBJ._id, friend.username)">Add</button>
+          </div>
+        }
 
-            <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
-            <p id="tag">Tags: </p>
-          <div class="friend-tags-box" *ngFor="let tag of friend.chooseTags">
-            {{tag}}
-          </div>
-          </div>
-          <button class = "btn btn-secondary" (click) = "onAdd(USEROBJ._id, friend.username)">Add</button>
-        </div>
-        
       </div>
 
       <!-- Column for current friends -->
       <div class="col-md-3">
-        <div class="friend-box" *ngFor="let friend of currentFriends">
-          <div class="friend-details">
-            <p>Username: {{friend.username}}</p>
-            <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
-            <p id="tag">Tags: </p>
-          <div class="friend-tags-box" *ngFor="let tag of friend.chooseTags">
-            {{tag}}
+        @for (friend of currentFriends; track friend) {
+          <div class="friend-box">
+            <div class="friend-details">
+              <p>Username: {{friend.username}}</p>
+              <p>Name: {{friend.firstName}} {{friend.middleName}} {{friend.lastName}}</p>
+              <p id="tag">Tags: </p>
+              @for (tag of friend.chooseTags; track tag) {
+                <div class="friend-tags-box">
+                  {{tag}}
+                </div>
+              }
+            </div>
           </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>
-      
+
 </section>
 </section>

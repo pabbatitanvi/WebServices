@@ -5,29 +5,31 @@
 
 <section class="events">
 
-    <div class="row">
-            <!-- Make event box for every event in the list -->
-            <div class="event-box" *ngFor="let event of events">
-                        <div class="event-date-box">
-                            <p class="event-date">{{event.date | date: 'd'}}/{{event.date | date: 'MM'}}/{{event.date | date: 'yyyy'}}</p>
-                        </div>
-                        <div class="event">       
-                    <!-- event details in the event box -->
-                    <div class="event-details">
-                        <p class="event-name">{{event.eventName | uppercase}}</p>
-                        <p class="event-desc">{{event.description}}</p>
-                        <p class="event-price">Price: ${{event.price}}</p>
-                        <p class="event-time">Time of the event: {{event.startTime}} - {{event.endTime}}</p>
-                    </div>
-                    <div class = "buttons">
-                        <button type="button" class="btn btn-danger me-2" (click) = "onDeleteEvent(event._id)">
-                            Delete event
-                        </button>
-                        <button type="button" class="btn btn-warning" (click) = "onModifyEvent(event._id)">
-                            Modify event
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <!-- Make event box for every event in the list -->
+    @for (event of events; track event) {
+      <div class="event-box">
+        <div class="event-date-box">
+          <p class="event-date">{{event.date | date: 'd'}}/{{event.date | date: 'MM'}}/{{event.date | date: 'yyyy'}}</p>
         </div>
+        <div class="event">
+          <!-- event details in the event box -->
+          <div class="event-details">
+            <p class="event-name">{{event.eventName | uppercase}}</p>
+            <p class="event-desc">{{event.description}}</p>
+            <p class="event-price">Price: ${{event.price}}</p>
+            <p class="event-time">Time of the event: {{event.startTime}} - {{event.endTime}}</p>
+          </div>
+          <div class = "buttons">
+            <button type="button" class="btn btn-danger me-2" (click) = "onDeleteEvent(event._id)">
+              Delete event
+            </button>
+            <button type="button" class="btn btn-warning" (click) = "onModifyEvent(event._id)">
+              Modify event
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 </section>
