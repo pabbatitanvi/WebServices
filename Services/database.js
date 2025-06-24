@@ -2,7 +2,7 @@
 
 let MongoClient = require('mongodb').MongoClient
 
-const connectionString = "mongodb+srv://kmr6702:kmr6702@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
+const connectionString = "mongodb+srv://amm10089:Anunandita@getoutthere.l8cjg.mongodb.net/TestDB?retryWrites=true&w=majority&appName=GetOutThere"
 const client = new MongoClient(connectionString);
 let conn;
     let db;

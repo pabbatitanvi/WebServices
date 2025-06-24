@@ -7,11 +7,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 import {AngularOpenlayersModule} from "ng-openlayers"
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, AngularOpenlayersModule, NavigationBarComponent, LoginScreenComponent, HomeScreenComponent, FormsModule, SidebarComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [RouterOutlet, AngularOpenlayersModule, NavigationBarComponent, LoginScreenComponent, HomeScreenComponent, FormsModule, SidebarComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'get-out-there';

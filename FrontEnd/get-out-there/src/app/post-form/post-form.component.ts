@@ -9,12 +9,10 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-post-form',
-  standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
-
-  templateUrl: './post-form.component.html',
-  styleUrl: './post-form.component.css'
+    selector: 'app-post-form',
+    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
+    templateUrl: './post-form.component.html',
+    styleUrl: './post-form.component.css'
 })
 
 export class PostFormComponent implements OnInit{

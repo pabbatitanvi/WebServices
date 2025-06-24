@@ -10,11 +10,10 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-event-edit-form',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
-  templateUrl: './event-edit-form.component.html',
-  styleUrl: './event-edit-form.component.css'
+    selector: 'app-event-edit-form',
+    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
+    templateUrl: './event-edit-form.component.html',
+    styleUrl: './event-edit-form.component.css'
 })
 export class EventEditFormComponent implements OnInit {
   eventID!: string;

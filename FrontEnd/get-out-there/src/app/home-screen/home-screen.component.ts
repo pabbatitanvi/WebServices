@@ -5,11 +5,10 @@ import { GetDataService } from '../../../services/get-data.service';
 import { MapComponent } from '../map/map.component';
 
 @Component({
-  selector: 'app-home-screen',
-  standalone: true,
-  imports: [NavigationBarComponent, NgFor, MapComponent],
-  templateUrl: './home-screen.component.html',
-  styleUrl: './home-screen.component.css'
+    selector: 'app-home-screen',
+    imports: [NavigationBarComponent, NgFor, MapComponent],
+    templateUrl: './home-screen.component.html',
+    styleUrl: './home-screen.component.css'
 })
 
 // Much of this is copied from the user-post-page, where the posts are implemented in a similar way. I've commented out parts that

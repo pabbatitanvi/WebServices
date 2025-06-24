@@ -6,11 +6,10 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-settings-page',
-  standalone: true,
-  imports: [NavigationBarComponent, CommonModule, ReactiveFormsModule, SidebarComponent],
-  templateUrl: './user-settings-page.component.html',
-  styleUrl: './user-settings-page.component.css'
+    selector: 'app-user-settings-page',
+    imports: [NavigationBarComponent, CommonModule, ReactiveFormsModule, SidebarComponent],
+    templateUrl: './user-settings-page.component.html',
+    styleUrl: './user-settings-page.component.css'
 })
 export class UserSettingsPageComponent {
     constructor(private router:Router){}

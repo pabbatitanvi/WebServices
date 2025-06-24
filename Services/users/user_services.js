@@ -57,11 +57,11 @@ async function userModify(userId, updateData){
 
 //Find users by username for validation
 async function userFind(userName){
-    
+     console.log(userName)
     _database =  mongodb.getDb().collection('Users')
     try{
         let data = await _database.findOne({username: userName})
-    
+        console.log(data)
         return data;
     } catch(err){
         console.log(err)

@@ -7,11 +7,10 @@ import { GetDataService } from '../../../services/get-data.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-form',
-  standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
-  templateUrl: './user-form.component.html',
-  styleUrl: './user-form.component.css'
+    selector: 'app-user-form',
+    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule],
+    templateUrl: './user-form.component.html',
+    styleUrl: './user-form.component.css'
 })
 
 

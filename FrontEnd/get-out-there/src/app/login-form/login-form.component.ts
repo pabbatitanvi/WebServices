@@ -5,11 +5,10 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-form',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+    selector: 'app-login-form',
+    imports: [ReactiveFormsModule],
+    templateUrl: './login-form.component.html',
+    styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
   constructor(public dataService:GetDataService,private router:Router){}

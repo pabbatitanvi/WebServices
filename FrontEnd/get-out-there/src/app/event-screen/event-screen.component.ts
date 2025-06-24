@@ -7,11 +7,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MapComponent } from "../map/map.component";
 
 @Component({
-  selector: 'app-event-screen',
-  standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, MapComponent],
-  templateUrl: './event-screen.component.html',
-  styleUrl: './event-screen.component.css'
+    selector: 'app-event-screen',
+    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, MapComponent],
+    templateUrl: './event-screen.component.html',
+    styleUrl: './event-screen.component.css'
 })
 export class EventScreenComponent {
   constructor(public dataService: GetDataService, private change: ChangeDetectorRef, private router: Router, private route: ActivatedRoute) { }

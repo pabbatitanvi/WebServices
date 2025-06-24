@@ -6,11 +6,10 @@ import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-friend-screen',
-  standalone: true,
-  imports: [NavigationBarComponent, FormsModule, CommonModule, NgFor, NgIf],
-  templateUrl: './friend-screen.component.html',
-  styleUrl: './friend-screen.component.css'
+    selector: 'app-friend-screen',
+    imports: [NavigationBarComponent, FormsModule, CommonModule, NgFor, NgIf],
+    templateUrl: './friend-screen.component.html',
+    styleUrl: './friend-screen.component.css'
 })
 export class FriendScreenComponent implements OnInit{
 

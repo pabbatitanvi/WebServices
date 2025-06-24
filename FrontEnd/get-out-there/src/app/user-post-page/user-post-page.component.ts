@@ -8,11 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-user-post-page',
-  standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, SidebarComponent],
-  templateUrl: './user-post-page.component.html',
-  styleUrl: './user-post-page.component.css'
+    selector: 'app-user-post-page',
+    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, SidebarComponent],
+    templateUrl: './user-post-page.component.html',
+    styleUrl: './user-post-page.component.css'
 })
 export class UserPostPageComponent implements OnInit {
 

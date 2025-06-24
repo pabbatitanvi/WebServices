@@ -10,11 +10,10 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-post-edit-form',
-  standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
-  templateUrl: './post-edit-form.component.html',
-  styleUrl: './post-edit-form.component.css'
+    selector: 'app-post-edit-form',
+    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
+    templateUrl: './post-edit-form.component.html',
+    styleUrl: './post-edit-form.component.css'
 })
 
 export class PostEditFormComponent implements OnInit{

@@ -30,6 +30,7 @@ module.exports = function(app){
     app.post('/userlogin', async(req, res) => {
         
         let data=await user.userFind(req.body.username)
+        
         if(data.username==req.body.username && data.password==req.body.password)
             return res.send(JSON.stringify(data));
         else

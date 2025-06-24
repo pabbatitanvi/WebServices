@@ -9,11 +9,10 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-event-form',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
-  templateUrl: './event-form.component.html',
-  styleUrl: './event-form.component.css'
+    selector: 'app-event-form',
+    imports: [ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, NavigationBarComponent, SidebarComponent],
+    templateUrl: './event-form.component.html',
+    styleUrl: './event-form.component.css'
 })
 export class EventFormComponent {
   constructor(public dataService: GetDataService, private router: Router) { }

@@ -9,11 +9,10 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Post } from '../../models/post';
 
 @Component({
-  selector: 'app-user-screen',
-  standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, SidebarComponent], //mentioning the objects to import from the imported components
-  templateUrl: './user-screen.component.html',
-  styleUrl: './user-screen.component.css'
+    selector: 'app-user-screen',
+    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, FormsModule, SidebarComponent], //mentioning the objects to import from the imported components
+    templateUrl: './user-screen.component.html',
+    styleUrl: './user-screen.component.css'
 })
 export class UserScreenComponent implements OnInit{
 

@@ -7,11 +7,10 @@ import { Router } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-user-event-page',
-  standalone: true,
-  imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, SidebarComponent],
-  templateUrl: './user-event-page.component.html',
-  styleUrl: './user-event-page.component.css'
+    selector: 'app-user-event-page',
+    imports: [NavigationBarComponent, NgFor, NgIf, CommonModule, SidebarComponent],
+    templateUrl: './user-event-page.component.html',
+    styleUrl: './user-event-page.component.css'
 })
 export class UserEventPageComponent {
   constructor(public dataService: GetDataService, private router: Router) { }

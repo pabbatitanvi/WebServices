@@ -5,11 +5,10 @@ import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-share-event',
-  standalone: true,
-  imports: [NgFor, NgIf, CommonModule, FormsModule],
-  templateUrl: './share-event.component.html',
-  styleUrl: './share-event.component.css'
+    selector: 'app-share-event',
+    imports: [NgFor, NgIf, CommonModule, FormsModule],
+    templateUrl: './share-event.component.html',
+    styleUrl: './share-event.component.css'
 })
 export class ShareEventComponent {
   constructor(public dataService: GetDataService, private router: Router, private route: ActivatedRoute) { }
